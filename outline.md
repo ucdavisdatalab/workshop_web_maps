@@ -33,5 +33,8 @@ Topics:
 * Make a popup
 
 # Resources
-W3Schools - HTML & general javascript
+[Leaflet Reference](https://leafletjs.com/) - tutorials and documentation for the Leaflet javascript library
+
+[W3Schools](https://www.w3schools.com/) - a good reference for HTML, CSS, & general javascript
+
 [Leafmap Basemap Search Tool](https://leafmap.org/notebooks/31_search_basemaps/) - this is a python package, so it's not directly applicable to this workshop, however it may be useful to help you discover other basemap options or point you to sources you didn't know about

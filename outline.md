@@ -34,3 +34,4 @@ Topics:
 
 # Resources
 W3Schools - HTML & general javascript
+[Leafmap Basemap Search Tool](https://leafmap.org/notebooks/31_search_basemaps/) - this is a python package, so it's not directly applicable to this workshop, however it may be useful to help you discover other basemap options or point you to sources you didn't know about

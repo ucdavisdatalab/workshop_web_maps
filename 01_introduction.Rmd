@@ -2,8 +2,25 @@
 
 ## What is a "Web Map"?
 
+The term "web map" typically refers to a map embedded in a webpage. The map allows the user to interact with the data in some way. Often, the user can pan and zoom to adjust the view and click on data markers to learn more information about a location.
+
 
 ## Why make a web map?
 
+Web maps can be a powerful way to share spatial information with other people, especially when you expect the viewer to want to explore the data in different ways. Web maps allow the user to customize their experience in ways that a static map cannot.
+
+Web maps can also be a more engaging way for your audience to learn about a topic of interest.
+
+Web maps can also be a way to interact with a community of interest, enabling a reasearcher to both share and collect spatial information from a community.
+
 
 ## Examples
+
+
+## Workflow
+
+To make an online interactive web map, we'll need to complete several steps. Typically these are:
+
+1. Make a webpage to contain the web map code
+2. Write the web map code and put it into the webpage
+3. Put the web page online

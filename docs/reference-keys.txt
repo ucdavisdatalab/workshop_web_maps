@@ -6,3 +6,9 @@ introduction
 what-is-a-web-map
 why-make-a-web-map
 examples
+workflow
+setting-up-your-file-structure
+download-the-data
+folders
+files
+build-a-webpage

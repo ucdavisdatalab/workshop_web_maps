@@ -1,0 +1,3 @@
+# Build a Webpage
+
+The first step in building a web map is to make a basic webpage to house our map. It doesn't need to be elaborate to get started.

@@ -1,0 +1,37 @@
+# Setting Up Your File Structure
+
+Before we do any coding, let's set up our file and folder structure.
+
+## Download the Data
+
+## Folders
+
+Using your computer's file browsing program, navigate to a folder you want to work in. In that folder, create a new folder to hold your files for this project, such as "my_web_map". Inside that folder, create two more folders: "data" and "docs".  "data" will hold the data for our web map and "docs" will hold the HTML files that will create our web map.
+
+Your folder structure should now look like this:
+
+```
+my_web_map
+|-- data
+|
+|-- docs
+
+```
+
+## Files
+
+Move the data you downloaded for this workshop into the "data" folder.
+
+Open your preferred text editor application. Create a new, blank file. Save it inside your "docs" folder and call it 'index.html'. This will be the homepage for our web site that will hold our web map. 
+
+Your folder and file structure should now look like this:
+
+```
+my_web_map
+|-- data
+|   |-- campus_cats.js
+|
+|-- docs
+|   |-- index.htm
+
+```

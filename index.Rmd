@@ -1,10 +1,10 @@
 ---
-title: YOUR WORKSHOP TITLE
-author: [YOUR NAME]
+title: Building Web Maps with Leaflet
+author: Dr. Michele Tobias
 date: "`r Sys.Date()`"
 
-github-repo: ucdavisdatalab/YOUR_REPO
-url: "https://ucdavisdatalab.github.io/YOUR_REPO/"
+github-repo: ucdavisdatalab/workshop_web_maps
+url: https://ucdavisdatalab.github.io/workshop_web_maps/"
 
 site: "bookdown::bookdown_site"
 knit: "bookdown::render_book"
@@ -16,13 +16,33 @@ output:
           <li><a href="https://datalab.ucdavis.edu/">
             <img src="https://datalab.ucdavis.edu/wp-content/uploads/2019/07/datalab-logo-full-color-rgb-1.png" style="height: 100%; width: 100%; object-fit: contain" />
           </a></li>
-          <li><a href="./" style="font-size: 18px">YOUR WORKSHOP TITLE</a></li>
+          <li><a href="./" style="font-size: 18px">Building Web Maps with Leaflet</a></li>
         collapse: section
       sharing: no
-      view: https://github.com/ucdavisdatalab/YOUR_REPO/blob/master/%s
-      edit: https://github.com/ucdavisdatalab/YOUR_REPO/edit/master/%s
+      view: https://github.com/ucdavisdatalab/workshop_web_maps/blob/master/%s
+      edit: https://github.com/ucdavisdatalab/workshop_web_maps/edit/master/%s
 ---
 
 # Overview {-}
 
-YOUR DESCRIPTION, LEARNING GOALS, PREREQUISITES, ETC
+# Description
+In this workshop, attendees will be introduced to building an interactive web map to display spatial data using the Leaflet javascript library.
+
+## Learning Objectives
+In this workshop, attendees will learn
+
+* Introductory HTML skills, in particular, the tags that are most commonly used to format text on a webpage
+* How to load javascript libraries into a web page
+* An introduction to the Leaflet javascript library
+* Where to get additional help with HTML and Leaflet
+* Best practices for communicating data distributions with a web map
+
+## Skills
+In this workshop, participants will be introduced to the following skills:
+
+* HTML
+* Javascript
+* Leaflet Javascript Library
+
+## Prerequisites
+Learners should have a basic understanding of spatial data formats such as vector and raster data, as well as experience with any coding language.  Learners with previous experience with coding in HTML and javascript will have an easier time learning, but these skills are not required.

@@ -1,3 +1,34 @@
+# Workshop: Building Web Maps with Leaflet
+
+_[UC Davis DataLab](https://datalab.ucdavis.edu/)_  
+_Winter 2022_  
+_Instructor: Michele Tobias <<mmtobias@ucdavis.edu>>_  
+
+* [Reader](https://ucdavisdatalab.github.io/workshop_web_maps/)
+* [Event Page](https://datalab.ucdavis.edu/eventscalendar/)
+
+# Description
+In this workshop, attendees will be introduced to building an interactive web map to display spatial data using the Leaflet javascript library.
+
+## Learning Objectives
+In this workshop, attendees will learn
+
+* Introductory HTML skills, in particular, the tags that are most commonly used to format text on a webpage
+* How to load javascript libraries into a web page
+* An introduction to the Leaflet javascript library
+* Where to get additional help with HTML and Leaflet
+* Best practices for communicating data distributions with a web map
+
+## Skills
+In this workshop, participants will be introduced to the following skills:
+
+* HTML
+* Javascript
+* Leaflet Javascript Library
+
+## Prerequisites
+Learners should have a basic understanding of spatial data formats such as vector and raster data, as well as experience with any coding language.  Learners with previous experience with coding in HTML and javascript will have an easier time learning, but these skills are not required.
+
 # Template: Workshop Reader
 
 This repository is a template for workshop readers for the UC Davis DataLab.
@@ -56,16 +87,7 @@ repo:
 7. `git add` all changed files, then `git commit` and `git push`.
 
 
-# Workshop: YOUR WORKSHOP TITLE
 
-_[UC Davis DataLab](https://datalab.ucdavis.edu/)_  
-_Spring 2021_  
-_Instructor: YOUR NAME <<YOUR_EMAIL@ucdavis.edu>>_  
-
-* [Reader](https://ucdavisdatalab.github.io/YOUR_REPOSITORY/)
-* [Event Page](https://datalab.ucdavis.edu/eventscalendar/YOUR_EVENT/)
-
-YOUR DESCRIPTION, LEARNING GOALS, PREREQUISITES, ETC
 
 
 ## Contributing

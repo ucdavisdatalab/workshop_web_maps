@@ -1,3 +1,15 @@
 # Build a Webpage
 
-The first step in building a web map is to make a basic webpage to house our map. It doesn't need to be elaborate to get started.
+The first step in building a web map is to make a basic webpage to house our map. It doesn't need to be elaborate to get started, but we do need to understand some concepts.
+
+# Intro to HTML
+
+HTML stands for "hypertext markup language". If you've ever used R Markdown or GitHub Markdown or worked in a Jupiter Notebook, you'll notice some similarities.
+
+The key thing to understand about HTML is that every element (text, code, images, etc.) you put into your code needs to be labeled to tell the web browser how to render that element.  We label the elements with a **tag**. We label the start of an element with an opening tag, such as `<p>` to start a paragraph, and end it with a closing tag, such as `</p>`.  
+
+There are tags for 
+
+1. Open your `index.html` file in a text editor. Picking a text editor with syntax highlighting can be helpful, but isn't mandatory.
+
+1.

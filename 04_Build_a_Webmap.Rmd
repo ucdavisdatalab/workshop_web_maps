@@ -133,6 +133,8 @@ First, we'll create an empty map in our mapid div, then we'll load Stamen's Tone
 </script>
 ```
 
+### Add a Marker
+
 Let's add a marker so we can find the Quad. The marker will be a blue inverted teardrop that will have a tooltip that says "Quad" when you hover over it.  At the end of your script section, add: 
 
 ```
@@ -144,8 +146,57 @@ Let's add a marker so we can find the Quad. The marker will be a blue inverted t
 		marker.bindTooltip("<b>Quad<b>", {	});
 		marker.addTo(catmap);
 ```
+You now have an interactive map with one marker!
 
 Notice how we define the marker, add the tooltip to the marker, and then we have to add the marker to the map.
+
+## Use External Data
+
+Adding markers by hand is great, but if we have a lot of data or something more complex than a few points to add or if we want to prepare our data in a GIS or with a script ahead of time, we probably want to load data from a data file.
+
+There are many ways to load an external data file in Leaflet. We'll look at just one here, but there are ways to work with any of the common file types. Here, we'll use data in geoJSON format.
+
+### About GeoJSON
+
+GeoJSON is a spatial data format based on the JSON format. Because it is text-based, it is human-readable, however, depending on the complexity of the data, you may not want to try to read it in a text editor. Another advantage of using a text-based format is that it can easily be stored in online version control systems like GitHub, as long as a file size isn't too big. This is a nice feature if you want to host your webmap on GitHub Pages.
+
+Any of the major GIS tools or programming languages can convert vector data to GeoJSON format.
+
+### Formatting the Data
+
+Leaflet can't read GeoJSON directly, but to make it work, all we have to do is open the .geojson file in a text editor, add `var varable-name = {` at the beginning of the file, and `}` at the end of the file (we're "wrapping" the data in a variable declaration). Then we save the file with a .js extension (because what we've actually done is written a small JavaScript file).
+
+We've done this for you to create the `campus_cats.js` file, declaring our variable as `campus_cats`.  You can see the GeoJSON structure and the variable declaration if you open the file in a text editor.
+
+### Read the Data
+
+To read the data into our webpage, we need to add another short script section, just above the one we've been working in that calls our `campus_cats.js` data file.
+
+```
+<script src="campus_cats.js" type="text/javascript"></script>
+```
+
+Now the data in this file will be available to load into our map.
+
+### Add Data to the Map
+
+This is the moment you've been waiting for! We'll add data from our external data file to the map.
+
+Add this code to the bottom of your long script section (below where we made our marker for the Quad and above the closing `</script>` tag).
+
+```
+//add cat points from the GeoJSON (campus_cats.js) file
+	//note that we don't have to declare/create the campus_cats variable because that is done inside the campus_cats.js file.
+	
+L.geoJSON(campus_cats).addTo(catmap);
+```
+We now have many blue markers for our cats (and one for the quad that we added earlier)! 
+
+### Style the Data
+Let's do some styling and add popups to our cat markers.
+
+
+
 
 
 

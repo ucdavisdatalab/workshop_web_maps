@@ -22,3 +22,10 @@ load-the-external-files
 add-a-map-div
 add-a-script-section
 add-a-map
+add-a-marker
+use-external-data
+about-geojson
+formatting-the-data
+read-the-data
+add-data-to-the-map
+style-the-data

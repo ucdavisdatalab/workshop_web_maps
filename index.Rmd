@@ -46,3 +46,8 @@ In this workshop, participants will be introduced to the following skills:
 
 ### Prerequisites
 Learners should have a basic understanding of spatial data formats such as vector and raster data, as well as experience with any coding language.  Learners with previous experience with coding in HTML and javascript will have an easier time learning, but these skills are not required.
+
+### Software & Tools:
+
+* Text editor (preferably with syntax highlighting)
+* Web browser (not Internet Explorer)

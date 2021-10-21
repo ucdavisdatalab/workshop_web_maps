@@ -25,3 +25,7 @@ To make an online interactive web map, we'll need to complete several steps. Typ
 1. Make a webpage to contain the web map code
 2. Write the web map code and put it into the webpage
 3. Put the web page online
+
+## Leaflet
+
+In today's workshop, we'll be using a javascript library called [Leaflet](https://leafletjs.com/index.html) to write the code that will make our web map.  Leaflet is a popular open source javascript library specifically designed to build interactive web maps with a combination of data available online (like tile services for basemaps) and your own data. Leaflet is well-documented and has [excellent tutorials](https://leafletjs.com/examples.html) to illustrate common tasks and innovative uses of the tool. In addition, there is an active community using this tool so there is ample support on online message boards and social media outlets.

@@ -24,7 +24,7 @@
 <meta name="author" content="Dr. Michele Tobias" />
 
 
-<meta name="date" content="2021-10-20" />
+<meta name="date" content="2021-10-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -82,6 +82,7 @@
 <li class="chapter" data-level="0.1.1" data-path="index.html"><a href="index.html#learning-objectives"><i class="fa fa-check"></i><b>0.1.1</b> Learning Objectives</a></li>
 <li class="chapter" data-level="0.1.2" data-path="index.html"><a href="index.html#skills"><i class="fa fa-check"></i><b>0.1.2</b> Skills</a></li>
 <li class="chapter" data-level="0.1.3" data-path="index.html"><a href="index.html#prerequisites"><i class="fa fa-check"></i><b>0.1.3</b> Prerequisites</a></li>
+<li class="chapter" data-level="0.1.4" data-path="index.html"><a href="index.html#software-tools"><i class="fa fa-check"></i><b>0.1.4</b> Software &amp; Tools:</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
@@ -90,6 +91,7 @@
 <li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#why-make-a-web-map"><i class="fa fa-check"></i><b>1.2</b> Why make a web map?</a></li>
 <li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#examples"><i class="fa fa-check"></i><b>1.3</b> Examples</a></li>
 <li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#workflow"><i class="fa fa-check"></i><b>1.4</b> Workflow</a></li>
+<li class="chapter" data-level="1.5" data-path="introduction.html"><a href="introduction.html#leaflet"><i class="fa fa-check"></i><b>1.5</b> Leaflet</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="setting-up-your-file-structure.html"><a href="setting-up-your-file-structure.html"><i class="fa fa-check"></i><b>2</b> Setting Up Your File Structure</a>
 <ul>
@@ -97,7 +99,21 @@
 <li class="chapter" data-level="2.2" data-path="setting-up-your-file-structure.html"><a href="setting-up-your-file-structure.html#folders"><i class="fa fa-check"></i><b>2.2</b> Folders</a></li>
 <li class="chapter" data-level="2.3" data-path="setting-up-your-file-structure.html"><a href="setting-up-your-file-structure.html#files"><i class="fa fa-check"></i><b>2.3</b> Files</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="build-a-webpage.html"><a href="build-a-webpage.html"><i class="fa fa-check"></i><b>3</b> Build a Webpage</a></li>
+<li class="chapter" data-level="3" data-path="build-a-webpage.html"><a href="build-a-webpage.html"><i class="fa fa-check"></i><b>3</b> Build a Webpage</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="build-a-webpage.html"><a href="build-a-webpage.html#intro-to-html"><i class="fa fa-check"></i><b>3.1</b> Intro to HTML</a></li>
+<li class="chapter" data-level="3.2" data-path="build-a-webpage.html"><a href="build-a-webpage.html#start-building-your-webpage"><i class="fa fa-check"></i><b>3.2</b> Start Building your Webpage</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html"><i class="fa fa-check"></i><b>4</b> Build a Leaflet Web Map</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#prepare-your-page"><i class="fa fa-check"></i><b>4.1</b> Prepare Your Page</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#load-the-external-files"><i class="fa fa-check"></i><b>4.1.1</b> Load The External Files</a></li>
+<li class="chapter" data-level="4.1.2" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#add-a-map-div"><i class="fa fa-check"></i><b>4.1.2</b> Add a Map Div</a></li>
+<li class="chapter" data-level="4.1.3" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#add-a-script-section"><i class="fa fa-check"></i><b>4.1.3</b> Add a Script Section</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#add-a-map"><i class="fa fa-check"></i><b>4.2</b> Add A Map</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -118,7 +134,7 @@
 <div id="header">
 <h1 class="title">Building Web Maps with Leaflet</h1>
 <p class="author"><em>Dr. Michele Tobias</em></p>
-<p class="date"><em>2021-10-20</em></p>
+<p class="date"><em>2021-10-21</em></p>
 </div>
 <div id="overview" class="section level1 unnumbered">
 <h1>Overview</h1>
@@ -148,6 +164,13 @@
 <div id="prerequisites" class="section level3" number="0.1.3">
 <h3><span class="header-section-number">0.1.3</span> Prerequisites</h3>
 <p>Learners should have a basic understanding of spatial data formats such as vector and raster data, as well as experience with any coding language. Learners with previous experience with coding in HTML and javascript will have an easier time learning, but these skills are not required.</p>
+</div>
+<div id="software-tools" class="section level3" number="0.1.4">
+<h3><span class="header-section-number">0.1.4</span> Software &amp; Tools:</h3>
+<ul>
+<li>Text editor (preferably with syntax highlighting)</li>
+<li>Web browser (not Internet Explorer)</li>
+</ul>
 
 </div>
 </div>

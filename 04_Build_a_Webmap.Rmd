@@ -1,0 +1,153 @@
+# Build a Leaflet Web Map
+
+Now that we've made a basic webpage, we can add our web map.
+
+## Prepare Your Page
+
+### Load The External Files
+
+In the **head** section of our webpage, we need to add some information that will tell our map how to appear (the CSS file) and where to find the Leaflet package (Leaflet JavaScript file).
+
+CSS stands for Cascading Style Sheet. You can think of this as the parameters that set the way certain objects are displayed in a website. The file we'll load specifically styles the map elements made with Leaflet.
+
+Loading the Leaflet JavaScript file enables our webpage to have access to the functions and tools in the Leaflet Library. For R or Python users, this is similar to loading packages or libraries in your code.  We could save a static version of this library in our website folders and point to that, or we can link to an online version of it, like we have done in the code below.
+
+```
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>UC Davis Campus Cats Map</title>
+
+<!--Load the Leaflet CSS file -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="crossorigin=""/>
+
+<!--Load the Leaflet JavaScript file -->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="crossorigin=""></script>
+</head>
+
+<body>
+<h1>UC Davis Campus Cats Map</h1>
+<p>This webmap shows the locations of UC Davis campus community cats.</p>
+
+</body>
+
+</html>
+```
+
+Note that in HTML, comments are written like this: `<!-- This is a comment -->`. Comments are information for the coder and don't render on the website.
+
+### Add a Map Div
+
+A `<div>` element defines a section in your HTML document. Our web map needs its own `<div>`. We'll add one inside the `<body>` of the webpage.  Note that the `<div>` has an ID. This will let us create settings and code that apply to this specific `<div>`.  We can define the style of the `<div>` inside the tag (as we have done below) or we could do it in the `<head>` of the document in a `<style>` subsection, or in a separate CSS file.
+
+```
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>UC Davis Campus Cats Map</title>
+
+<!--Load the Leaflet CSS file -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="crossorigin=""/>
+
+<!--Load the Leaflet JavaScript file -->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="crossorigin=""></script>
+</head>
+
+<body>
+<h1>UC Davis Campus Cats Map</h1>
+<p>This webmap shows the locations of UC Davis campus community cats.</p>
+
+<div id="mapid" style="width: 600px; height: 400px;"></div>
+
+</body>
+
+</html>
+```
+
+If you reload your `index.html` file in your browser, you shouldn't notice any difference. If the page doesn't load, however, you'll need to troubleshoot your code. Make sure your tags open and close in the right order.
+
+### Add a Script Section
+
+Finally, we need to add a section to our code to hold the Leaflet JavaScript code we will write to make our map.  Just below your map `<div>` (and inside the **body** section), add open and closed `<script>` tags.
+
+```
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>UC Davis Campus Cats Map</title>
+
+<!--Load the Leaflet CSS file -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="crossorigin=""/>
+
+<!--Load the Leaflet JavaScript file -->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="crossorigin=""></script>
+</head>
+
+<body>
+<h1>UC Davis Campus Cats Map</h1>
+<p>This webmap shows the locations of UC Davis campus community cats.</p>
+
+<div id="mapid" style="width: 600px; height: 400px;"></div>
+
+<script>
+
+</script>
+
+</body>
+
+</html>
+```
+
+## Add A Map
+
+Now we're ready to add a map. We'll make a simple one to start and add more data later.
+
+**Note:** from now on, we'll be working in the `<script>` section, so the code will just show this section to avoid clutter and focus on what's changing in the code.
+
+Inside the `<script>` section, we'll now be writing JavaScript. `//` is how you indicate a comment in JavaScript.  Outside of this section, you'll be writing HTML. It can get confusing sometimes, so have patience with yourself.
+
+First, we'll create an empty map in our mapid div, then we'll load Stamen's Toner tile service to use as a background layer. The limited color palette of the Toner tile service will make it easier to see the data we'll be loading later.
+
+```
+<script>
+
+	//add an empty map called "catmap" to the page in the mapid div
+	var catmap = L.map('mapid', {
+		center: [38.538592, -121.75], 
+		zoom: 15
+		});
+
+	//add the base map = Stamen Toner tile layer
+	var Stamen_Toner = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.{ext}', {
+		attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+		subdomains: 'abcd',
+		minZoom: 0,
+		maxZoom: 20,
+		ext: 'png'
+		});
+		catmap.addLayer(Stamen_Toner);
+
+</script>
+```
+
+Let's add a marker so we can find the Quad. The marker will be a blue inverted teardrop that will have a tooltip that says "Quad" when you hover over it.  At the end of your script section, add: 
+
+```
+	//add a marker for the Quad with a tooltip
+			//Quad: 38.541162, -121.749371
+	var marker = new L.marker([38.541112, -121.749350], { 
+		opacity: 1.0   //teardrop marker opacity may be set to zero
+		}); 			
+		marker.bindTooltip("<b>Quad<b>", {	});
+		marker.addTo(catmap);
+```
+
+Notice how we define the marker, add the tooltip to the marker, and then we have to add the marker to the map.
+
+
+
+
+

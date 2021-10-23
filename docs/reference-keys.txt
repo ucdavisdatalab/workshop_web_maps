@@ -28,4 +28,5 @@ about-geojson
 formatting-the-data
 read-the-data
 add-data-to-the-map
-style-the-data
+add-a-popup
+customize-popup-text-with-data

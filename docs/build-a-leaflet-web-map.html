@@ -24,7 +24,7 @@
 <meta name="author" content="Dr. Michele Tobias" />
 
 
-<meta name="date" content="2021-10-21" />
+<meta name="date" content="2021-10-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -122,7 +122,8 @@
 <li class="chapter" data-level="4.3.2" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#formatting-the-data"><i class="fa fa-check"></i><b>4.3.2</b> Formatting the Data</a></li>
 <li class="chapter" data-level="4.3.3" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#read-the-data"><i class="fa fa-check"></i><b>4.3.3</b> Read the Data</a></li>
 <li class="chapter" data-level="4.3.4" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#add-data-to-the-map"><i class="fa fa-check"></i><b>4.3.4</b> Add Data to the Map</a></li>
-<li class="chapter" data-level="4.3.5" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#style-the-data"><i class="fa fa-check"></i><b>4.3.5</b> Style the Data</a></li>
+<li class="chapter" data-level="4.3.5" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#add-a-popup"><i class="fa fa-check"></i><b>4.3.5</b> Add a popup</a></li>
+<li class="chapter" data-level="4.3.6" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#customize-popup-text-with-data"><i class="fa fa-check"></i><b>4.3.6</b> Customize Popup Text with Data</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -294,16 +295,57 @@
 <div id="add-data-to-the-map" class="section level3" number="4.3.4">
 <h3><span class="header-section-number">4.3.4</span> Add Data to the Map</h3>
 <p>This is the moment you’ve been waiting for! We’ll add data from our external data file to the map.</p>
-<p>Add this code to the bottom of your long script section (below where we made our marker for the Quad and above the closing <code>&lt;/script&gt;</code> tag).</p>
-<pre><code>//add cat points from the GeoJSON (campus_cats.js) file
-    //note that we don&#39;t have to declare/create the campus_cats variable because that is done inside the campus_cats.js file.
-    
-L.geoJSON(campus_cats).addTo(catmap);</code></pre>
-<p>We now have many blue markers for our cats (and one for the quad that we added earlier)!</p>
+<p>Add this code to the bottom of your long script section (below where we made our marker for the Quad and above the closing <code>&lt;/script&gt;</code> tag):</p>
+<pre><code>    //add cat points from the GeoJSON (campus_cats.js) file
+        
+    var catpoints = L.geoJSON(campus_cats, {  
+        pointToLayer: function(feature, latlng){  
+            return L.circleMarker(latlng, {color: &#39;orange&#39;, radius: 8}); 
+        }
+    }).addTo(catmap);</code></pre>
+<p>We now have many orange circles for our cats (and one for the quad that we added earlier)!</p>
+<p>What does this code do though?</p>
+<p>First, we create a variable called “catpoints” using the geojson data which we named campus_cats inside the .js file. Then we create a function called pointToLayer that uses the parameters “feature” (each row in the data) and “latlng” (the geometry) from the geojson data. We make a circleMarker using the latlng variable for the position, and use the style options between the {}s to style the marker the way we want it. In this case, it’s organge and has a radius of 8 (which is a little smaller than the default). Finally, we add the entire set of markers we built to the map (remember that we called our div that holds our map “catmap”).</p>
 </div>
-<div id="style-the-data" class="section level3" number="4.3.5">
-<h3><span class="header-section-number">4.3.5</span> Style the Data</h3>
-<p>Let’s do some styling and add popups to our cat markers.</p>
+<div id="add-a-popup" class="section level3" number="4.3.5">
+<h3><span class="header-section-number">4.3.5</span> Add a popup</h3>
+<p>It would be nice to have some information available for each marker. Let’s make a popup that tells us about each cat. We’ll start with a text popup and gradually add more to it.</p>
+<p>We made our markers for our point locations by iterating over the list of features in our dataset and making a marker for each of them. We can add a function to the one we already have so that once the markers get made, each will get a popup.</p>
+<p>We’ll modify our code that adds our points to look like this:</p>
+<pre><code>    //add cat points from the GeoJSON (campus_cats.js) file
+        
+    var catpoints = L.geoJSON(campus_cats, {  
+        pointToLayer: function(feature, latlng){  
+            return L.circleMarker(latlng, {color: &#39;orange&#39;, radius: 8}); 
+        },
+        onEachFeature: function(feature, layer){
+            layer.bindPopup(&quot;This is a popup!&quot;);
+        }
+    }).addTo(catmap);</code></pre>
+<p>What did we do? After the <code>pointToLayer</code> function, we added a new created a new function called OnEachFeature that uses the feature (each row of the data) and the layer information. For each feature, we have it bind a popup to our layer (named catpoints) and put the text that is in the parentheses into the popup. For now, all of our popups will say “This is a popup!”. We’ll build on that next.</p>
+</div>
+<div id="customize-popup-text-with-data" class="section level3" number="4.3.6">
+<h3><span class="header-section-number">4.3.6</span> Customize Popup Text with Data</h3>
+<p>This is progress! We have a map with points and popups that contain placeholder text. Let’s use the attribute data from our catpoints layer to add the name of each cat to the popup.</p>
+<p>Instead of the “This is a popup!” text, we can use the attribute data from our catpoints data. Replace the current text with: <code>feature.properties.Name</code>. As we loop through each row of our data, the code will add each cat’s name to the popup.</p>
+<p>What if we want to give the popup more context?</p>
+<p>The text for the popup can be plain text, but we can also use HTML to style the text like a very small webpage. (If your head is starting to spin from switching languages… HTML page containing JavaScript containing HTML… this is normal.) We’ll start small and build up to something more complex.</p>
+<p>Maybe we want to indicate that the text in the popup is the name of the cat. We can concatenate (paste together) some text with HTML syling with our code to get the cat names: <code>"&lt;b&gt;Name: &lt;/b&gt;" + feature.properties.Name</code></p>
+<p>Our popups are starting to be much more useful!</p>
+<p>Ready to get a little more complex? Let’s add a description of the cat. We can use <code>&lt;br&gt;</code> to create a line break and put text onto a new line: <code>&lt;b&gt;Name: &lt;/b&gt;" + feature.properties.Name + "&lt;br&gt;&lt;b&gt;Description: &lt;/b&gt;"+ feature.properties.details)</code> This gets harder to read the longer it gets, so sometimes it helps to write the HTML pieces on separate lines, and once you’re ready to run it, put all the text onto one line.</p>
+<p>Finally, we have a column that has a picture of each cat. Let’s put that at the top of the popup. The <code>&lt;img&gt;</code> tag will add an image to our popup. `“<img src='"+feature.properties.gx_media_links+"' width='259'><br><b>Name: </b>” + feature.properties.Name + “<br><b>Description: </b>”+ feature.properties.details’</p>
+<p>Here’s what the section of our code that adds the catpoints marker should now look like:</p>
+<pre><code>    //add cat points from the GeoJSON (campus_cats.js) file
+        
+    var catpoints = L.geoJSON(campus_cats, {  
+        pointToLayer: function(feature, latlng){  
+            return L.circleMarker(latlng, {color: &#39;orange&#39;, radius: 8}); 
+        },
+        onEachFeature: function(feature, layer){ 
+            layer.bindPopup(
+                &quot;&lt;img src=&#39;&quot;+feature.properties.gx_media_links+&quot;&#39; width=&#39;259&#39;&gt;&lt;br&gt;&lt;b&gt;Name: &lt;/b&gt;&quot; + feature.properties.Name + &quot;&lt;br&gt;&lt;b&gt;Description: &lt;/b&gt;&quot;+ feature.properties.details); 
+        }
+    }).addTo(catmap);</code></pre>
 
 </div>
 </div>

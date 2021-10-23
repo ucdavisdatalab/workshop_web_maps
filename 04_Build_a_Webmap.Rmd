@@ -182,18 +182,80 @@ Now the data in this file will be available to load into our map.
 
 This is the moment you've been waiting for! We'll add data from our external data file to the map.
 
-Add this code to the bottom of your long script section (below where we made our marker for the Quad and above the closing `</script>` tag).
+Add this code to the bottom of your long script section (below where we made our marker for the Quad and above the closing `</script>` tag):
 
 ```
-//add cat points from the GeoJSON (campus_cats.js) file
-	//note that we don't have to declare/create the campus_cats variable because that is done inside the campus_cats.js file.
-	
-L.geoJSON(campus_cats).addTo(catmap);
+	//add cat points from the GeoJSON (campus_cats.js) file
+		
+	var catpoints = L.geoJSON(campus_cats, {  
+		pointToLayer: function(feature, latlng){  
+			return L.circleMarker(latlng, {color: 'orange', radius: 8}); 
+		}
+	}).addTo(catmap);
 ```
-We now have many blue markers for our cats (and one for the quad that we added earlier)! 
+We now have many orange circles for our cats (and one for the quad that we added earlier)! 
 
-### Style the Data
-Let's do some styling and add popups to our cat markers.
+What does this code do though?
+
+First, we create a variable called "catpoints" using the geojson data which we named campus_cats inside the .js file. Then we create a function called pointToLayer that uses the parameters "feature" (each row in the data) and "latlng" (the geometry) from the geojson data. We make a circleMarker using the latlng variable for the position, and use the style options between the {}s to style the marker the way we want it. In this case, it's organge and has a radius of 8 (which is a little smaller than the default). Finally, we add the entire set of markers we built to the map (remember that we called our div that holds our map "catmap").
+
+### Add a popup
+
+It would be nice to have some information available for each marker. Let's make a popup that tells us about each cat.  We'll start with a text popup and gradually add more to it.
+
+We made our markers for our point locations by iterating over the list of features in our dataset and making a marker for each of them.  We can add a function to the one we already have so that once the markers get made, each will get a popup.
+
+We'll modify our code that adds our points to look like this: 
+
+```
+	//add cat points from the GeoJSON (campus_cats.js) file
+		
+	var catpoints = L.geoJSON(campus_cats, {  
+		pointToLayer: function(feature, latlng){  
+			return L.circleMarker(latlng, {color: 'orange', radius: 8}); 
+		},
+		onEachFeature: function(feature, layer){
+			layer.bindPopup("This is a popup!");
+		}
+	}).addTo(catmap);
+```
+
+What did we do? After the `pointToLayer` function, we added a new created a new function called OnEachFeature that uses the feature (each row of the data) and the layer information. For each feature, we have it bind a popup to our layer (named catpoints) and put the text that is in the parentheses into the popup. For now, all of our popups will say "This is a popup!". We'll build on that next.
+
+### Customize Popup Text with Data
+
+This is progress! We have a map with points and popups that contain placeholder text. Let's use the attribute data from our catpoints layer to add the name of each cat to the popup.
+
+Instead of the "This is a popup!" text, we can use the attribute data from our catpoints data. Replace the current text with: `feature.properties.Name`. As we loop through each row of our data, the code will add each cat's name to the popup.
+
+What if we want to give the popup more context?
+
+The text for the popup can be plain text, but we can also use HTML to style the text like a very small webpage. (If your head is starting to spin from switching languages... HTML page containing JavaScript containing HTML... this is normal.) We'll start small and build up to something more complex.
+
+Maybe we want to indicate that the text in the popup is the name of the cat.  We can concatenate (paste together) some text with HTML syling with our code to get the cat names: `"<b>Name: </b>" + feature.properties.Name`
+
+Our popups are starting to be much more useful!
+
+Ready to get a little more complex? Let's add a description of the cat.  We can use `<br>` to create a line break and put text onto a new line: `<b>Name: </b>" + feature.properties.Name + "<br><b>Description: </b>"+ feature.properties.details)`  This gets harder to read the longer it gets, so sometimes it helps to write the HTML pieces on separate lines, and once you're ready to run it, put all the text onto one line.
+
+Finally, we have a column that has a picture of each cat. Let's put that at the top of the popup. The `<img>` tag will add an image to our popup. `"<img src='"+feature.properties.gx_media_links+"' width='259'><br><b>Name: </b>" + feature.properties.Name + "<br><b>Description: </b>"+ feature.properties.details'
+
+Here's what the section of our code that adds the catpoints marker should now look like: 
+
+```
+	//add cat points from the GeoJSON (campus_cats.js) file
+		
+	var catpoints = L.geoJSON(campus_cats, {  
+		pointToLayer: function(feature, latlng){  
+			return L.circleMarker(latlng, {color: 'orange', radius: 8}); 
+		},
+		onEachFeature: function(feature, layer){ 
+			layer.bindPopup(
+				"<img src='"+feature.properties.gx_media_links+"' width='259'><br><b>Name: </b>" + feature.properties.Name + "<br><b>Description: </b>"+ feature.properties.details); 
+		}
+	}).addTo(catmap);
+```
+
 
 
 

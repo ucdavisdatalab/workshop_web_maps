@@ -28,7 +28,7 @@ output:
 ## Description
 In this workshop, attendees will be introduced to building an interactive web map to display spatial data using the Leaflet javascript library.
 
-### Learning Objectives
+## Learning Objectives
 In this workshop, attendees will learn
 
 * Introductory HTML skills, in particular, the tags that are most commonly used to format text on a webpage
@@ -37,17 +37,18 @@ In this workshop, attendees will learn
 * Where to get additional help with HTML and Leaflet
 * Best practices for communicating data distributions with a web map
 
-### Skills
+## Skills
 In this workshop, participants will be introduced to the following skills:
 
 * HTML
 * Javascript
 * Leaflet Javascript Library
 
-### Prerequisites
-Learners should have a basic understanding of spatial data formats such as vector and raster data, as well as experience with any coding language.  Learners with previous experience with coding in HTML and javascript will have an easier time learning, but these skills are not required.
+## Prerequisites
+Learners should have a basic understanding of spatial data formats such as vector and raster data, as well as experience with any coding language.  Learners with previous experience with coding in HTML and javascript will have an easier time learning, but these skills are not required. Learners should also be able to find, move, and manage files on their computer operating system.
 
-### Software & Tools:
+## Software & Tools
+This workshop requires that the learn has installed and has access to the following software:
 
-* Text editor (preferably with syntax highlighting)
-* Web browser (not Internet Explorer)
+* **Text editor**, preferably with syntax highlighting. Options include [Atom](https://atom.io/) for all operating systems or [Notepad++](https://notepad-plus-plus.org/) for Windows.
+* **Web browser**, such as Chrome, Firefox, Edge, or Safari (just not Internet Explorer).

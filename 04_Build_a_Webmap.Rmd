@@ -37,6 +37,8 @@ Loading the Leaflet JavaScript file enables our webpage to have access to the fu
 
 Note that in HTML, comments are written like this: `<!-- This is a comment -->`. Comments are information for the coder and don't render on the website.
 
+The code we just added doesn't make any visible changes on our website so if you reload your web page, you won't notice anything new, but it should load. If it has an error or the text doesn't show up, you'll need to debug your code.
+
 ### Add a Map Div
 
 A `<div>` element defines a section in your HTML document. Our web map needs its own `<div>`. We'll add one inside the `<body>` of the webpage.  Note that the `<div>` has an ID. This will let us create settings and code that apply to this specific `<div>`.  We can define the style of the `<div>` inside the tag (as we have done below) or we could do it in the `<head>` of the document in a `<style>` subsection, or in a separate CSS file.
@@ -107,7 +109,7 @@ Now we're ready to add a map. We'll make a simple one to start and add more data
 
 **Note:** from now on, we'll be working in the `<script>` section, so the code will just show this section to avoid clutter and focus on what's changing in the code.
 
-Inside the `<script>` section, we'll now be writing JavaScript. `//` is how you indicate a comment in JavaScript.  Outside of this section, you'll be writing HTML. It can get confusing sometimes, so have patience with yourself.
+Inside the `<script>` section, we'll now be writing javascript. `//` is how you indicate a comment in JavaScript.  Outside of this section, you'll be writing HTML. It can get confusing sometimes, so have patience with yourself.
 
 First, we'll create an empty map in our mapid div, then we'll load Stamen's Toner tile service to use as a background layer. The limited color palette of the Toner tile service will make it easier to see the data we'll be loading later.
 
@@ -116,7 +118,7 @@ First, we'll create an empty map in our mapid div, then we'll load Stamen's Tone
 
 	//add an empty map called "catmap" to the page in the mapid div
 	var catmap = L.map('mapid', {
-		center: [38.538592, -121.75], 
+		center: [38.538592, -121.75],
 		zoom: 15
 		});
 
@@ -133,14 +135,20 @@ First, we'll create an empty map in our mapid div, then we'll load Stamen's Tone
 </script>
 ```
 
+Your web page should now have a map with Stamen's Toner tile layer. It should look something like this:
+
+![](images/webpage_section_4-2.png "Our web page now contains a web map with Stamen's Tonor tile layer")
+
+We'll add some of our own data to the map next.
+
 ### Add a Marker
 
-Let's add a marker so we can find the Quad. The marker will be a blue inverted teardrop that will have a tooltip that says "Quad" when you hover over it.  At the end of your script section, add: 
+Let's add a marker so we can find the Quad. The marker will be a blue inverted teardrop that will have a tooltip that says "Quad" when you hover over it.  At the end of your script section, add:
 
 ```
 	//add a marker for the Quad with a tooltip
 			//Quad: 38.541162, -121.749371
-	var marker = new L.marker([38.541112, -121.749350], { 
+	var marker = new L.marker([38.541112, -121.749350], {
 		opacity: 1.0   //teardrop marker opacity may be set to zero
 		}); 			
 		marker.bindTooltip("<b>Quad<b>", {	});
@@ -148,17 +156,19 @@ Let's add a marker so we can find the Quad. The marker will be a blue inverted t
 ```
 You now have an interactive map with one marker!
 
-Notice how we define the marker, add the tooltip to the marker, and then we have to add the marker to the map.
+![](images/webpage_section_4-2-1.png "The web map now has a blue marker with a tooltip that says 'Quad'")
+
+Notice the order of the code: we first define the marker, then add the tooltip to the marker, and finally we have to add the marker to the map. Defining, adding specifications, then adding an item to the map is a pretty common workflow in Leaflet.
 
 ## Use External Data
 
-Adding markers by hand is great, but if we have a lot of data or something more complex than a few points to add or if we want to prepare our data in a GIS or with a script ahead of time, we probably want to load data from a data file.
+Adding markers by hand is great, but if we have a lot of data? Or what if our data is more complex than a few points to add? What if we want to prepare our data in a GIS or with a script ahead of time? If any of these situations apply to the work we want to do, we probably want to load data from a data file, not writing it out in the code.
 
-There are many ways to load an external data file in Leaflet. We'll look at just one here, but there are ways to work with any of the common file types. Here, we'll use data in geoJSON format.
+There are many methods to load an external data file in Leaflet. We'll look at just one here, but there are ways to work with any of the common file types. Here, we'll use data in geoJSON format.
 
 ### About GeoJSON
 
-GeoJSON is a spatial data format based on the JSON format. Because it is text-based, it is human-readable, however, depending on the complexity of the data, you may not want to try to read it in a text editor. Another advantage of using a text-based format is that it can easily be stored in online version control systems like GitHub, as long as a file size isn't too big. This is a nice feature if you want to host your webmap on GitHub Pages.
+GeoJSON is a spatial data format based on the JSON format. Because it is text-based, it is human-readable, however, depending on the complexity of the data, you may not want to try to read it in a text editor. Another advantage of using a text-based format is that it can easily be stored in online version control systems like GitHub, as long as a file size isn't too big. This is a nice feature if you want to host your webmap on [GitHub Pages](https://pages.github.com/).
 
 Any of the major GIS tools or programming languages can convert vector data to GeoJSON format.
 
@@ -186,33 +196,35 @@ Add this code to the bottom of your long script section (below where we made our
 
 ```
 	//add cat points from the GeoJSON (campus_cats.js) file
-		
+
 	var catpoints = L.geoJSON(campus_cats, {  
 		pointToLayer: function(feature, latlng){  
-			return L.circleMarker(latlng, {color: 'orange', radius: 8}); 
+			return L.circleMarker(latlng, {color: 'orange', radius: 8});
 		}
 	}).addTo(catmap);
 ```
-We now have many orange circles for our cats (and one for the quad that we added earlier)! 
+We now have many orange circles for our cats (and one for the quad that we added earlier)!
+
+![](images/webpage_section_4-3-4.png "Web map with orange circles for cat locations and a blue marker for the quad")
 
 What does this code do though?
 
-First, we create a variable called "catpoints" using the geojson data which we named campus_cats inside the .js file. Then we create a function called pointToLayer that uses the parameters "feature" (each row in the data) and "latlng" (the geometry) from the geojson data. We make a circleMarker using the latlng variable for the position, and use the style options between the {}s to style the marker the way we want it. In this case, it's organge and has a radius of 8 (which is a little smaller than the default). Finally, we add the entire set of markers we built to the map (remember that we called our div that holds our map "catmap").
+First, we create a variable called *catpoints* using the geojson data which we named *campus_cats* inside the .js file. Then we create a function called `pointToLayer` that uses the parameters *feature* (each row in the data) and *latlng* (the geometry) from the geojson data. We make a *circleMarker* using the *latlng* variable for the position, and use the style options between the {}s to style the marker the way we want it. In this case, it's orange and has a radius of 8 (which is a little smaller than the default). Finally, we add the entire set of markers we built to the map (remember that we called our div that holds our map *catmap*).
 
-### Add a popup
+## Add a popup
 
 It would be nice to have some information available for each marker. Let's make a popup that tells us about each cat.  We'll start with a text popup and gradually add more to it.
 
 We made our markers for our point locations by iterating over the list of features in our dataset and making a marker for each of them.  We can add a function to the one we already have so that once the markers get made, each will get a popup.
 
-We'll modify our code that adds our points to look like this: 
+We'll modify our code that adds our points to look like this:
 
 ```
 	//add cat points from the GeoJSON (campus_cats.js) file
-		
+
 	var catpoints = L.geoJSON(campus_cats, {  
 		pointToLayer: function(feature, latlng){  
-			return L.circleMarker(latlng, {color: 'orange', radius: 8}); 
+			return L.circleMarker(latlng, {color: 'orange', radius: 8});
 		},
 		onEachFeature: function(feature, layer){
 			layer.bindPopup("This is a popup!");
@@ -220,47 +232,53 @@ We'll modify our code that adds our points to look like this:
 	}).addTo(catmap);
 ```
 
-What did we do? After the `pointToLayer` function, we added a new created a new function called OnEachFeature that uses the feature (each row of the data) and the layer information. For each feature, we have it bind a popup to our layer (named catpoints) and put the text that is in the parentheses into the popup. For now, all of our popups will say "This is a popup!". We'll build on that next.
+![](images/webpage_section_4-4.png "The web map now has popups that contain place-holder text")
+
+What did we do? After the `pointToLayer` function, we added a new created a new function called `OnEachFeature` that uses the feature (each row of the data) and the layer information. For each feature, we have it bind a popup to our layer (named *catpoints*) and put the text that is in the parentheses into the popup. For now, all of our popups will say "This is a popup!". We'll build on that next.
 
 ### Customize Popup Text with Data
 
-This is progress! We have a map with points and popups that contain placeholder text. Let's use the attribute data from our catpoints layer to add the name of each cat to the popup.
+This is progress! We have a map with points and popups that contain placeholder text. Let's use the attribute data from our *catpoints* layer to add the name of each cat to the popup.
 
-Instead of the "This is a popup!" text, we can use the attribute data from our catpoints data. Replace the current text with: `feature.properties.Name`. As we loop through each row of our data, the code will add each cat's name to the popup.
+Instead of the "This is a popup!" text, we can use the attribute data from our catpoints data. Replace the current "This is a popup!" text with: `feature.properties.Name` (with no quotes around it). As we loop through each row of our data, the code will add each cat's name to the popup.
+
+![](images/webpage_section_4-4-1.png "The popups now have the cats' names.")
 
 What if we want to give the popup more context?
 
 The text for the popup can be plain text, but we can also use HTML to style the text like a very small webpage. (If your head is starting to spin from switching languages... HTML page containing JavaScript containing HTML... this is normal.) We'll start small and build up to something more complex.
 
-Maybe we want to indicate that the text in the popup is the name of the cat.  We can concatenate (paste together) some text with HTML syling with our code to get the cat names: `"<b>Name: </b>" + feature.properties.Name`
+Maybe we want to indicate that the text in the popup is the name of the cat.  We can concatenate (paste together) some text with HTML styling with our code to get the cat names: `"<b>Name: </b>" + feature.properties.Name`
 
 Our popups are starting to be much more useful!
 
-Ready to get a little more complex? Let's add a description of the cat.  We can use `<br>` to create a line break and put text onto a new line: `<b>Name: </b>" + feature.properties.Name + "<br><b>Description: </b>"+ feature.properties.details)`  This gets harder to read the longer it gets, so sometimes it helps to write the HTML pieces on separate lines, and once you're ready to run it, put all the text onto one line.
+![](images/webpage_section_4-4-1b.png "A popup indicating that the data presented is the name field")
 
-Finally, we have a column that has a picture of each cat. Let's put that at the top of the popup. The `<img>` tag will add an image to our popup. `"<img src='"+feature.properties.gx_media_links+"' width='259'><br><b>Name: </b>" + feature.properties.Name + "<br><b>Description: </b>"+ feature.properties.details'
+Ready to get a little more complex? Let's add a description of the cat.  We can use `<br>` to create a line break and put text onto a new line: `"<b>Name: </b>" + feature.properties.Name + "<br><b>Description: </b>"+ feature.properties.details`  This gets harder to read the longer it gets, so sometimes it helps to write the HTML pieces on separate lines, and once you're ready to run it, put all the text onto one line. The text portion of our popup text needs to be wrapped in quotation marks but the calls for the data should not be.
 
-Here's what the section of our code that adds the catpoints marker should now look like: 
+![](images/webpage_section_4-4-1c.png "A popup with the name and text description of a cat")
+
+In our data, we have a column that has a link to a picture of each cat. Let's put the cat's picture at the top of the popup. The `<img>` tag will add an image to our popup. `"<img src='"+feature.properties.gx_media_links+"' width='259'><br><b>Name: </b>" + feature.properties.Name + "<br><b>Description: </b>"+ feature.properties.details`
+
+Here's what the section of our code that adds the catpoints marker should now look like:
 
 ```
 	//add cat points from the GeoJSON (campus_cats.js) file
-		
+
 	var catpoints = L.geoJSON(campus_cats, {  
 		pointToLayer: function(feature, latlng){  
-			return L.circleMarker(latlng, {color: 'orange', radius: 8}); 
+			return L.circleMarker(latlng, {color: 'orange', radius: 8});
 		},
-		onEachFeature: function(feature, layer){ 
+		onEachFeature: function(feature, layer){
 			layer.bindPopup(
-				"<img src='"+feature.properties.gx_media_links+"' width='259'><br><b>Name: </b>" + feature.properties.Name + "<br><b>Description: </b>"+ feature.properties.details); 
+				"<img src='"+feature.properties.gx_media_links+"' width='259'><br><b>Name: </b>" + feature.properties.Name + "<br><b>Description: </b>"+ feature.properties.details);
 		}
 	}).addTo(catmap);
 ```
 
+And here is our we bmap:
 
+![](images/webpage_section_4-4-1d.png "A popup with a photo, name, and text description")
 
-
-
-
-
-
-
+## Put Your Web Page online
+There are many options to put your web page online so others can see and interact with it. At the heart of the task is moving your *docs* folder to an online server and having some way to host the website. One option that is free of cost and well-documented is to use [GitHub Pages](https://pages.github.com/) (see the instructions for a "project site").

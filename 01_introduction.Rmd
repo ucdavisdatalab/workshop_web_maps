@@ -9,23 +9,27 @@ The term "web map" typically refers to a map embedded in a webpage. The map allo
 
 Web maps can be a powerful way to share spatial information with other people, especially when you expect the viewer to want to explore the data in different ways. Web maps allow the user to customize their experience in ways that a static map cannot.
 
-Web maps can also be a more engaging way for your audience to learn about a topic of interest.
+Because of the interactivity, they can be a more engaging way for your audience to learn about a topic of interest.
 
-Web maps can also be a way to interact with a community of interest, enabling a reasearcher to both share and collect spatial information from a community.
+Web maps can also be a way to interact with a community of interest, enabling a researcher to both share and collect spatial information from a community.
 
 
 ## Examples
+Examples of informative and engaging web maps abound on the internet. Here are a few examples that make use of Leaflet, the javascript library we'll be working with today:
 
-***THIS NEEDS UPDATING***
+* [UC Davis Potential COVID Workplace Exposures Map](https://datalab.ucdavis.edu/2021/09/23/unlocking-insights-from-public-data-a-case-study-with-covid-19-exposure-data/) - UC Davis datalab
+* [California Beach Plant Species Distributions](http://micheletobias.github.io/maps/DistributionsMap.html) - Michele Tobias
 
 ## Workflow
+At first glace, building a web map might seem daunting, but we'll take it one step at a time and build up to an engaging demonstration of what web maps can do.  To make an online interactive web map, we'll need to complete several steps. Typically these steps include:
 
-To make an online interactive web map, we'll need to complete several steps. Typically these are:
-
-1. Make a webpage to contain the web map code
-2. Write the web map code and put it into the webpage
+1. Make a webpage to contain the web map code (coding in HTML)
+2. Write the web map code and put it into the webpage (coding in javascript)
 3. Put the web page online
 
 ## Leaflet
 
 In today's workshop, we'll be using a javascript library called [Leaflet](https://leafletjs.com/index.html) to write the code that will make our web map.  Leaflet is a popular open source javascript library specifically designed to build interactive web maps with a combination of data available online (like tile services for basemaps) and your own data. Leaflet is well-documented and has [excellent tutorials](https://leafletjs.com/examples.html) to illustrate common tasks and innovative uses of the tool. In addition, there is an active community using this tool so there is ample support on online message boards and social media outlets.
+
+## Workshop Data: UC Davis Campus Cats
+In today's workshop, we'll be working with the UC Davis Campus Cats data set that was originally compiled by Rachel Bingham and Rachel Hale at the UC Davis Office of Educational Opportunity & Enrichment Services to facilitate the ["Campus Cat Safari" Connection](https://opportunity.ucdavis.edu/programs/aggie-connect/connections/campus-cat-safari-exploring-ucd-cats-campus) through the First Year Aggie Connection program.  This data was downloaded from [Rachel & Rachel's Google Map](https://www.google.com/maps/d/u/0/viewer?mid=1xN5Nv6t2rfAef66_vObEX3HbxkAalvlx&ll=38.53781472959825%2C-121.76011159999999&z=15) on 2021-10-14 and this data is used with permission from the authors. For this workshop, DataLab staff have processed the data from its original KML format to create a .geojson file embedded in a javascript file (more details on this process and why we did it to come).

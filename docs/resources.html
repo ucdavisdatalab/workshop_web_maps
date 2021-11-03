@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1 Introduction | Building Web Maps with Leaflet</title>
-  <meta name="description" content="1 Introduction | Building Web Maps with Leaflet" />
+  <title>5 Resources | Building Web Maps with Leaflet</title>
+  <meta name="description" content="5 Resources | Building Web Maps with Leaflet" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1 Introduction | Building Web Maps with Leaflet" />
+  <meta property="og:title" content="5 Resources | Building Web Maps with Leaflet" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://ucdavisdatalab.github.io/workshop_web_maps/"" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="ucdavisdatalab/workshop_web_maps" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1 Introduction | Building Web Maps with Leaflet" />
+  <meta name="twitter:title" content="5 Resources | Building Web Maps with Leaflet" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="setting-up-your-file-structure.html"/>
+<link rel="prev" href="build-a-leaflet-web-map.html"/>
+
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -146,52 +146,21 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="introduction" class="section level1" number="1">
-<h1><span class="header-section-number">1</span> Introduction</h1>
-<div id="what-is-a-web-map" class="section level2" number="1.1">
-<h2><span class="header-section-number">1.1</span> What is a “Web Map”?</h2>
-<p>The term “web map” typically refers to a map embedded in a webpage. The map allows the user to interact with the data in some way. Often, the user can pan and zoom to adjust the view and click on data markers to learn more information about a location.</p>
-</div>
-<div id="why-make-a-web-map" class="section level2" number="1.2">
-<h2><span class="header-section-number">1.2</span> Why make a web map?</h2>
-<p>Web maps can be a powerful way to share spatial information with other people, especially when you expect the viewer to want to explore the data in different ways. Web maps allow the user to customize their experience in ways that a static map cannot.</p>
-<p>Because of the interactivity, they can be a more engaging way for your audience to learn about a topic of interest.</p>
-<p>Web maps can also be a way to interact with a community of interest, enabling a researcher to both share and collect spatial information from a community.</p>
-</div>
-<div id="examples" class="section level2" number="1.3">
-<h2><span class="header-section-number">1.3</span> Examples</h2>
-<p>Examples of informative and engaging web maps abound on the internet. Here are a few examples that make use of Leaflet, the javascript library we’ll be working with today:</p>
-<ul>
-<li><a href="https://datalab.ucdavis.edu/2021/09/23/unlocking-insights-from-public-data-a-case-study-with-covid-19-exposure-data/">UC Davis Potential COVID Workplace Exposures Map</a> - UC Davis datalab</li>
-<li><a href="http://micheletobias.github.io/maps/DistributionsMap.html">California Beach Plant Species Distributions</a> - Michele Tobias</li>
-</ul>
-</div>
-<div id="workflow" class="section level2" number="1.4">
-<h2><span class="header-section-number">1.4</span> Workflow</h2>
-<p>At first glace, building a web map might seem daunting, but we’ll take it one step at a time and build up to an engaging demonstration of what web maps can do. To make an online interactive web map, we’ll need to complete several steps. Typically these steps include:</p>
-<ol style="list-style-type: decimal">
-<li>Make a webpage to contain the web map code (coding in HTML)</li>
-<li>Write the web map code and put it into the webpage (coding in javascript)</li>
-<li>Put the web page online</li>
-</ol>
-</div>
-<div id="leaflet" class="section level2" number="1.5">
-<h2><span class="header-section-number">1.5</span> Leaflet</h2>
-<p>In today’s workshop, we’ll be using a javascript library called <a href="https://leafletjs.com/index.html">Leaflet</a> to write the code that will make our web map. Leaflet is a popular open source javascript library specifically designed to build interactive web maps with a combination of data available online (like tile services for basemaps) and your own data. Leaflet is well-documented and has <a href="https://leafletjs.com/examples.html">excellent tutorials</a> to illustrate common tasks and innovative uses of the tool. In addition, there is an active community using this tool so there is ample support on online message boards and social media outlets.</p>
-</div>
-<div id="workshop-data-uc-davis-campus-cats" class="section level2" number="1.6">
-<h2><span class="header-section-number">1.6</span> Workshop Data: UC Davis Campus Cats</h2>
-<p>In today’s workshop, we’ll be working with the UC Davis Campus Cats data set that was originally compiled by Rachel Bingham and Rachel Hale at the UC Davis Office of Educational Opportunity &amp; Enrichment Services to facilitate the <a href="https://opportunity.ucdavis.edu/programs/aggie-connect/connections/campus-cat-safari-exploring-ucd-cats-campus">“Campus Cat Safari” Connection</a> through the First Year Aggie Connection program. This data was downloaded from <a href="https://www.google.com/maps/d/u/0/viewer?mid=1xN5Nv6t2rfAef66_vObEX3HbxkAalvlx&amp;ll=38.53781472959825%2C-121.76011159999999&amp;z=15">Rachel &amp; Rachel’s Google Map</a> on 2021-10-14 and this data is used with permission from the authors. For this workshop, DataLab staff have processed the data from its original KML format to create a .geojson file embedded in a javascript file (more details on this process and why we did it to come).</p>
+<div id="resources" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> Resources</h1>
+<p>In the workshop, we learned the basics of building a webpage that contains an interactive web map. We learned some basic HTML and javascript, in particular the Leaflet javascript library. There is so much more you can learn and create! Here are some resources to help you build on the skills you learned in this workshop:</p>
+<p><a href="https://leafletjs.com/">Leaflet Reference</a> - tutorials and documentation for the Leaflet javascript library</p>
+<p><a href="https://www.w3schools.com/">W3Schools</a> - a good reference for HTML, CSS, &amp; general javascript</p>
+<p><a href="https://leafmap.org/notebooks/31_search_basemaps/">Leafmap Basemap Search Tool</a> - this is a python package, so it’s not directly applicable to this workshop, however it may be useful to help you discover other basemap options or point you to sources you didn’t know about</p>
 
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="setting-up-your-file-structure.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="build-a-leaflet-web-map.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -212,7 +181,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/ucdavisdatalab/workshop_web_maps/edit/master/01_introduction.Rmd",
+"link": "https://github.com/ucdavisdatalab/workshop_web_maps/edit/master/05_Resources.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -220,7 +189,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/ucdavisdatalab/workshop_web_maps/blob/master/01_introduction.Rmd",
+"link": "https://github.com/ucdavisdatalab/workshop_web_maps/blob/master/05_Resources.Rmd",
 "text": null
 },
 "download": null,

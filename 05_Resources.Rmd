@@ -6,3 +6,11 @@ In the workshop, we learned the basics of building a webpage that contains an in
 [W3Schools](https://www.w3schools.com/) - a good reference for HTML, CSS, & general javascript
 
 [Leafmap Basemap Search Tool](https://leafmap.org/notebooks/31_search_basemaps/) - this is a python package, so it's not directly applicable to this workshop, however it may be useful to help you discover other basemap options or point you to sources you didn't know about
+
+[Programming Historian walk through](https://programminghistorian.org/en/lessons/mapping-with-python-leaflet)
+
+[Anatomy of a web map presentation](http://maptime.io/anatomy-of-a-web-map/)
+
+[leaflet R package](https://rstudio.github.io/leaflet/)
+
+[Github Pages Documentation](https://docs.github.com/en/pages)

@@ -1,6 +1,6 @@
 ---
 title: Building Web Maps with Leaflet
-author: Dr. Michele Tobias
+author: [Dr. Michele Tobias, Arthur Koehl]
 date: "`r Sys.Date()`"
 
 github-repo: ucdavisdatalab/workshop_web_maps

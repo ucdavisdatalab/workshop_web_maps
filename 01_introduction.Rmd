@@ -2,16 +2,28 @@
 
 ## What is a "Web Map"?
 
-The term "web map" typically refers to a map embedded in a webpage. The map allows the user to interact with the data in some way. Often, the user can pan and zoom to adjust the view and click on data markers to learn more information about a location.
+There are many ways to include maps in web pages. The two most common are as a static map or as a web map.
+
+A **static map** is an image (for example, a .tiff, .png, or .jpg file) of a map. The user cannot change the scale or content. Static maps are useful for applications where interactivity isn't needed. Images are easily rendered by web browsers and are fairly easy to add to web pages.
+
+The term **web map** typically refers to a map embedded in a webpage. The map allows the user to interact with the data in some way. Often, the user can pan and zoom to adjust the view and click on data markers to learn more information about a location.
 
 
 ## Why make a web map?
 
 Web maps can be a powerful way to share spatial information with other people, especially when you expect the viewer to want to explore the data in different ways. Web maps allow the user to customize their experience in ways that a static map cannot.
 
-Because of the interactivity, they can be a more engaging way for your audience to learn about a topic of interest.
+Because of the interactivity, they can be a more engaging way for your audience to learn about a topic of interest and for you to offer a narative about the data.
 
 Web maps can also be a way to interact with a community of interest, enabling a researcher to both share and collect spatial information from a community.
+
+Web maps are good for data that is inherently dynamic, such as data with many factors or has a time component. Allowing the viewer to change what aspects of the data are shown on the map can help users explore complex data.
+
+Web maps can be a fun way to interact with data.
+
+Web maps offer novel and creative ways to visualize data.
+
+Web maps are easy to share, modify, update, and document.
 
 
 ## Examples
@@ -30,6 +42,12 @@ At first glace, building a web map might seem daunting, but we'll take it one st
 ## Leaflet
 
 In today's workshop, we'll be using a javascript library called [Leaflet](https://leafletjs.com/index.html) to write the code that will make our web map.  Leaflet is a popular open source javascript library specifically designed to build interactive web maps with a combination of data available online (like tile services for basemaps) and your own data. Leaflet is well-documented and has [excellent tutorials](https://leafletjs.com/examples.html) to illustrate common tasks and innovative uses of the tool. In addition, there is an active community using this tool so there is ample support on online message boards and social media outlets.
+
+You can also use leaflet with the R programming language through the [leaflet package](https://cran.r-project.org/web/packages/leaflet/index.html), which can be a handy way to add maps to your R Markdown files or Shiny applications. This, however cool, is not a part of today's workshop.
+
+### Other Web Map Tools
+
+Leaflet is not the only tool available to create web maps. There are many tools and services that you can use to make webs maps, each with their own advantages, required skill sets, and price points. If you'd like to explore other options, you might consider Carto, Mapbox, ArcGIS Online, Story Maps (of the Knight Labs [open source] or ESRI [proprietary] flavors), Mango Map, GIS Cloud, Google Maps, D3, Here Maps, or OpenLayers.
 
 ## Workshop Data: UC Davis Campus Cats
 In today's workshop, we'll be working with the UC Davis Campus Cats data set that was originally compiled by Rachel Bingham and Rachel Hale at the UC Davis Office of Educational Opportunity & Enrichment Services to facilitate the ["Campus Cat Safari" Connection](https://opportunity.ucdavis.edu/programs/aggie-connect/connections/campus-cat-safari-exploring-ucd-cats-campus) through the First Year Aggie Connection program.  This data was downloaded from [Rachel & Rachel's Google Map](https://www.google.com/maps/d/u/0/viewer?mid=1xN5Nv6t2rfAef66_vObEX3HbxkAalvlx&ll=38.53781472959825%2C-121.76011159999999&z=15) on 2021-10-14 and this data is used with permission from the authors. For this workshop, DataLab staff have processed the data from its original KML format to create a .geojson file embedded in a javascript file (more details on this process and why we did it to come).

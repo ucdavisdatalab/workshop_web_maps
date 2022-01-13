@@ -29,14 +29,13 @@ Web maps are easy to share, modify, update, and document.
 ## Examples
 Examples of informative and engaging web maps abound on the internet. Here are a few examples that make use of Leaflet, the javascript library we'll be working with today:
 
-### Leaflet.js Examples
 * [UC Davis Potential COVID Workplace Exposures Map](https://datalab.ucdavis.edu/2021/09/23/unlocking-insights-from-public-data-a-case-study-with-covid-19-exposure-data/) - UC Davis datalab
 * [OpenRailwayMap](https://www.openrailwaymap.org/)
 * [California Beach Plant Species Distributions](http://micheletobias.github.io/maps/DistributionsMap.html) - Michele Tobias
 * [Numerical taxonomy of urban form in Amsterdam and Prague](https://martinfleis.github.io/numerical-taxonomy-maps/) - Martin Fleischmann
+* [NASA Curiosity Rover's Location on Mars](https://mars.nasa.gov/maps/location/?mission=Curiosity) - NASA - An example of how Leaflet can be used with non-Earth coordinate systems and how the interface can be highly customized.
 
-### R Leaflet Examples
-* [Vulnerability to Climate Change in the Delta](https://deltascience.shinyapps.io/Delta_vulnerability_map/) - Delta Adapts initiative, a project of the Delta Stewardship Council (2020) - an example of a leaflet web map built with the Shiny and Leaflet packages for R
+
 
 ## Workflow
 At first glace, building a web map might seem daunting, but we'll take it one step at a time and build up to an engaging demonstration of what web maps can do.  To make an online interactive web map, we'll need to complete several steps. Typically these steps include:

@@ -9,6 +9,7 @@ why-make-a-web-map
 examples
 workflow
 leaflet
+other-web-map-tools
 workshop-data-uc-davis-campus-cats
 setting-up-your-file-structure
 download-the-data

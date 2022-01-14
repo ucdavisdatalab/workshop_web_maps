@@ -29,12 +29,12 @@ Web maps are easy to share, modify, update, and document.
 ## Examples
 Examples of informative and engaging web maps abound on the internet. Here are a few examples that make use of Leaflet, the javascript library we'll be working with today:
 
-* [UC Davis Potential COVID Workplace Exposures Map](https://datalab.ucdavis.edu/2021/09/23/unlocking-insights-from-public-data-a-case-study-with-covid-19-exposure-data/) - UC Davis DataLab - An example with a dynamic timeline feature and data is updated daily from a web scraping script.
+* [UC Davis Potential COVID Workplace Exposures Map](https://datalab.ucdavis.edu/2021/09/23/unlocking-insights-from-public-data-a-case-study-with-covid-19-exposure-data/) - UC Davis DataLab - An example with a dynamic timeline feature and data is updated daily from a web scraping script
 * [UK COVID-19 Predictions](https://chicas-covid19.gitlab.io/bayesstm/#) - Lancaster University Medical School - Includes a timeline animation and choice of visualizations of case incidence predictions
-* [OpenRailwayMap](https://www.openrailwaymap.org/)
-* [California Beach Plant Species Distributions](http://micheletobias.github.io/maps/DistributionsMap.html) - Michele Tobias - An example of linking navigation in multiple maps.
-* [Numerical taxonomy of urban form in Amsterdam and Prague](https://martinfleis.github.io/numerical-taxonomy-maps/) - Martin Fleischmann
-* [NASA Curiosity Rover's Location on Mars](https://mars.nasa.gov/maps/location/?mission=Curiosity) - NASA - An example of how Leaflet can be used with non-Earth coordinate systems and how the interface can be highly customized.
+* [OpenRailwayMap](https://www.openrailwaymap.org/) - Offers choice of data to visualize; data from a community-contributed dataset of railway infrastructure worldwide
+* [California Beach Plant Species Distributions](http://micheletobias.github.io/maps/DistributionsMap.html) - Michele Tobias - An example of linking navigation in multiple maps
+* [Numerical taxonomy of urban form in Amsterdam and Prague](https://martinfleis.github.io/numerical-taxonomy-maps/) - Martin Fleischmann - a map supporting and academic manuscript
+* [NASA Curiosity Rover's Location on Mars](https://mars.nasa.gov/maps/location/?mission=Curiosity) - NASA - An example of how Leaflet can be used with non-Earth coordinate systems and how the interface can be highly customized
 
 
 

@@ -1,4 +1,4 @@
-# Setting Up Your File Structure
+# Set Up
 
 Before we do any coding, let's set up our file and folder structure.
 
@@ -21,7 +21,7 @@ my_web_map
 
 ## Files
 
-Move the data you downloaded for this workshop called `campus_cats.js` into the *data* folder.
+Move the file you downloaded for this workshop called `campus_cats.js` into the *data* folder.
 
 Open your preferred text editor application. Create a new, blank file. Save it inside your *docs* folder and call it `index.html`. This will be the homepage for our web site that will hold our web map.
 
@@ -31,6 +31,6 @@ Your folder and file structure should now look like this:
 my_web_map
 |-- docs
 |   |-- campus_cats.js
-|   |-- index.htm
+|   |-- index.html
 
 ```

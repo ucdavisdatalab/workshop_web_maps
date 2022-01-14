@@ -7,6 +7,8 @@ In the workshop, we learned the basics of building a webpage that contains an in
 
 [Leafmap Basemap Search Tool](https://leafmap.org/notebooks/31_search_basemaps/) - this is a python package, so it's not directly applicable to this workshop, however it may be useful to help you discover other basemap options or point you to sources you didn't know about
 
+[OpenPlanetary Basemaps](https://www.openplanetary.org/opm/basemaps) - a place to find basemaps for web maps of non-Earth planets; at the time of writing, The Moon and Mars were available.
+
 [Programming Historian walk through](https://programminghistorian.org/en/lessons/mapping-with-python-leaflet)
 
 [Anatomy of a web map presentation](http://maptime.io/anatomy-of-a-web-map/)

@@ -11,7 +11,7 @@ workflow
 leaflet
 other-web-map-tools
 workshop-data-uc-davis-campus-cats
-setting-up-your-file-structure
+set-up
 download-the-data
 folders
 files

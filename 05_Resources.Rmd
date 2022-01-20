@@ -16,3 +16,5 @@ In the workshop, we learned the basics of building a webpage that contains an in
 [leaflet R package](https://rstudio.github.io/leaflet/)
 
 [Github Pages Documentation](https://docs.github.com/en/pages)
+
+[Open-Source Web-GIS Development Roadmap](https://www.gislounge.com/open-source-web-gis-development-roadmap/) - How to develop your skills for web-based spatial tools and maps

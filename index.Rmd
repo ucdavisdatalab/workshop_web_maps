@@ -52,3 +52,9 @@ This workshop requires that the learn has installed and has access to the follow
 
 * **Text editor**, preferably with syntax highlighting. Options include [Atom](https://atom.io/) for all operating systems or [Notepad++](https://notepad-plus-plus.org/) for Windows.
 * **Web browser**, such as Chrome, Firefox, Edge, or Safari (just not Internet Explorer).
+
+``` {r set-up, echo=FALSE, results='hide'}
+#install.packages("flair")
+library(flair)
+
+```

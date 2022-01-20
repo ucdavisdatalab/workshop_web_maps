@@ -1,5 +1,38 @@
 # Build a Webpage
 
+``` {r, include=FALSE}
+#install.packages("flair")
+#install.packages("dplyr")
+library(flair)
+library(dplyr)
+
+```
+
+```{r ex, include = FALSE}
+a <- 1
+b <- 2
+c <- 3
+```
+
+```{r ex_flair, echo=FALSE}
+decorate("ex") %>% 
+	flair("a <-", color = "yellow")
+
+```
+
+```{r lm}
+lm(mpg ~ disp, data = mtcars)
+```
+
+```{r lm_flair, echo = FALSE}
+decorate("lm") %>%
+  flair("mpg", color = "orange") %>%
+  flair("disp", color = "lightblue") %>%
+  flair("mtcars", color = "lightpink")
+```
+
+
+
 The first step in building a web map is to make a basic webpage to house our map. It doesn't need to be elaborate to get started, but we do need to understand some concepts.
 
 ## Intro to HTML
@@ -35,7 +68,7 @@ We've made a blank webpage! Now, let's add something more interesting to it.
 
 The beginning of the HTML document is where you normally place the parameters and settings that make the webpage work.  We'll add a section called **head** to our page to contain some of these parameters. Inside of the *head* section, we'll indicate the title of our webpage, wrapped in `<title>` tags. This puts the name of the webpage  in the tab at the top of the browser.
 
-```
+```{html add_title, eval=FALSE}
 <!DOCTYPE html>
 <html>
 
@@ -45,6 +78,10 @@ The beginning of the HTML document is where you normally place the parameters an
 
 </html>
 ```
+
+
+
+
 
 If you open your `index.html` file in your web browser, you'll have a blank page with a tab called "UC Davis Campus Cats Map".
 

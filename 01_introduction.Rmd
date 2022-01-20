@@ -1,5 +1,6 @@
 # Introduction
 
+
 ## What is a "Web Map"?
 
 There are many ways to include maps in web pages. The two most common are as a static map or as a web map.

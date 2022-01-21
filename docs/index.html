@@ -1,328 +1,251 @@
-<!DOCTYPE html>
-<html lang="" xml:lang="">
-<head>
-
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Building Web Maps with Leaflet</title>
-  <meta name="description" content="Building Web Maps with Leaflet" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
-
-  <meta property="og:title" content="Building Web Maps with Leaflet" />
-  <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://ucdavisdatalab.github.io/workshop_web_maps/î" />
-  
-  
-  <meta name="github-repo" content="ucdavisdatalab/workshop_web_maps" />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Building Web Maps with Leaflet" />
-  
-  
-  
-
-<meta name="author" content="Dr.†Michele Tobias" />
-<meta name="author" content="Arthur Koehl" />
-
-
-<meta name="date" content="2022-01-21" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
-
-<link rel="next" href="introduction.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-
-
-<style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-
-</head>
-
-<body>
-
-
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li><a href="https://datalab.ucdavis.edu/">
-  <img src="https://datalab.ucdavis.edu/wp-content/uploads/2019/07/datalab-logo-full-color-rgb-1.png" style="height: 100%; width: 100%; object-fit: contain" />
-</a></li>
-<li><a href="./" style="font-size: 18px">Building Web Maps with Leaflet</a></li>
-
-<li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a>
-<ul>
-<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#description"><i class="fa fa-check"></i><b>0.1</b> Description</a></li>
-<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#learning-objectives"><i class="fa fa-check"></i><b>0.2</b> Learning Objectives</a></li>
-<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#skills"><i class="fa fa-check"></i><b>0.3</b> Skills</a></li>
-<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#prerequisites"><i class="fa fa-check"></i><b>0.4</b> Prerequisites</a></li>
-<li class="chapter" data-level="0.5" data-path="index.html"><a href="index.html#software-tools"><i class="fa fa-check"></i><b>0.5</b> Software &amp; Tools</a></li>
-</ul></li>
-<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
-<ul>
-<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#what-is-a-web-map"><i class="fa fa-check"></i><b>1.1</b> What is a ìWeb Mapî?</a></li>
-<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#why-make-a-web-map"><i class="fa fa-check"></i><b>1.2</b> Why make a web map?</a></li>
-<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#examples"><i class="fa fa-check"></i><b>1.3</b> Examples</a></li>
-<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#workflow"><i class="fa fa-check"></i><b>1.4</b> Workflow</a></li>
-<li class="chapter" data-level="1.5" data-path="introduction.html"><a href="introduction.html#leaflet"><i class="fa fa-check"></i><b>1.5</b> Leaflet</a>
-<ul>
-<li class="chapter" data-level="1.5.1" data-path="introduction.html"><a href="introduction.html#other-web-map-tools"><i class="fa fa-check"></i><b>1.5.1</b> Other Web Map Tools</a></li>
-</ul></li>
-<li class="chapter" data-level="1.6" data-path="introduction.html"><a href="introduction.html#workshop-data-uc-davis-campus-cats"><i class="fa fa-check"></i><b>1.6</b> Workshop Data: UC Davis Campus Cats</a></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="set-up.html"><a href="set-up.html"><i class="fa fa-check"></i><b>2</b> Set Up</a>
-<ul>
-<li class="chapter" data-level="2.1" data-path="set-up.html"><a href="set-up.html#download-the-data"><i class="fa fa-check"></i><b>2.1</b> Download the Data</a></li>
-<li class="chapter" data-level="2.2" data-path="set-up.html"><a href="set-up.html#folders"><i class="fa fa-check"></i><b>2.2</b> Folders</a></li>
-<li class="chapter" data-level="2.3" data-path="set-up.html"><a href="set-up.html#files"><i class="fa fa-check"></i><b>2.3</b> Files</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="build-a-webpage.html"><a href="build-a-webpage.html"><i class="fa fa-check"></i><b>3</b> Build a Webpage</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="build-a-webpage.html"><a href="build-a-webpage.html#intro-to-html"><i class="fa fa-check"></i><b>3.1</b> Intro to HTML</a></li>
-<li class="chapter" data-level="3.2" data-path="build-a-webpage.html"><a href="build-a-webpage.html#start-building-your-webpage"><i class="fa fa-check"></i><b>3.2</b> Start Building your Webpage</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html"><i class="fa fa-check"></i><b>4</b> Build a Leaflet Web Map</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#prepare-your-page"><i class="fa fa-check"></i><b>4.1</b> Prepare Your Page</a>
-<ul>
-<li class="chapter" data-level="4.1.1" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#load-the-external-files"><i class="fa fa-check"></i><b>4.1.1</b> Load The External Files</a></li>
-<li class="chapter" data-level="4.1.2" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#add-a-map-div"><i class="fa fa-check"></i><b>4.1.2</b> Add a Map Div</a></li>
-<li class="chapter" data-level="4.1.3" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#add-a-script-section"><i class="fa fa-check"></i><b>4.1.3</b> Add a Script Section</a></li>
-</ul></li>
-<li class="chapter" data-level="4.2" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#add-a-map"><i class="fa fa-check"></i><b>4.2</b> Add A Map</a>
-<ul>
-<li class="chapter" data-level="4.2.1" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#add-a-marker"><i class="fa fa-check"></i><b>4.2.1</b> Add a Marker</a></li>
-</ul></li>
-<li class="chapter" data-level="4.3" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#use-external-data"><i class="fa fa-check"></i><b>4.3</b> Use External Data</a>
-<ul>
-<li class="chapter" data-level="4.3.1" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#about-geojson"><i class="fa fa-check"></i><b>4.3.1</b> About GeoJSON</a></li>
-<li class="chapter" data-level="4.3.2" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#formatting-the-data"><i class="fa fa-check"></i><b>4.3.2</b> Formatting the Data</a></li>
-<li class="chapter" data-level="4.3.3" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#read-the-data"><i class="fa fa-check"></i><b>4.3.3</b> Read the Data</a></li>
-<li class="chapter" data-level="4.3.4" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#add-data-to-the-map"><i class="fa fa-check"></i><b>4.3.4</b> Add Data to the Map</a></li>
-</ul></li>
-<li class="chapter" data-level="4.4" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#add-a-popup"><i class="fa fa-check"></i><b>4.4</b> Add a popup</a>
-<ul>
-<li class="chapter" data-level="4.4.1" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#customize-popup-text-with-data"><i class="fa fa-check"></i><b>4.4.1</b> Customize Popup Text with Data</a></li>
-</ul></li>
-<li class="chapter" data-level="4.5" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#put-your-web-page-online"><i class="fa fa-check"></i><b>4.5</b> Put Your Web Page online</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>5</b> Resources</a></li>
-</ul>
-
-      </nav>
-    </div>
-
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Building Web Maps with Leaflet</a>
-          </h1>
-        </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Building Web Maps with Leaflet</h1>
-<p class="author"><em>Dr.†Michele Tobias</em></p>
-<p class="author"><em>Arthur Koehl</em></p>
-<p class="date"><em>2022-01-21</em></p>
-</div>
-<div id="overview" class="section level1 unnumbered">
-<h1>Overview</h1>
-<div id="description" class="section level2" number="0.1">
-<h2><span class="header-section-number">0.1</span> Description</h2>
-<p>In this workshop, attendees will be introduced to building an interactive web map to display spatial data using the Leaflet javascript library.</p>
-</div>
-<div id="learning-objectives" class="section level2" number="0.2">
-<h2><span class="header-section-number">0.2</span> Learning Objectives</h2>
-<p>In this workshop, attendees will learn</p>
-<ul>
-<li>Introductory HTML skills, in particular, the tags that are most commonly used to format text on a webpage</li>
-<li>How to load javascript libraries into a web page</li>
-<li>An introduction to the Leaflet javascript library</li>
-<li>Where to get additional help with HTML and Leaflet</li>
-<li>Best practices for communicating data distributions with a web map</li>
-</ul>
-</div>
-<div id="skills" class="section level2" number="0.3">
-<h2><span class="header-section-number">0.3</span> Skills</h2>
-<p>In this workshop, participants will be introduced to the following skills:</p>
-<ul>
-<li>HTML</li>
-<li>Javascript</li>
-<li>Leaflet Javascript Library</li>
-</ul>
-</div>
-<div id="prerequisites" class="section level2" number="0.4">
-<h2><span class="header-section-number">0.4</span> Prerequisites</h2>
-<p>Learners should have a basic understanding of spatial data formats such as vector and raster data, as well as experience with any coding language. Learners with previous experience with coding in HTML and javascript will have an easier time learning, but these skills are not required. Learners should also be able to find, move, and manage files on their computer operating system.</p>
-</div>
-<div id="software-tools" class="section level2" number="0.5">
-<h2><span class="header-section-number">0.5</span> Software &amp; Tools</h2>
-<p>This workshop requires that the learn has installed and has access to the following software:</p>
-<ul>
-<li><strong>Text editor</strong>, preferably with syntax highlighting. Options include <a href="https://atom.io/">Atom</a> for all operating systems or <a href="https://notepad-plus-plus.org/">Notepad++</a> for Windows.</li>
-<li><strong>Web browser</strong>, such as Chrome, Firefox, Edge, or Safari (just not Internet Explorer).</li>
-</ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;flair&quot;)</span></span>
-<span id="cb1-2"><a href="index.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;dplyr&quot;)</span></span>
-<span id="cb1-3"><a href="index.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flair)</span>
-<span id="cb1-4"><a href="index.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
-<pre><code>## 
-## Attaching package: &#39;dplyr&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:stats&#39;:
-## 
-##     filter, lag</code></pre>
-<pre><code>## The following objects are masked from &#39;package:base&#39;:
-## 
-##     intersect, setdiff, setequal, union</code></pre>
-
-</div>
-</div>
-            </section>
-
-          </div>
-        </div>
-      </div>
-
-<a href="introduction.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
-  </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": false,
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/ucdavisdatalab/workshop_web_maps/edit/master/index.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": "https://github.com/ucdavisdatalab/workshop_web_maps/blob/master/index.Rmd",
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "section"
-}
-});
-});
-</script>
-
-</body>
-
-</html>
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
 
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Building Web Maps with Leaflet</title>
+  <meta name="description" content="Building Web Maps with Leaflet" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Building Web Maps with Leaflet" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://ucdavisdatalab.github.io/workshop_web_maps/‚Äù" />
+  
+  
+  <meta name="github-repo" content="ucdavisdatalab/workshop_web_maps" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Building Web Maps with Leaflet" />
+  
+  
+  
+
+<meta name="author" content="Dr.¬†Michele Tobias" />
+<meta name="author" content="Arthur Koehl" />
+
+
+<meta name="date" content="2022-01-21" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="introduction.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="https://datalab.ucdavis.edu/">
+  <img src="https://datalab.ucdavis.edu/wp-content/uploads/2019/07/datalab-logo-full-color-rgb-1.png" style="height: 100%; width: 100%; object-fit: contain" />
+</a></li>
+<li><a href="./" style="font-size: 18px">Building Web Maps with Leaflet</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#description"><i class="fa fa-check"></i><b>0.1</b> Description</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#learning-objectives"><i class="fa fa-check"></i><b>0.2</b> Learning Objectives</a></li>
+<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#skills"><i class="fa fa-check"></i><b>0.3</b> Skills</a></li>
+<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#prerequisites"><i class="fa fa-check"></i><b>0.4</b> Prerequisites</a></li>
+<li class="chapter" data-level="0.5" data-path="index.html"><a href="index.html#software-tools"><i class="fa fa-check"></i><b>0.5</b> Software &amp; Tools</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#what-is-a-web-map"><i class="fa fa-check"></i><b>1.1</b> What is a ‚ÄúWeb Map‚Äù?</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#why-make-a-web-map"><i class="fa fa-check"></i><b>1.2</b> Why make a web map?</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#examples"><i class="fa fa-check"></i><b>1.3</b> Examples</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#workflow"><i class="fa fa-check"></i><b>1.4</b> Workflow</a></li>
+<li class="chapter" data-level="1.5" data-path="introduction.html"><a href="introduction.html#leaflet"><i class="fa fa-check"></i><b>1.5</b> Leaflet</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="introduction.html"><a href="introduction.html#other-web-map-tools"><i class="fa fa-check"></i><b>1.5.1</b> Other Web Map Tools</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="introduction.html"><a href="introduction.html#workshop-data-uc-davis-campus-cats"><i class="fa fa-check"></i><b>1.6</b> Workshop Data: UC Davis Campus Cats</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="set-up.html"><a href="set-up.html"><i class="fa fa-check"></i><b>2</b> Set Up</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="set-up.html"><a href="set-up.html#download-the-data"><i class="fa fa-check"></i><b>2.1</b> Download the Data</a></li>
+<li class="chapter" data-level="2.2" data-path="set-up.html"><a href="set-up.html#folders"><i class="fa fa-check"></i><b>2.2</b> Folders</a></li>
+<li class="chapter" data-level="2.3" data-path="set-up.html"><a href="set-up.html#files"><i class="fa fa-check"></i><b>2.3</b> Files</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="build-a-webpage.html"><a href="build-a-webpage.html"><i class="fa fa-check"></i><b>3</b> Build a Webpage</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="build-a-webpage.html"><a href="build-a-webpage.html#intro-to-html"><i class="fa fa-check"></i><b>3.1</b> Intro to HTML</a></li>
+<li class="chapter" data-level="3.2" data-path="build-a-webpage.html"><a href="build-a-webpage.html#start-building-your-webpage"><i class="fa fa-check"></i><b>3.2</b> Start Building your Webpage</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html"><i class="fa fa-check"></i><b>4</b> Build a Leaflet Web Map</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#prepare-your-page"><i class="fa fa-check"></i><b>4.1</b> Prepare Your Page</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#load-the-external-files"><i class="fa fa-check"></i><b>4.1.1</b> Load The External Files</a></li>
+<li class="chapter" data-level="4.1.2" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#add-a-map-div"><i class="fa fa-check"></i><b>4.1.2</b> Add a Map Div</a></li>
+<li class="chapter" data-level="4.1.3" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#add-a-script-section"><i class="fa fa-check"></i><b>4.1.3</b> Add a Script Section</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#add-a-map"><i class="fa fa-check"></i><b>4.2</b> Add A Map</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#add-a-marker"><i class="fa fa-check"></i><b>4.2.1</b> Add a Marker</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#use-external-data"><i class="fa fa-check"></i><b>4.3</b> Use External Data</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#about-geojson"><i class="fa fa-check"></i><b>4.3.1</b> About GeoJSON</a></li>
+<li class="chapter" data-level="4.3.2" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#formatting-the-data"><i class="fa fa-check"></i><b>4.3.2</b> Formatting the Data</a></li>
+<li class="chapter" data-level="4.3.3" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#read-the-data"><i class="fa fa-check"></i><b>4.3.3</b> Read the Data</a></li>
+<li class="chapter" data-level="4.3.4" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#add-data-to-the-map"><i class="fa fa-check"></i><b>4.3.4</b> Add Data to the Map</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#add-a-popup"><i class="fa fa-check"></i><b>4.4</b> Add a popup</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#customize-popup-text-with-data"><i class="fa fa-check"></i><b>4.4.1</b> Customize Popup Text with Data</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#put-your-web-page-online"><i class="fa fa-check"></i><b>4.5</b> Put Your Web Page online</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>5</b> Resources</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Building Web Maps with Leaflet</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Building Web Maps with Leaflet</h1>
+<p class="author"><em>Dr.¬†Michele Tobias</em></p>
+<p class="author"><em>Arthur Koehl</em></p>
+<p class="date"><em>2022-01-21</em></p>
+</div>
+<div id="overview" class="section level1 unnumbered">
+<h1>Overview</h1>
+<div id="description" class="section level2" number="0.1">
+<h2><span class="header-section-number">0.1</span> Description</h2>
+<p>In this workshop, attendees will be introduced to building an interactive web map to display spatial data using the Leaflet javascript library.</p>
+</div>
+<div id="learning-objectives" class="section level2" number="0.2">
+<h2><span class="header-section-number">0.2</span> Learning Objectives</h2>
+<p>In this workshop, attendees will learn</p>
+<ul>
+<li>Introductory HTML skills, in particular, the tags that are most commonly used to format text on a webpage</li>
+<li>How to load javascript libraries into a web page</li>
+<li>An introduction to the Leaflet javascript library</li>
+<li>Where to get additional help with HTML and Leaflet</li>
+<li>Best practices for communicating data distributions with a web map</li>
+</ul>
+</div>
+<div id="skills" class="section level2" number="0.3">
+<h2><span class="header-section-number">0.3</span> Skills</h2>
+<p>In this workshop, participants will be introduced to the following skills:</p>
+<ul>
+<li>HTML</li>
+<li>Javascript</li>
+<li>Leaflet Javascript Library</li>
+</ul>
+</div>
+<div id="prerequisites" class="section level2" number="0.4">
+<h2><span class="header-section-number">0.4</span> Prerequisites</h2>
+<p>Learners should have a basic understanding of spatial data formats such as vector and raster data, as well as experience with any coding language. Learners with previous experience with coding in HTML and javascript will have an easier time learning, but these skills are not required. Learners should also be able to find, move, and manage files on their computer operating system.</p>
+</div>
+<div id="software-tools" class="section level2" number="0.5">
+<h2><span class="header-section-number">0.5</span> Software &amp; Tools</h2>
+<p>This workshop requires that the learn has installed and has access to the following software:</p>
+<ul>
+<li><strong>Text editor</strong>, preferably with syntax highlighting. Options include <a href="https://atom.io/">Atom</a> for all operating systems or <a href="https://notepad-plus-plus.org/">Notepad++</a> for Windows.</li>
+<li><strong>Web browser</strong>, such as Chrome, Firefox, Edge, or Safari (just not Internet Explorer).</li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="introduction.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/ucdavisdatalab/workshop_web_maps/edit/master/index.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/ucdavisdatalab/workshop_web_maps/blob/master/index.Rmd",
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

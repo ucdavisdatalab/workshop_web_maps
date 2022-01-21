@@ -1,41 +1,5 @@
 # Build a Webpage
 
-``` {r, include=FALSE}
-#install.packages("flair")
-#install.packages("dplyr")
-library(flair)
-library(dplyr)
-
-```
-
-```{}
-a <- 1
-<highlight>b <- 2</highlight>
-c <- 3
-```
-
-
-
-```{r lm}
-lm(mpg ~ disp, data = mtcars)
-```
-
-```{r lm_flair, echo = FALSE}
-decorate("lm") %>%
-  flair("mpg", color = "orange") %>%
-  flair("disp", color = "lightblue") %>%
-  flair("mtcars", color = "lightpink")
-```
-
-```{r plain_r}
-lm(mpg ~ disp, data = mtcars)
-```
-
-```
-lm(mpg ~ disp, data = mtcars)
-```
-
-
 
 The first step in building a web map is to make a basic webpage to house our map. It doesn't need to be elaborate to get started, but we do need to understand some concepts.
 

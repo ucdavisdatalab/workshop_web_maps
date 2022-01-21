@@ -1,324 +1,259 @@
-<!DOCTYPE html>
-<html lang="" xml:lang="">
-<head>
-
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1 Introduction | Building Web Maps with Leaflet</title>
-  <meta name="description" content="1 Introduction | Building Web Maps with Leaflet" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
-
-  <meta property="og:title" content="1 Introduction | Building Web Maps with Leaflet" />
-  <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://ucdavisdatalab.github.io/workshop_web_maps/î" />
-  
-  
-  <meta name="github-repo" content="ucdavisdatalab/workshop_web_maps" />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1 Introduction | Building Web Maps with Leaflet" />
-  
-  
-  
-
-<meta name="author" content="Dr.†Michele Tobias" />
-<meta name="author" content="Arthur Koehl" />
-
-
-<meta name="date" content="2022-01-21" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
-<link rel="prev" href="index.html"/>
-<link rel="next" href="set-up.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-
-
-<style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-
-</head>
-
-<body>
-
-
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li><a href="https://datalab.ucdavis.edu/">
-  <img src="https://datalab.ucdavis.edu/wp-content/uploads/2019/07/datalab-logo-full-color-rgb-1.png" style="height: 100%; width: 100%; object-fit: contain" />
-</a></li>
-<li><a href="./" style="font-size: 18px">Building Web Maps with Leaflet</a></li>
-
-<li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a>
-<ul>
-<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#description"><i class="fa fa-check"></i><b>0.1</b> Description</a></li>
-<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#learning-objectives"><i class="fa fa-check"></i><b>0.2</b> Learning Objectives</a></li>
-<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#skills"><i class="fa fa-check"></i><b>0.3</b> Skills</a></li>
-<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#prerequisites"><i class="fa fa-check"></i><b>0.4</b> Prerequisites</a></li>
-<li class="chapter" data-level="0.5" data-path="index.html"><a href="index.html#software-tools"><i class="fa fa-check"></i><b>0.5</b> Software &amp; Tools</a></li>
-</ul></li>
-<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
-<ul>
-<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#what-is-a-web-map"><i class="fa fa-check"></i><b>1.1</b> What is a ìWeb Mapî?</a></li>
-<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#why-make-a-web-map"><i class="fa fa-check"></i><b>1.2</b> Why make a web map?</a></li>
-<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#examples"><i class="fa fa-check"></i><b>1.3</b> Examples</a></li>
-<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#workflow"><i class="fa fa-check"></i><b>1.4</b> Workflow</a></li>
-<li class="chapter" data-level="1.5" data-path="introduction.html"><a href="introduction.html#leaflet"><i class="fa fa-check"></i><b>1.5</b> Leaflet</a>
-<ul>
-<li class="chapter" data-level="1.5.1" data-path="introduction.html"><a href="introduction.html#other-web-map-tools"><i class="fa fa-check"></i><b>1.5.1</b> Other Web Map Tools</a></li>
-</ul></li>
-<li class="chapter" data-level="1.6" data-path="introduction.html"><a href="introduction.html#workshop-data-uc-davis-campus-cats"><i class="fa fa-check"></i><b>1.6</b> Workshop Data: UC Davis Campus Cats</a></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="set-up.html"><a href="set-up.html"><i class="fa fa-check"></i><b>2</b> Set Up</a>
-<ul>
-<li class="chapter" data-level="2.1" data-path="set-up.html"><a href="set-up.html#download-the-data"><i class="fa fa-check"></i><b>2.1</b> Download the Data</a></li>
-<li class="chapter" data-level="2.2" data-path="set-up.html"><a href="set-up.html#folders"><i class="fa fa-check"></i><b>2.2</b> Folders</a></li>
-<li class="chapter" data-level="2.3" data-path="set-up.html"><a href="set-up.html#files"><i class="fa fa-check"></i><b>2.3</b> Files</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="build-a-webpage.html"><a href="build-a-webpage.html"><i class="fa fa-check"></i><b>3</b> Build a Webpage</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="build-a-webpage.html"><a href="build-a-webpage.html#intro-to-html"><i class="fa fa-check"></i><b>3.1</b> Intro to HTML</a></li>
-<li class="chapter" data-level="3.2" data-path="build-a-webpage.html"><a href="build-a-webpage.html#start-building-your-webpage"><i class="fa fa-check"></i><b>3.2</b> Start Building your Webpage</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html"><i class="fa fa-check"></i><b>4</b> Build a Leaflet Web Map</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#prepare-your-page"><i class="fa fa-check"></i><b>4.1</b> Prepare Your Page</a>
-<ul>
-<li class="chapter" data-level="4.1.1" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#load-the-external-files"><i class="fa fa-check"></i><b>4.1.1</b> Load The External Files</a></li>
-<li class="chapter" data-level="4.1.2" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#add-a-map-div"><i class="fa fa-check"></i><b>4.1.2</b> Add a Map Div</a></li>
-<li class="chapter" data-level="4.1.3" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#add-a-script-section"><i class="fa fa-check"></i><b>4.1.3</b> Add a Script Section</a></li>
-</ul></li>
-<li class="chapter" data-level="4.2" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#add-a-map"><i class="fa fa-check"></i><b>4.2</b> Add A Map</a>
-<ul>
-<li class="chapter" data-level="4.2.1" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#add-a-marker"><i class="fa fa-check"></i><b>4.2.1</b> Add a Marker</a></li>
-</ul></li>
-<li class="chapter" data-level="4.3" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#use-external-data"><i class="fa fa-check"></i><b>4.3</b> Use External Data</a>
-<ul>
-<li class="chapter" data-level="4.3.1" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#about-geojson"><i class="fa fa-check"></i><b>4.3.1</b> About GeoJSON</a></li>
-<li class="chapter" data-level="4.3.2" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#formatting-the-data"><i class="fa fa-check"></i><b>4.3.2</b> Formatting the Data</a></li>
-<li class="chapter" data-level="4.3.3" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#read-the-data"><i class="fa fa-check"></i><b>4.3.3</b> Read the Data</a></li>
-<li class="chapter" data-level="4.3.4" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#add-data-to-the-map"><i class="fa fa-check"></i><b>4.3.4</b> Add Data to the Map</a></li>
-</ul></li>
-<li class="chapter" data-level="4.4" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#add-a-popup"><i class="fa fa-check"></i><b>4.4</b> Add a popup</a>
-<ul>
-<li class="chapter" data-level="4.4.1" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#customize-popup-text-with-data"><i class="fa fa-check"></i><b>4.4.1</b> Customize Popup Text with Data</a></li>
-</ul></li>
-<li class="chapter" data-level="4.5" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#put-your-web-page-online"><i class="fa fa-check"></i><b>4.5</b> Put Your Web Page online</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>5</b> Resources</a></li>
-</ul>
-
-      </nav>
-    </div>
-
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Building Web Maps with Leaflet</a>
-          </h1>
-        </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="introduction" class="section level1" number="1">
-<h1><span class="header-section-number">1</span> Introduction</h1>
-<div id="what-is-a-web-map" class="section level2" number="1.1">
-<h2><span class="header-section-number">1.1</span> What is a ìWeb Mapî?</h2>
-<p>There are many ways to include maps in web pages. The two most common are as a static map or as a web map.</p>
-<p>A <strong>static map</strong> is an image (for example, a .tiff, .png, or .jpg file) of a map. The user cannot change the scale or content. Static maps are useful for applications where interactivity isnít needed. Images are easily rendered by web browsers and are fairly easy to add to web pages.</p>
-<p>The term <strong>web map</strong> typically refers to a map embedded in a webpage. The map allows the user to interact with the data in some way. Often, the user can pan and zoom to adjust the view and click on data markers to learn more information about a location.</p>
-</div>
-<div id="why-make-a-web-map" class="section level2" number="1.2">
-<h2><span class="header-section-number">1.2</span> Why make a web map?</h2>
-<p>Web maps can be a powerful way to share spatial information with other people, especially when you expect the viewer to want to explore the data in different ways. Web maps allow the user to customize their experience in ways that a static map cannot.</p>
-<p>Because of the interactivity, they can be a more engaging way for your audience to learn about a topic of interest and for you to offer a narative about the data.</p>
-<p>Web maps can also be a way to interact with a community of interest, enabling a researcher to both share and collect spatial information from a community.</p>
-<p>Web maps are good for data that is inherently dynamic, such as data with many factors or has a time component. Allowing the viewer to change what aspects of the data are shown on the map can help users explore complex data.</p>
-<p>Web maps can be a fun way to interact with data.</p>
-<p>Web maps offer novel and creative ways to visualize data.</p>
-<p>Web maps are easy to share, modify, update, and document.</p>
-</div>
-<div id="examples" class="section level2" number="1.3">
-<h2><span class="header-section-number">1.3</span> Examples</h2>
-<p>Examples of informative and engaging web maps abound on the internet. Here are a few examples that make use of Leaflet, the javascript library weíll be working with today:</p>
-<ul>
-<li><a href="https://datalab.ucdavis.edu/2021/09/23/unlocking-insights-from-public-data-a-case-study-with-covid-19-exposure-data/">UC Davis Potential COVID Workplace Exposures Map</a> - UC Davis DataLab - An example with a dynamic timeline feature and data is updated daily from a web scraping script</li>
-<li><a href="https://chicas-covid19.gitlab.io/bayesstm/#">UK COVID-19 Predictions</a> - Lancaster University Medical School - Includes a timeline animation and choice of visualizations of case incidence predictions</li>
-<li><a href="https://www.openrailwaymap.org/">OpenRailwayMap</a> - Offers choice of data to visualize; data from a community-contributed dataset of railway infrastructure worldwide</li>
-<li><a href="http://micheletobias.github.io/maps/DistributionsMap.html">California Beach Plant Species Distributions</a> - Michele Tobias - An example of linking navigation in multiple maps</li>
-<li><a href="https://martinfleis.github.io/numerical-taxonomy-maps/">Numerical taxonomy of urban form in Amsterdam and Prague</a> - Martin Fleischmann - a map supporting and academic manuscript</li>
-<li><a href="https://mars.nasa.gov/maps/location/?mission=Curiosity">NASA Curiosity Roverís Location on Mars</a> - NASA - An example of how Leaflet can be used with non-Earth coordinate systems and how the interface can be highly customized</li>
-</ul>
-</div>
-<div id="workflow" class="section level2" number="1.4">
-<h2><span class="header-section-number">1.4</span> Workflow</h2>
-<p>At first glace, building a web map might seem daunting, but weíll take it one step at a time and build up to an engaging demonstration of what web maps can do. To make an online interactive web map, weíll need to complete several steps. Typically these steps include:</p>
-<ol style="list-style-type: decimal">
-<li>Make a webpage to contain the web map code (coding in HTML)</li>
-<li>Write the web map code and put it into the webpage (coding in javascript)</li>
-<li>Put the web page online</li>
-</ol>
-</div>
-<div id="leaflet" class="section level2" number="1.5">
-<h2><span class="header-section-number">1.5</span> Leaflet</h2>
-<p>In todayís workshop, weíll be using a javascript library called <a href="https://leafletjs.com/index.html">Leaflet</a> to write the code that will make our web map. Leaflet is a popular open source javascript library specifically designed to build interactive web maps with a combination of data available online (like tile services for basemaps) and your own data. Leaflet is well-documented and has <a href="https://leafletjs.com/examples.html">excellent tutorials</a> to illustrate common tasks and innovative uses of the tool. In addition, there is an active community using this tool so there is ample support on online message boards and social media outlets.</p>
-<p>You can also use leaflet with the R programming language through the <a href="https://cran.r-project.org/web/packages/leaflet/index.html">leaflet package</a>, which can be a handy way to add maps to your R Markdown files or Shiny applications. This, however cool, is not a part of todayís workshop.</p>
-<div id="other-web-map-tools" class="section level3" number="1.5.1">
-<h3><span class="header-section-number">1.5.1</span> Other Web Map Tools</h3>
-<p>Leaflet is not the only tool available to create web maps. There are many tools and services that you can use to make webs maps, each with their own advantages, required skill sets, and price points. If youíd like to explore other options, you might consider Carto, Mapbox, ArcGIS Online, Story Maps (of the Knight Labs [open source] or ESRI [proprietary] flavors), Mango Map, GIS Cloud, Google Maps, D3, Here Maps, or OpenLayers.</p>
-</div>
-</div>
-<div id="workshop-data-uc-davis-campus-cats" class="section level2" number="1.6">
-<h2><span class="header-section-number">1.6</span> Workshop Data: UC Davis Campus Cats</h2>
-<p>In todayís workshop, weíll be working with the UC Davis Campus Cats data set that was originally compiled by Rachel Bingham and Rachel Hale at the UC Davis Office of Educational Opportunity &amp; Enrichment Services to facilitate the <a href="https://opportunity.ucdavis.edu/programs/aggie-connect/connections/campus-cat-safari-exploring-ucd-cats-campus">ìCampus Cat Safariî Connection</a> through the First Year Aggie Connection program. This data was downloaded from <a href="https://www.google.com/maps/d/u/0/viewer?mid=1xN5Nv6t2rfAef66_vObEX3HbxkAalvlx&amp;ll=38.53781472959825%2C-121.76011159999999&amp;z=15">Rachel &amp; Rachelís Google Map</a> on 2021-10-14 and this data is used with permission from the authors. For this workshop, DataLab staff have processed the data from its original KML format to create a .geojson file embedded in a javascript file (more details on this process and why we did it to come).</p>
-
-</div>
-</div>
-            </section>
-
-          </div>
-        </div>
-      </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="set-up.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
-  </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": false,
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/ucdavisdatalab/workshop_web_maps/edit/master/01_introduction.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": "https://github.com/ucdavisdatalab/workshop_web_maps/blob/master/01_introduction.Rmd",
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "section"
-}
-});
-});
-</script>
-
-</body>
-
-</html>
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
 
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>1 Introduction | Building Web Maps with Leaflet</title>
+  <meta name="description" content="1 Introduction | Building Web Maps with Leaflet" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="1 Introduction | Building Web Maps with Leaflet" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://ucdavisdatalab.github.io/workshop_web_maps/‚Äù" />
+  
+  
+  <meta name="github-repo" content="ucdavisdatalab/workshop_web_maps" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="1 Introduction | Building Web Maps with Leaflet" />
+  
+  
+  
+
+<meta name="author" content="Dr.¬†Michele Tobias" />
+<meta name="author" content="Arthur Koehl" />
+
+
+<meta name="date" content="2022-01-21" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="set-up.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="https://datalab.ucdavis.edu/">
+  <img src="https://datalab.ucdavis.edu/wp-content/uploads/2019/07/datalab-logo-full-color-rgb-1.png" style="height: 100%; width: 100%; object-fit: contain" />
+</a></li>
+<li><a href="./" style="font-size: 18px">Building Web Maps with Leaflet</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#description"><i class="fa fa-check"></i><b>0.1</b> Description</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#learning-objectives"><i class="fa fa-check"></i><b>0.2</b> Learning Objectives</a></li>
+<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#skills"><i class="fa fa-check"></i><b>0.3</b> Skills</a></li>
+<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#prerequisites"><i class="fa fa-check"></i><b>0.4</b> Prerequisites</a></li>
+<li class="chapter" data-level="0.5" data-path="index.html"><a href="index.html#software-tools"><i class="fa fa-check"></i><b>0.5</b> Software &amp; Tools</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#what-is-a-web-map"><i class="fa fa-check"></i><b>1.1</b> What is a ‚ÄúWeb Map‚Äù?</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#why-make-a-web-map"><i class="fa fa-check"></i><b>1.2</b> Why make a web map?</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#examples"><i class="fa fa-check"></i><b>1.3</b> Examples</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#workflow"><i class="fa fa-check"></i><b>1.4</b> Workflow</a></li>
+<li class="chapter" data-level="1.5" data-path="introduction.html"><a href="introduction.html#leaflet"><i class="fa fa-check"></i><b>1.5</b> Leaflet</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="introduction.html"><a href="introduction.html#other-web-map-tools"><i class="fa fa-check"></i><b>1.5.1</b> Other Web Map Tools</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="introduction.html"><a href="introduction.html#workshop-data-uc-davis-campus-cats"><i class="fa fa-check"></i><b>1.6</b> Workshop Data: UC Davis Campus Cats</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="set-up.html"><a href="set-up.html"><i class="fa fa-check"></i><b>2</b> Set Up</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="set-up.html"><a href="set-up.html#download-the-data"><i class="fa fa-check"></i><b>2.1</b> Download the Data</a></li>
+<li class="chapter" data-level="2.2" data-path="set-up.html"><a href="set-up.html#folders"><i class="fa fa-check"></i><b>2.2</b> Folders</a></li>
+<li class="chapter" data-level="2.3" data-path="set-up.html"><a href="set-up.html#files"><i class="fa fa-check"></i><b>2.3</b> Files</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="build-a-webpage.html"><a href="build-a-webpage.html"><i class="fa fa-check"></i><b>3</b> Build a Webpage</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="build-a-webpage.html"><a href="build-a-webpage.html#intro-to-html"><i class="fa fa-check"></i><b>3.1</b> Intro to HTML</a></li>
+<li class="chapter" data-level="3.2" data-path="build-a-webpage.html"><a href="build-a-webpage.html#start-building-your-webpage"><i class="fa fa-check"></i><b>3.2</b> Start Building your Webpage</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html"><i class="fa fa-check"></i><b>4</b> Build a Leaflet Web Map</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#prepare-your-page"><i class="fa fa-check"></i><b>4.1</b> Prepare Your Page</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#load-the-external-files"><i class="fa fa-check"></i><b>4.1.1</b> Load The External Files</a></li>
+<li class="chapter" data-level="4.1.2" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#add-a-map-div"><i class="fa fa-check"></i><b>4.1.2</b> Add a Map Div</a></li>
+<li class="chapter" data-level="4.1.3" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#add-a-script-section"><i class="fa fa-check"></i><b>4.1.3</b> Add a Script Section</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#add-a-map"><i class="fa fa-check"></i><b>4.2</b> Add A Map</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#add-a-marker"><i class="fa fa-check"></i><b>4.2.1</b> Add a Marker</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#use-external-data"><i class="fa fa-check"></i><b>4.3</b> Use External Data</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#about-geojson"><i class="fa fa-check"></i><b>4.3.1</b> About GeoJSON</a></li>
+<li class="chapter" data-level="4.3.2" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#formatting-the-data"><i class="fa fa-check"></i><b>4.3.2</b> Formatting the Data</a></li>
+<li class="chapter" data-level="4.3.3" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#read-the-data"><i class="fa fa-check"></i><b>4.3.3</b> Read the Data</a></li>
+<li class="chapter" data-level="4.3.4" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#add-data-to-the-map"><i class="fa fa-check"></i><b>4.3.4</b> Add Data to the Map</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#add-a-popup"><i class="fa fa-check"></i><b>4.4</b> Add a popup</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#customize-popup-text-with-data"><i class="fa fa-check"></i><b>4.4.1</b> Customize Popup Text with Data</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#put-your-web-page-online"><i class="fa fa-check"></i><b>4.5</b> Put Your Web Page online</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>5</b> Resources</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Building Web Maps with Leaflet</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="introduction" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Introduction</h1>
+<div id="what-is-a-web-map" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> What is a ‚ÄúWeb Map‚Äù?</h2>
+<p>There are many ways to include maps in web pages. The two most common are as a static map or as a web map.</p>
+<p>A <strong>static map</strong> is an image (for example, a .tiff, .png, or .jpg file) of a map. The user cannot change the scale or content. Static maps are useful for applications where interactivity isn‚Äôt needed. Images are easily rendered by web browsers and are fairly easy to add to web pages.</p>
+<p>The term <strong>web map</strong> typically refers to a map embedded in a webpage. The map allows the user to interact with the data in some way. Often, the user can pan and zoom to adjust the view and click on data markers to learn more information about a location.</p>
+</div>
+<div id="why-make-a-web-map" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> Why make a web map?</h2>
+<p>Web maps can be a powerful way to share spatial information with other people, especially when you expect the viewer to want to explore the data in different ways. Web maps allow the user to customize their experience in ways that a static map cannot.</p>
+<p>Because of the interactivity, they can be a more engaging way for your audience to learn about a topic of interest and for you to offer a narative about the data.</p>
+<p>Web maps can also be a way to interact with a community of interest, enabling a researcher to both share and collect spatial information from a community.</p>
+<p>Web maps are good for data that is inherently dynamic, such as data with many factors or has a time component. Allowing the viewer to change what aspects of the data are shown on the map can help users explore complex data.</p>
+<p>Web maps can be a fun way to interact with data.</p>
+<p>Web maps offer novel and creative ways to visualize data.</p>
+<p>Web maps are easy to share, modify, update, and document.</p>
+</div>
+<div id="examples" class="section level2" number="1.3">
+<h2><span class="header-section-number">1.3</span> Examples</h2>
+<p>Examples of informative and engaging web maps abound on the internet. Here are a few examples that make use of Leaflet, the javascript library we‚Äôll be working with today:</p>
+<ul>
+<li><a href="https://datalab.ucdavis.edu/2021/09/23/unlocking-insights-from-public-data-a-case-study-with-covid-19-exposure-data/">UC Davis Potential COVID Workplace Exposures Map</a> - UC Davis DataLab - An example with a dynamic timeline feature and data is updated daily from a web scraping script</li>
+<li><a href="https://chicas-covid19.gitlab.io/bayesstm/#">UK COVID-19 Predictions</a> - Lancaster University Medical School - Includes a timeline animation and choice of visualizations of case incidence predictions</li>
+<li><a href="https://www.openrailwaymap.org/">OpenRailwayMap</a> - Offers choice of data to visualize; data from a community-contributed dataset of railway infrastructure worldwide</li>
+<li><a href="http://micheletobias.github.io/maps/DistributionsMap.html">California Beach Plant Species Distributions</a> - Michele Tobias - An example of linking navigation in multiple maps</li>
+<li><a href="https://martinfleis.github.io/numerical-taxonomy-maps/">Numerical taxonomy of urban form in Amsterdam and Prague</a> - Martin Fleischmann - a map supporting and academic manuscript</li>
+<li><a href="https://mars.nasa.gov/maps/location/?mission=Curiosity">NASA Curiosity Rover‚Äôs Location on Mars</a> - NASA - An example of how Leaflet can be used with non-Earth coordinate systems and how the interface can be highly customized</li>
+</ul>
+</div>
+<div id="workflow" class="section level2" number="1.4">
+<h2><span class="header-section-number">1.4</span> Workflow</h2>
+<p>At first glace, building a web map might seem daunting, but we‚Äôll take it one step at a time and build up to an engaging demonstration of what web maps can do. To make an online interactive web map, we‚Äôll need to complete several steps. Typically these steps include:</p>
+<ol style="list-style-type: decimal">
+<li>Make a webpage to contain the web map code (coding in HTML)</li>
+<li>Write the web map code and put it into the webpage (coding in javascript)</li>
+<li>Put the web page online</li>
+</ol>
+</div>
+<div id="leaflet" class="section level2" number="1.5">
+<h2><span class="header-section-number">1.5</span> Leaflet</h2>
+<p>In today‚Äôs workshop, we‚Äôll be using a javascript library called <a href="https://leafletjs.com/index.html">Leaflet</a> to write the code that will make our web map. Leaflet is a popular open source javascript library specifically designed to build interactive web maps with a combination of data available online (like tile services for basemaps) and your own data. Leaflet is well-documented and has <a href="https://leafletjs.com/examples.html">excellent tutorials</a> to illustrate common tasks and innovative uses of the tool. In addition, there is an active community using this tool so there is ample support on online message boards and social media outlets.</p>
+<p>You can also use leaflet with the R programming language through the <a href="https://cran.r-project.org/web/packages/leaflet/index.html">leaflet package</a>, which can be a handy way to add maps to your R Markdown files or Shiny applications. This, however cool, is not a part of today‚Äôs workshop.</p>
+<div id="other-web-map-tools" class="section level3" number="1.5.1">
+<h3><span class="header-section-number">1.5.1</span> Other Web Map Tools</h3>
+<p>Leaflet is not the only tool available to create web maps. There are many tools and services that you can use to make webs maps, each with their own advantages, required skill sets, and price points. If you‚Äôd like to explore other options, you might consider Carto, Mapbox, ArcGIS Online, Story Maps (of the Knight Labs [open source] or ESRI [proprietary] flavors), Mango Map, GIS Cloud, Google Maps, D3, Here Maps, or OpenLayers.</p>
+</div>
+</div>
+<div id="workshop-data-uc-davis-campus-cats" class="section level2" number="1.6">
+<h2><span class="header-section-number">1.6</span> Workshop Data: UC Davis Campus Cats</h2>
+<p>In today‚Äôs workshop, we‚Äôll be working with the UC Davis Campus Cats data set that was originally compiled by Rachel Bingham and Rachel Hale at the UC Davis Office of Educational Opportunity &amp; Enrichment Services to facilitate the <a href="https://opportunity.ucdavis.edu/programs/aggie-connect/connections/campus-cat-safari-exploring-ucd-cats-campus">‚ÄúCampus Cat Safari‚Äù Connection</a> through the First Year Aggie Connection program. This data was downloaded from <a href="https://www.google.com/maps/d/u/0/viewer?mid=1xN5Nv6t2rfAef66_vObEX3HbxkAalvlx&amp;ll=38.53781472959825%2C-121.76011159999999&amp;z=15">Rachel &amp; Rachel‚Äôs Google Map</a> on 2021-10-14 and this data is used with permission from the authors. For this workshop, DataLab staff have processed the data from its original KML format to create a .geojson file embedded in a javascript file (more details on this process and why we did it to come).</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="set-up.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/ucdavisdatalab/workshop_web_maps/edit/master/01_introduction.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/ucdavisdatalab/workshop_web_maps/blob/master/01_introduction.Rmd",
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

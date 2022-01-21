@@ -10,9 +10,11 @@
 
 # Set Up ------------------------------------------------------------------
 
+# install libraries
+install.packages("brio")
+
 # load libraries
-install.packages("readr")
-library(readr)
+library(brio) #brio reads and writes UTF-8 files
 
 
 #  Function: bookdown_highlight -----------------------------------------
@@ -28,7 +30,8 @@ bookdown_highlight<-function(color='#ffff7f'){
     
     #read the file
     file_path<- paste0("./docs/", i)
-    doc_text<- read_file(file_path)
+    #doc_text<- read_file(file_path)
+    doc_text<- brio::readLines(file_path)
     
     #replace the opening markup tag with the html tag
     highlight_span<-paste0('<span style="background-color:', color, '">')
@@ -46,7 +49,10 @@ bookdown_highlight<-function(color='#ffff7f'){
       x=new_text
       )
     
-    write(new_text, file=file_path)
+    #new_text<-enc2utf8(new_text)
+    
+    #write(new_text, file=file_path)
+    brio::write_lines(text=new_text, path=file_path)
   
     }
   

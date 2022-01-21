@@ -16,7 +16,8 @@ c <- 3
 
 ```{r ex_flair, echo=FALSE}
 decorate("ex") %>% 
-	flair("a <-", color = "yellow")
+	flair("a <-", color = "yellow")%>% 
+  flair_lines(2)
 
 ```
 

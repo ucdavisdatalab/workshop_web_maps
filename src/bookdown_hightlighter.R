@@ -26,11 +26,10 @@ bookdown_highlight<-function(color='#ffff7f'){
   file_list<-list.files(path= "./docs", pattern = "\\.html$")
   
   for (i in file_list){
-    print(paste0("./docs/", i))
-    
+
     #read the file
     file_path<- paste0("./docs/", i)
-    #doc_text<- read_file(file_path)
+
     doc_text<- brio::readLines(file_path)
     
     #replace the opening markup tag with the html tag
@@ -49,14 +48,12 @@ bookdown_highlight<-function(color='#ffff7f'){
       x=new_text
       )
     
-    #new_text<-enc2utf8(new_text)
-    
     #write(new_text, file=file_path)
     brio::write_lines(text=new_text, path=file_path)
-  
+    
     }
   
-  #file_list
+  print("Your bookdown files are highlighted!")
   
 }
 

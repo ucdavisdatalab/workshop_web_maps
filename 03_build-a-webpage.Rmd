@@ -8,18 +8,13 @@ library(dplyr)
 
 ```
 
-```{r ex, include = FALSE}
+```{}
 a <- 1
-b <- 2
+<highlight>b <- 2</highlight>
 c <- 3
 ```
 
-```{r ex_flair, echo=FALSE}
-decorate("ex") %>% 
-	flair("a <-", color = "yellow")%>% 
-  flair_lines(2)
 
-```
 
 ```{r lm}
 lm(mpg ~ disp, data = mtcars)
@@ -30,6 +25,14 @@ decorate("lm") %>%
   flair("mpg", color = "orange") %>%
   flair("disp", color = "lightblue") %>%
   flair("mtcars", color = "lightpink")
+```
+
+```{r plain_r}
+lm(mpg ~ disp, data = mtcars)
+```
+
+```
+lm(mpg ~ disp, data = mtcars)
 ```
 
 
@@ -69,13 +72,13 @@ We've made a blank webpage! Now, let's add something more interesting to it.
 
 The beginning of the HTML document is where you normally place the parameters and settings that make the webpage work.  We'll add a section called **head** to our page to contain some of these parameters. Inside of the *head* section, we'll indicate the title of our webpage, wrapped in `<title>` tags. This puts the name of the webpage  in the tab at the top of the browser.
 
-```{html add_title, eval=FALSE}
+```
 <!DOCTYPE html>
 <html>
 
-<head>
+<highlight><head>
 <title>UC Davis Campus Cats Map</title>
-</head>
+</head></highlight>
 
 </html>
 ```

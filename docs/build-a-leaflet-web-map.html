@@ -1,492 +1,493 @@
-<!DOCTYPE html>
-<html lang="" xml:lang="">
-<head>
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4 Build a Leaflet Web Map | Building Web Maps with Leaflet</title>
+  <meta name="description" content="4 Build a Leaflet Web Map | Building Web Maps with Leaflet" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4 Build a Leaflet Web Map | Building Web Maps with Leaflet" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://ucdavisdatalab.github.io/workshop_web_maps/î" />
+  
+  
+  <meta name="github-repo" content="ucdavisdatalab/workshop_web_maps" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4 Build a Leaflet Web Map | Building Web Maps with Leaflet" />
+  
+  
+  
+
+<meta name="author" content="Dr.†Michele Tobias" />
+<meta name="author" content="Arthur Koehl" />
+
+
+<meta name="date" content="2022-01-21" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="build-a-webpage.html"/>
+<link rel="next" href="resources.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="https://datalab.ucdavis.edu/">
+  <img src="https://datalab.ucdavis.edu/wp-content/uploads/2019/07/datalab-logo-full-color-rgb-1.png" style="height: 100%; width: 100%; object-fit: contain" />
+</a></li>
+<li><a href="./" style="font-size: 18px">Building Web Maps with Leaflet</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#description"><i class="fa fa-check"></i><b>0.1</b> Description</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#learning-objectives"><i class="fa fa-check"></i><b>0.2</b> Learning Objectives</a></li>
+<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#skills"><i class="fa fa-check"></i><b>0.3</b> Skills</a></li>
+<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#prerequisites"><i class="fa fa-check"></i><b>0.4</b> Prerequisites</a></li>
+<li class="chapter" data-level="0.5" data-path="index.html"><a href="index.html#software-tools"><i class="fa fa-check"></i><b>0.5</b> Software &amp; Tools</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#what-is-a-web-map"><i class="fa fa-check"></i><b>1.1</b> What is a ìWeb Mapî?</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#why-make-a-web-map"><i class="fa fa-check"></i><b>1.2</b> Why make a web map?</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#examples"><i class="fa fa-check"></i><b>1.3</b> Examples</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#workflow"><i class="fa fa-check"></i><b>1.4</b> Workflow</a></li>
+<li class="chapter" data-level="1.5" data-path="introduction.html"><a href="introduction.html#leaflet"><i class="fa fa-check"></i><b>1.5</b> Leaflet</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="introduction.html"><a href="introduction.html#other-web-map-tools"><i class="fa fa-check"></i><b>1.5.1</b> Other Web Map Tools</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="introduction.html"><a href="introduction.html#workshop-data-uc-davis-campus-cats"><i class="fa fa-check"></i><b>1.6</b> Workshop Data: UC Davis Campus Cats</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="set-up.html"><a href="set-up.html"><i class="fa fa-check"></i><b>2</b> Set Up</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="set-up.html"><a href="set-up.html#download-the-data"><i class="fa fa-check"></i><b>2.1</b> Download the Data</a></li>
+<li class="chapter" data-level="2.2" data-path="set-up.html"><a href="set-up.html#folders"><i class="fa fa-check"></i><b>2.2</b> Folders</a></li>
+<li class="chapter" data-level="2.3" data-path="set-up.html"><a href="set-up.html#files"><i class="fa fa-check"></i><b>2.3</b> Files</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="build-a-webpage.html"><a href="build-a-webpage.html"><i class="fa fa-check"></i><b>3</b> Build a Webpage</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="build-a-webpage.html"><a href="build-a-webpage.html#intro-to-html"><i class="fa fa-check"></i><b>3.1</b> Intro to HTML</a></li>
+<li class="chapter" data-level="3.2" data-path="build-a-webpage.html"><a href="build-a-webpage.html#start-building-your-webpage"><i class="fa fa-check"></i><b>3.2</b> Start Building your Webpage</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html"><i class="fa fa-check"></i><b>4</b> Build a Leaflet Web Map</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#prepare-your-page"><i class="fa fa-check"></i><b>4.1</b> Prepare Your Page</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#load-the-external-files"><i class="fa fa-check"></i><b>4.1.1</b> Load The External Files</a></li>
+<li class="chapter" data-level="4.1.2" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#add-a-map-div"><i class="fa fa-check"></i><b>4.1.2</b> Add a Map Div</a></li>
+<li class="chapter" data-level="4.1.3" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#add-a-script-section"><i class="fa fa-check"></i><b>4.1.3</b> Add a Script Section</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#add-a-map"><i class="fa fa-check"></i><b>4.2</b> Add A Map</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#add-a-marker"><i class="fa fa-check"></i><b>4.2.1</b> Add a Marker</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#use-external-data"><i class="fa fa-check"></i><b>4.3</b> Use External Data</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#about-geojson"><i class="fa fa-check"></i><b>4.3.1</b> About GeoJSON</a></li>
+<li class="chapter" data-level="4.3.2" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#formatting-the-data"><i class="fa fa-check"></i><b>4.3.2</b> Formatting the Data</a></li>
+<li class="chapter" data-level="4.3.3" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#read-the-data"><i class="fa fa-check"></i><b>4.3.3</b> Read the Data</a></li>
+<li class="chapter" data-level="4.3.4" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#add-data-to-the-map"><i class="fa fa-check"></i><b>4.3.4</b> Add Data to the Map</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#add-a-popup"><i class="fa fa-check"></i><b>4.4</b> Add a popup</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#customize-popup-text-with-data"><i class="fa fa-check"></i><b>4.4.1</b> Customize Popup Text with Data</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#put-your-web-page-online"><i class="fa fa-check"></i><b>4.5</b> Put Your Web Page online</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>5</b> Resources</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Building Web Maps with Leaflet</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="build-a-leaflet-web-map" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Build a Leaflet Web Map</h1>
+<p>Now that weíve made a basic webpage, we can add our web map.</p>
+<div id="prepare-your-page" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Prepare Your Page</h2>
+<div id="load-the-external-files" class="section level3" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Load The External Files</h3>
+<p>In the <strong>head</strong> section of our webpage, we need to add some information that will tell our map how to appear (the CSS file) and where to find the Leaflet package (Leaflet JavaScript file).</p>
+<p>CSS stands for Cascading Style Sheet. You can think of this as the parameters that set the way certain objects are displayed in a website. The file weíll load specifically styles the map elements made with Leaflet.</p>
+<p>Loading the Leaflet JavaScript file enables our webpage to have access to the functions and tools in the Leaflet Library. For R or Python users, this is similar to loading packages or libraries in your code. We could save a static version of this library in our website folders and point to that, or we can link to an online version of it, like we have done in the code below.</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+&lt;title&gt;UC Davis Campus Cats Map&lt;/title&gt;
+
+&lt;!--Load the Leaflet CSS file --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/leaflet@1.7.1/dist/leaflet.css&quot; integrity=&quot;sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==&quot;crossorigin=&quot;&quot;/&gt;
+
+&lt;!--Load the Leaflet JavaScript file --&gt;
+&lt;script src=&quot;https://unpkg.com/leaflet@1.7.1/dist/leaflet.js&quot; integrity=&quot;sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==&quot;crossorigin=&quot;&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;h1&gt;UC Davis Campus Cats Map&lt;/h1&gt;
+&lt;p&gt;This webmap shows the locations of UC Davis campus community cats.&lt;/p&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+<p>Note that in HTML, comments are written like this: <code>&lt;!-- This is a comment --&gt;</code>. Comments are information for the coder and donít render on the website.</p>
+<p>The code we just added doesnít make any visible changes on our website so if you reload your web page, you wonít notice anything new, but it should load. If it has an error or the text doesnít show up, youíll need to debug your code.</p>
+</div>
+<div id="add-a-map-div" class="section level3" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> Add a Map Div</h3>
+<p>A <code>&lt;div&gt;</code> element defines a section in your HTML document. Our web map needs its own <code>&lt;div&gt;</code>. Weíll add one inside the <code>&lt;body&gt;</code> of the webpage. Note that the <code>&lt;div&gt;</code> has an ID. This will let us create settings and code that apply to this specific <code>&lt;div&gt;</code>. We can define the style of the <code>&lt;div&gt;</code> inside the tag (as we have done below) or we could do it in the <code>&lt;head&gt;</code> of the document in a <code>&lt;style&gt;</code> subsection, or in a separate CSS file.</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+&lt;title&gt;UC Davis Campus Cats Map&lt;/title&gt;
+
+&lt;!--Load the Leaflet CSS file --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/leaflet@1.7.1/dist/leaflet.css&quot; integrity=&quot;sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==&quot;crossorigin=&quot;&quot;/&gt;
+
+&lt;!--Load the Leaflet JavaScript file --&gt;
+&lt;script src=&quot;https://unpkg.com/leaflet@1.7.1/dist/leaflet.js&quot; integrity=&quot;sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==&quot;crossorigin=&quot;&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;h1&gt;UC Davis Campus Cats Map&lt;/h1&gt;
+&lt;p&gt;This webmap shows the locations of UC Davis campus community cats.&lt;/p&gt;
+
+&lt;div id=&quot;mapid&quot; style=&quot;width: 600px; height: 400px;&quot;&gt;&lt;/div&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+<p>If you reload your <code>index.html</code> file in your browser, you shouldnít notice any difference. If the page doesnít load, however, youíll need to troubleshoot your code. Make sure your tags open and close in the right order.</p>
+</div>
+<div id="add-a-script-section" class="section level3" number="4.1.3">
+<h3><span class="header-section-number">4.1.3</span> Add a Script Section</h3>
+<p>Finally, we need to add a section to our code to hold the Leaflet JavaScript code we will write to make our map. Just below your map <code>&lt;div&gt;</code> (and inside the <strong>body</strong> section), add open and closed <code>&lt;script&gt;</code> tags.</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+&lt;title&gt;UC Davis Campus Cats Map&lt;/title&gt;
+
+&lt;!--Load the Leaflet CSS file --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/leaflet@1.7.1/dist/leaflet.css&quot; integrity=&quot;sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==&quot;crossorigin=&quot;&quot;/&gt;
+
+&lt;!--Load the Leaflet JavaScript file --&gt;
+&lt;script src=&quot;https://unpkg.com/leaflet@1.7.1/dist/leaflet.js&quot; integrity=&quot;sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==&quot;crossorigin=&quot;&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;h1&gt;UC Davis Campus Cats Map&lt;/h1&gt;
+&lt;p&gt;This webmap shows the locations of UC Davis campus community cats.&lt;/p&gt;
+
+&lt;div id=&quot;mapid&quot; style=&quot;width: 600px; height: 400px;&quot;&gt;&lt;/div&gt;
+
+&lt;script&gt;
+
+&lt;/script&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+</div>
+</div>
+<div id="add-a-map" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Add A Map</h2>
+<p>Now weíre ready to add a map. Weíll make a simple one to start and add more data later.</p>
+<p><strong>Note:</strong> from now on, weíll be working in the <code>&lt;script&gt;</code> section, so the code will just show this section to avoid clutter and focus on whatís changing in the code.</p>
+<p>Inside the <code>&lt;script&gt;</code> section, weíll now be writing javascript. <code>//</code> is how you indicate a comment in JavaScript. Outside of this section, youíll be writing HTML. It can get confusing sometimes, so have patience with yourself.</p>
+<p>First, weíll create an empty map in our mapid div, then weíll load Stamenís Toner tile service to use as a background layer. The limited color palette of the Toner tile service will make it easier to see the data weíll be loading later.</p>
+<pre><code>&lt;script&gt;
+
+    //add an empty map called &quot;catmap&quot; to the page in the mapid div
+    var catmap = L.map(&#39;mapid&#39;, {
+        center: [38.538592, -121.75],
+        zoom: 15
+        });
+
+    //add the base map = Stamen Toner tile layer
+    var Stamen_Toner = L.tileLayer(&#39;https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.{ext}&#39;, {
+        attribution: &#39;Map tiles by &lt;a href=&quot;http://stamen.com&quot;&gt;Stamen Design&lt;/a&gt;, &lt;a href=&quot;http://creativecommons.org/licenses/by/3.0&quot;&gt;CC BY 3.0&lt;/a&gt; &amp;mdash; Map data &amp;copy; &lt;a href=&quot;http://www.openstreetmap.org/copyright&quot;&gt;OpenStreetMap&lt;/a&gt;&#39;,
+        subdomains: &#39;abcd&#39;,
+        minZoom: 0,
+        maxZoom: 20,
+        ext: &#39;png&#39;
+        });
+        catmap.addLayer(Stamen_Toner);
+
+&lt;/script&gt;</code></pre>
+<p>Your web page should now have a map with Stamenís Toner tile layer. It should look something like this:</p>
+<p><img src="images/webpage_section_4-2.png" title="Our web page now contains a web map with Stamen&#39;s Tonor tile layer" /></p>
+<p>Weíll add some of our own data to the map next.</p>
+<div id="add-a-marker" class="section level3" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Add a Marker</h3>
+<p>Letís add a marker so we can find the Quad. The marker will be a blue inverted teardrop that will have a tooltip that says ìQuadî when you hover over it. At the end of your script section, add:</p>
+<pre><code>    //add a marker for the Quad with a tooltip
+            //Quad: 38.541162, -121.749371
+    var marker = new L.marker([38.541112, -121.749350], {
+        opacity: 1.0   //teardrop marker opacity may be set to zero
+        });             
+        marker.bindTooltip(&quot;&lt;b&gt;Quad&lt;b&gt;&quot;, {  });
+        marker.addTo(catmap);</code></pre>
+<p>You now have an interactive map with one marker!</p>
+<p><img src="images/webpage_section_4-2-1.png" title="The web map now has a blue marker with a tooltip that says &#39;Quad&#39;" /></p>
+<p>Notice the order of the code: we first define the marker, then add the tooltip to the marker, and finally we have to add the marker to the map. Defining, adding specifications, then adding an item to the map is a pretty common workflow in Leaflet.</p>
+</div>
+</div>
+<div id="use-external-data" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Use External Data</h2>
+<p>Adding markers by hand is great, but if we have a lot of data? Or what if our data is more complex than a few points to add? What if we want to prepare our data in a GIS or with a script ahead of time? If any of these situations apply to the work we want to do, we probably want to load data from a data file, not writing it out in the code.</p>
+<p>There are many methods to load an external data file in Leaflet. Weíll look at just one here, but there are ways to work with any of the common file types. Here, weíll use data in geoJSON format.</p>
+<div id="about-geojson" class="section level3" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> About GeoJSON</h3>
+<p>GeoJSON is a spatial data format based on the JSON format. Because it is text-based, it is human-readable, however, depending on the complexity of the data, you may not want to try to read it in a text editor. Another advantage of using a text-based format is that it can easily be stored in online version control systems like GitHub, as long as a file size isnít too big. This is a nice feature if you want to host your webmap on <a href="https://pages.github.com/">GitHub Pages</a>.</p>
+<p>Any of the major GIS tools or programming languages can convert vector data to GeoJSON format.</p>
+</div>
+<div id="formatting-the-data" class="section level3" number="4.3.2">
+<h3><span class="header-section-number">4.3.2</span> Formatting the Data</h3>
+<p>Leaflet canít read GeoJSON directly, but to make it work, all we have to do is open the .geojson file in a text editor, add <code>var varable-name = {</code> at the beginning of the file, and <code>}</code> at the end of the file (weíre ìwrappingî the data in a variable declaration). Then we save the file with a .js extension (because what weíve actually done is written a small JavaScript file).</p>
+<p>Weíve done this for you to create the <code>campus_cats.js</code> file, declaring our variable as <code>campus_cats</code>. You can see the GeoJSON structure and the variable declaration if you open the file in a text editor.</p>
+</div>
+<div id="read-the-data" class="section level3" number="4.3.3">
+<h3><span class="header-section-number">4.3.3</span> Read the Data</h3>
+<p>To read the data into our webpage, we need to add another short script section, just above the one weíve been working in that calls our <code>campus_cats.js</code> data file.</p>
+<pre><code>&lt;script src=&quot;campus_cats.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</code></pre>
+<p>Now the data in this file will be available to load into our map.</p>
+</div>
+<div id="add-data-to-the-map" class="section level3" number="4.3.4">
+<h3><span class="header-section-number">4.3.4</span> Add Data to the Map</h3>
+<p>This is the moment youíve been waiting for! Weíll add data from our external data file to the map.</p>
+<p>Add this code to the bottom of your long script section (below where we made our marker for the Quad and above the closing <code>&lt;/script&gt;</code> tag):</p>
+<pre><code>    //add cat points from the GeoJSON (campus_cats.js) file
+
+    var catpoints = L.geoJSON(campus_cats, {  
+        pointToLayer: function(feature, latlng){  
+            return L.circleMarker(latlng, {color: &#39;orange&#39;, radius: 8});
+        }
+    }).addTo(catmap);</code></pre>
+<p>We now have many orange circles for our cats (and one for the quad that we added earlier)!</p>
+<p><img src="images/webpage_section_4-3-4.png" title="Web map with orange circles for cat locations and a blue marker for the quad" /></p>
+<p>What does this code do though?</p>
+<p>First, we create a variable called <em>catpoints</em> using the geojson data which we named <em>campus_cats</em> inside the .js file. Then we create a function called <code>pointToLayer</code> that uses the parameters <em>feature</em> (each row in the data) and <em>latlng</em> (the geometry) from the geojson data. We make a <em>circleMarker</em> using the <em>latlng</em> variable for the position, and use the style options between the {}s to style the marker the way we want it. In this case, itís orange and has a radius of 8 (which is a little smaller than the default). Finally, we add the entire set of markers we built to the map (remember that we called our div that holds our map <em>catmap</em>).</p>
+</div>
+</div>
+<div id="add-a-popup" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> Add a popup</h2>
+<p>It would be nice to have some information available for each marker. Letís make a popup that tells us about each cat. Weíll start with a text popup and gradually add more to it.</p>
+<p>We made our markers for our point locations by iterating over the list of features in our dataset and making a marker for each of them. We can add a function to the one we already have so that once the markers get made, each will get a popup.</p>
+<p>Weíll modify our code that adds our points to look like this:</p>
+<pre><code>    //add cat points from the GeoJSON (campus_cats.js) file
+
+    var catpoints = L.geoJSON(campus_cats, {  
+        pointToLayer: function(feature, latlng){  
+            return L.circleMarker(latlng, {color: &#39;orange&#39;, radius: 8});
+        },
+        onEachFeature: function(feature, layer){
+            layer.bindPopup(&quot;This is a popup!&quot;);
+        }
+    }).addTo(catmap);</code></pre>
+<p><img src="images/webpage_section_4-4.png" title="The web map now has popups that contain place-holder text" /></p>
+<p>What did we do? After the <code>pointToLayer</code> function, we added a new created a new function called <code>OnEachFeature</code> that uses the feature (each row of the data) and the layer information. For each feature, we have it bind a popup to our layer (named <em>catpoints</em>) and put the text that is in the parentheses into the popup. For now, all of our popups will say ìThis is a popup!î. Weíll build on that next.</p>
+<div id="customize-popup-text-with-data" class="section level3" number="4.4.1">
+<h3><span class="header-section-number">4.4.1</span> Customize Popup Text with Data</h3>
+<p>This is progress! We have a map with points and popups that contain placeholder text. Letís use the attribute data from our <em>catpoints</em> layer to add the name of each cat to the popup.</p>
+<p>Instead of the ìThis is a popup!î text, we can use the attribute data from our catpoints data. Replace the current ìThis is a popup!î text with: <code>feature.properties.Name</code> (with no quotes around it). As we loop through each row of our data, the code will add each catís name to the popup.</p>
+<p><img src="images/webpage_section_4-4-1.png" title="The popups now have the cats&#39; names." /></p>
+<p>What if we want to give the popup more context?</p>
+<p>The text for the popup can be plain text, but we can also use HTML to style the text like a very small webpage. (If your head is starting to spin from switching languagesÖ HTML page containing JavaScript containing HTMLÖ this is normal.) Weíll start small and build up to something more complex.</p>
+<p>Maybe we want to indicate that the text in the popup is the name of the cat. We can concatenate (paste together) some text with HTML styling with our code to get the cat names: <code>"&lt;b&gt;Name: &lt;/b&gt;" + feature.properties.Name</code></p>
+<p>Our popups are starting to be much more useful!</p>
+<p><img src="images/webpage_section_4-4-1b.png" title="A popup indicating that the data presented is the name field" /></p>
+<p>Ready to get a little more complex? Letís add a description of the cat. We can use <code>&lt;br&gt;</code> to create a line break and put text onto a new line: <code>"&lt;b&gt;Name: &lt;/b&gt;" + feature.properties.Name + "&lt;br&gt;&lt;b&gt;Description: &lt;/b&gt;"+ feature.properties.details</code> This gets harder to read the longer it gets, so sometimes it helps to write the HTML pieces on separate lines, and once youíre ready to run it, put all the text onto one line. The text portion of our popup text needs to be wrapped in quotation marks but the calls for the data should not be.</p>
+<p><img src="images/webpage_section_4-4-1c.png" title="A popup with the name and text description of a cat" /></p>
+<p>In our data, we have a column that has a link to a picture of each cat. Letís put the catís picture at the top of the popup. The <code>&lt;img&gt;</code> tag will add an image to our popup. <code>"&lt;img src='"+feature.properties.gx_media_links+"' width='259'&gt;&lt;br&gt;&lt;b&gt;Name: &lt;/b&gt;" + feature.properties.Name + "&lt;br&gt;&lt;b&gt;Description: &lt;/b&gt;"+ feature.properties.details</code></p>
+<p>Hereís what the section of our code that adds the catpoints marker should now look like:</p>
+<pre><code>    //add cat points from the GeoJSON (campus_cats.js) file
+
+    var catpoints = L.geoJSON(campus_cats, {  
+        pointToLayer: function(feature, latlng){  
+            return L.circleMarker(latlng, {color: &#39;orange&#39;, radius: 8});
+        },
+        onEachFeature: function(feature, layer){
+            layer.bindPopup(
+                &quot;&lt;img src=&#39;&quot;+feature.properties.gx_media_links+&quot;&#39; width=&#39;259&#39;&gt;&lt;br&gt;&lt;b&gt;Name: &lt;/b&gt;&quot; + feature.properties.Name + &quot;&lt;br&gt;&lt;b&gt;Description: &lt;/b&gt;&quot;+ feature.properties.details);
+        }
+    }).addTo(catmap);</code></pre>
+<p>And here is our we bmap:</p>
+<p><img src="images/webpage_section_4-4-1d.png" title="A popup with a photo, name, and text description" /></p>
+</div>
+</div>
+<div id="put-your-web-page-online" class="section level2" number="4.5">
+<h2><span class="header-section-number">4.5</span> Put Your Web Page online</h2>
+<p>There are many options to put your web page online so others can see and interact with it. At the heart of the task is moving your <em>docs</em> folder to an online server and having some way to host the website. One option that is free of cost and well-documented is to use <a href="https://pages.github.com/">GitHub Pages</a> (see the instructions for a ìproject siteî).</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="build-a-webpage.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="resources.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/ucdavisdatalab/workshop_web_maps/edit/master/04_Build_a_Webmap.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/ucdavisdatalab/workshop_web_maps/blob/master/04_Build_a_Webmap.Rmd",
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
 
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4 Build a Leaflet Web Map | Building Web Maps with Leaflet</title>
-  <meta name="description" content="4 Build a Leaflet Web Map | Building Web Maps with Leaflet" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
-
-  <meta property="og:title" content="4 Build a Leaflet Web Map | Building Web Maps with Leaflet" />
-  <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://ucdavisdatalab.github.io/workshop_web_maps/‚Äù" />
-  
-  
-  <meta name="github-repo" content="ucdavisdatalab/workshop_web_maps" />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4 Build a Leaflet Web Map | Building Web Maps with Leaflet" />
-  
-  
-  
-
-<meta name="author" content="Dr.¬†Michele Tobias" />
-<meta name="author" content="Arthur Koehl" />
-
-
-<meta name="date" content="2022-01-20" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
-<link rel="prev" href="build-a-webpage.html"/>
-<link rel="next" href="resources.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-
-
-<style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-
-</head>
-
-<body>
-
-
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li><a href="https://datalab.ucdavis.edu/">
-  <img src="https://datalab.ucdavis.edu/wp-content/uploads/2019/07/datalab-logo-full-color-rgb-1.png" style="height: 100%; width: 100%; object-fit: contain" />
-</a></li>
-<li><a href="./" style="font-size: 18px">Building Web Maps with Leaflet</a></li>
-
-<li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a>
-<ul>
-<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#description"><i class="fa fa-check"></i><b>0.1</b> Description</a></li>
-<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#learning-objectives"><i class="fa fa-check"></i><b>0.2</b> Learning Objectives</a></li>
-<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#skills"><i class="fa fa-check"></i><b>0.3</b> Skills</a></li>
-<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#prerequisites"><i class="fa fa-check"></i><b>0.4</b> Prerequisites</a></li>
-<li class="chapter" data-level="0.5" data-path="index.html"><a href="index.html#software-tools"><i class="fa fa-check"></i><b>0.5</b> Software &amp; Tools</a></li>
-</ul></li>
-<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
-<ul>
-<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#what-is-a-web-map"><i class="fa fa-check"></i><b>1.1</b> What is a ‚ÄúWeb Map‚Äù?</a></li>
-<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#why-make-a-web-map"><i class="fa fa-check"></i><b>1.2</b> Why make a web map?</a></li>
-<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#examples"><i class="fa fa-check"></i><b>1.3</b> Examples</a></li>
-<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#workflow"><i class="fa fa-check"></i><b>1.4</b> Workflow</a></li>
-<li class="chapter" data-level="1.5" data-path="introduction.html"><a href="introduction.html#leaflet"><i class="fa fa-check"></i><b>1.5</b> Leaflet</a>
-<ul>
-<li class="chapter" data-level="1.5.1" data-path="introduction.html"><a href="introduction.html#other-web-map-tools"><i class="fa fa-check"></i><b>1.5.1</b> Other Web Map Tools</a></li>
-</ul></li>
-<li class="chapter" data-level="1.6" data-path="introduction.html"><a href="introduction.html#workshop-data-uc-davis-campus-cats"><i class="fa fa-check"></i><b>1.6</b> Workshop Data: UC Davis Campus Cats</a></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="set-up.html"><a href="set-up.html"><i class="fa fa-check"></i><b>2</b> Set Up</a>
-<ul>
-<li class="chapter" data-level="2.1" data-path="set-up.html"><a href="set-up.html#download-the-data"><i class="fa fa-check"></i><b>2.1</b> Download the Data</a></li>
-<li class="chapter" data-level="2.2" data-path="set-up.html"><a href="set-up.html#folders"><i class="fa fa-check"></i><b>2.2</b> Folders</a></li>
-<li class="chapter" data-level="2.3" data-path="set-up.html"><a href="set-up.html#files"><i class="fa fa-check"></i><b>2.3</b> Files</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="build-a-webpage.html"><a href="build-a-webpage.html"><i class="fa fa-check"></i><b>3</b> Build a Webpage</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="build-a-webpage.html"><a href="build-a-webpage.html#intro-to-html"><i class="fa fa-check"></i><b>3.1</b> Intro to HTML</a></li>
-<li class="chapter" data-level="3.2" data-path="build-a-webpage.html"><a href="build-a-webpage.html#start-building-your-webpage"><i class="fa fa-check"></i><b>3.2</b> Start Building your Webpage</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html"><i class="fa fa-check"></i><b>4</b> Build a Leaflet Web Map</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#prepare-your-page"><i class="fa fa-check"></i><b>4.1</b> Prepare Your Page</a>
-<ul>
-<li class="chapter" data-level="4.1.1" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#load-the-external-files"><i class="fa fa-check"></i><b>4.1.1</b> Load The External Files</a></li>
-<li class="chapter" data-level="4.1.2" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#add-a-map-div"><i class="fa fa-check"></i><b>4.1.2</b> Add a Map Div</a></li>
-<li class="chapter" data-level="4.1.3" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#add-a-script-section"><i class="fa fa-check"></i><b>4.1.3</b> Add a Script Section</a></li>
-</ul></li>
-<li class="chapter" data-level="4.2" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#add-a-map"><i class="fa fa-check"></i><b>4.2</b> Add A Map</a>
-<ul>
-<li class="chapter" data-level="4.2.1" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#add-a-marker"><i class="fa fa-check"></i><b>4.2.1</b> Add a Marker</a></li>
-</ul></li>
-<li class="chapter" data-level="4.3" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#use-external-data"><i class="fa fa-check"></i><b>4.3</b> Use External Data</a>
-<ul>
-<li class="chapter" data-level="4.3.1" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#about-geojson"><i class="fa fa-check"></i><b>4.3.1</b> About GeoJSON</a></li>
-<li class="chapter" data-level="4.3.2" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#formatting-the-data"><i class="fa fa-check"></i><b>4.3.2</b> Formatting the Data</a></li>
-<li class="chapter" data-level="4.3.3" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#read-the-data"><i class="fa fa-check"></i><b>4.3.3</b> Read the Data</a></li>
-<li class="chapter" data-level="4.3.4" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#add-data-to-the-map"><i class="fa fa-check"></i><b>4.3.4</b> Add Data to the Map</a></li>
-</ul></li>
-<li class="chapter" data-level="4.4" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#add-a-popup"><i class="fa fa-check"></i><b>4.4</b> Add a popup</a>
-<ul>
-<li class="chapter" data-level="4.4.1" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#customize-popup-text-with-data"><i class="fa fa-check"></i><b>4.4.1</b> Customize Popup Text with Data</a></li>
-</ul></li>
-<li class="chapter" data-level="4.5" data-path="build-a-leaflet-web-map.html"><a href="build-a-leaflet-web-map.html#put-your-web-page-online"><i class="fa fa-check"></i><b>4.5</b> Put Your Web Page online</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>5</b> Resources</a></li>
-</ul>
-
-      </nav>
-    </div>
-
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Building Web Maps with Leaflet</a>
-          </h1>
-        </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="build-a-leaflet-web-map" class="section level1" number="4">
-<h1><span class="header-section-number">4</span> Build a Leaflet Web Map</h1>
-<p>Now that we‚Äôve made a basic webpage, we can add our web map.</p>
-<div id="prepare-your-page" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> Prepare Your Page</h2>
-<div id="load-the-external-files" class="section level3" number="4.1.1">
-<h3><span class="header-section-number">4.1.1</span> Load The External Files</h3>
-<p>In the <strong>head</strong> section of our webpage, we need to add some information that will tell our map how to appear (the CSS file) and where to find the Leaflet package (Leaflet JavaScript file).</p>
-<p>CSS stands for Cascading Style Sheet. You can think of this as the parameters that set the way certain objects are displayed in a website. The file we‚Äôll load specifically styles the map elements made with Leaflet.</p>
-<p>Loading the Leaflet JavaScript file enables our webpage to have access to the functions and tools in the Leaflet Library. For R or Python users, this is similar to loading packages or libraries in your code. We could save a static version of this library in our website folders and point to that, or we can link to an online version of it, like we have done in the code below.</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-
-&lt;head&gt;
-&lt;title&gt;UC Davis Campus Cats Map&lt;/title&gt;
-
-&lt;!--Load the Leaflet CSS file --&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/leaflet@1.7.1/dist/leaflet.css&quot; integrity=&quot;sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==&quot;crossorigin=&quot;&quot;/&gt;
-
-&lt;!--Load the Leaflet JavaScript file --&gt;
-&lt;script src=&quot;https://unpkg.com/leaflet@1.7.1/dist/leaflet.js&quot; integrity=&quot;sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==&quot;crossorigin=&quot;&quot;&gt;&lt;/script&gt;
-&lt;/head&gt;
-
-&lt;body&gt;
-&lt;h1&gt;UC Davis Campus Cats Map&lt;/h1&gt;
-&lt;p&gt;This webmap shows the locations of UC Davis campus community cats.&lt;/p&gt;
-
-&lt;/body&gt;
-
-&lt;/html&gt;</code></pre>
-<p>Note that in HTML, comments are written like this: <code>&lt;!-- This is a comment --&gt;</code>. Comments are information for the coder and don‚Äôt render on the website.</p>
-<p>The code we just added doesn‚Äôt make any visible changes on our website so if you reload your web page, you won‚Äôt notice anything new, but it should load. If it has an error or the text doesn‚Äôt show up, you‚Äôll need to debug your code.</p>
-</div>
-<div id="add-a-map-div" class="section level3" number="4.1.2">
-<h3><span class="header-section-number">4.1.2</span> Add a Map Div</h3>
-<p>A <code>&lt;div&gt;</code> element defines a section in your HTML document. Our web map needs its own <code>&lt;div&gt;</code>. We‚Äôll add one inside the <code>&lt;body&gt;</code> of the webpage. Note that the <code>&lt;div&gt;</code> has an ID. This will let us create settings and code that apply to this specific <code>&lt;div&gt;</code>. We can define the style of the <code>&lt;div&gt;</code> inside the tag (as we have done below) or we could do it in the <code>&lt;head&gt;</code> of the document in a <code>&lt;style&gt;</code> subsection, or in a separate CSS file.</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-
-&lt;head&gt;
-&lt;title&gt;UC Davis Campus Cats Map&lt;/title&gt;
-
-&lt;!--Load the Leaflet CSS file --&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/leaflet@1.7.1/dist/leaflet.css&quot; integrity=&quot;sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==&quot;crossorigin=&quot;&quot;/&gt;
-
-&lt;!--Load the Leaflet JavaScript file --&gt;
-&lt;script src=&quot;https://unpkg.com/leaflet@1.7.1/dist/leaflet.js&quot; integrity=&quot;sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==&quot;crossorigin=&quot;&quot;&gt;&lt;/script&gt;
-&lt;/head&gt;
-
-&lt;body&gt;
-&lt;h1&gt;UC Davis Campus Cats Map&lt;/h1&gt;
-&lt;p&gt;This webmap shows the locations of UC Davis campus community cats.&lt;/p&gt;
-
-&lt;div id=&quot;mapid&quot; style=&quot;width: 600px; height: 400px;&quot;&gt;&lt;/div&gt;
-
-&lt;/body&gt;
-
-&lt;/html&gt;</code></pre>
-<p>If you reload your <code>index.html</code> file in your browser, you shouldn‚Äôt notice any difference. If the page doesn‚Äôt load, however, you‚Äôll need to troubleshoot your code. Make sure your tags open and close in the right order.</p>
-</div>
-<div id="add-a-script-section" class="section level3" number="4.1.3">
-<h3><span class="header-section-number">4.1.3</span> Add a Script Section</h3>
-<p>Finally, we need to add a section to our code to hold the Leaflet JavaScript code we will write to make our map. Just below your map <code>&lt;div&gt;</code> (and inside the <strong>body</strong> section), add open and closed <code>&lt;script&gt;</code> tags.</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-
-&lt;head&gt;
-&lt;title&gt;UC Davis Campus Cats Map&lt;/title&gt;
-
-&lt;!--Load the Leaflet CSS file --&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/leaflet@1.7.1/dist/leaflet.css&quot; integrity=&quot;sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==&quot;crossorigin=&quot;&quot;/&gt;
-
-&lt;!--Load the Leaflet JavaScript file --&gt;
-&lt;script src=&quot;https://unpkg.com/leaflet@1.7.1/dist/leaflet.js&quot; integrity=&quot;sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==&quot;crossorigin=&quot;&quot;&gt;&lt;/script&gt;
-&lt;/head&gt;
-
-&lt;body&gt;
-&lt;h1&gt;UC Davis Campus Cats Map&lt;/h1&gt;
-&lt;p&gt;This webmap shows the locations of UC Davis campus community cats.&lt;/p&gt;
-
-&lt;div id=&quot;mapid&quot; style=&quot;width: 600px; height: 400px;&quot;&gt;&lt;/div&gt;
-
-&lt;script&gt;
-
-&lt;/script&gt;
-
-&lt;/body&gt;
-
-&lt;/html&gt;</code></pre>
-</div>
-</div>
-<div id="add-a-map" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> Add A Map</h2>
-<p>Now we‚Äôre ready to add a map. We‚Äôll make a simple one to start and add more data later.</p>
-<p><strong>Note:</strong> from now on, we‚Äôll be working in the <code>&lt;script&gt;</code> section, so the code will just show this section to avoid clutter and focus on what‚Äôs changing in the code.</p>
-<p>Inside the <code>&lt;script&gt;</code> section, we‚Äôll now be writing javascript. <code>//</code> is how you indicate a comment in JavaScript. Outside of this section, you‚Äôll be writing HTML. It can get confusing sometimes, so have patience with yourself.</p>
-<p>First, we‚Äôll create an empty map in our mapid div, then we‚Äôll load Stamen‚Äôs Toner tile service to use as a background layer. The limited color palette of the Toner tile service will make it easier to see the data we‚Äôll be loading later.</p>
-<pre><code>&lt;script&gt;
-
-    //add an empty map called &quot;catmap&quot; to the page in the mapid div
-    var catmap = L.map(&#39;mapid&#39;, {
-        center: [38.538592, -121.75],
-        zoom: 15
-        });
-
-    //add the base map = Stamen Toner tile layer
-    var Stamen_Toner = L.tileLayer(&#39;https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.{ext}&#39;, {
-        attribution: &#39;Map tiles by &lt;a href=&quot;http://stamen.com&quot;&gt;Stamen Design&lt;/a&gt;, &lt;a href=&quot;http://creativecommons.org/licenses/by/3.0&quot;&gt;CC BY 3.0&lt;/a&gt; &amp;mdash; Map data &amp;copy; &lt;a href=&quot;http://www.openstreetmap.org/copyright&quot;&gt;OpenStreetMap&lt;/a&gt;&#39;,
-        subdomains: &#39;abcd&#39;,
-        minZoom: 0,
-        maxZoom: 20,
-        ext: &#39;png&#39;
-        });
-        catmap.addLayer(Stamen_Toner);
-
-&lt;/script&gt;</code></pre>
-<p>Your web page should now have a map with Stamen‚Äôs Toner tile layer. It should look something like this:</p>
-<p><img src="images/webpage_section_4-2.png" title="Our web page now contains a web map with Stamen&#39;s Tonor tile layer" /></p>
-<p>We‚Äôll add some of our own data to the map next.</p>
-<div id="add-a-marker" class="section level3" number="4.2.1">
-<h3><span class="header-section-number">4.2.1</span> Add a Marker</h3>
-<p>Let‚Äôs add a marker so we can find the Quad. The marker will be a blue inverted teardrop that will have a tooltip that says ‚ÄúQuad‚Äù when you hover over it. At the end of your script section, add:</p>
-<pre><code>    //add a marker for the Quad with a tooltip
-            //Quad: 38.541162, -121.749371
-    var marker = new L.marker([38.541112, -121.749350], {
-        opacity: 1.0   //teardrop marker opacity may be set to zero
-        });             
-        marker.bindTooltip(&quot;&lt;b&gt;Quad&lt;b&gt;&quot;, {  });
-        marker.addTo(catmap);</code></pre>
-<p>You now have an interactive map with one marker!</p>
-<p><img src="images/webpage_section_4-2-1.png" title="The web map now has a blue marker with a tooltip that says &#39;Quad&#39;" /></p>
-<p>Notice the order of the code: we first define the marker, then add the tooltip to the marker, and finally we have to add the marker to the map. Defining, adding specifications, then adding an item to the map is a pretty common workflow in Leaflet.</p>
-</div>
-</div>
-<div id="use-external-data" class="section level2" number="4.3">
-<h2><span class="header-section-number">4.3</span> Use External Data</h2>
-<p>Adding markers by hand is great, but if we have a lot of data? Or what if our data is more complex than a few points to add? What if we want to prepare our data in a GIS or with a script ahead of time? If any of these situations apply to the work we want to do, we probably want to load data from a data file, not writing it out in the code.</p>
-<p>There are many methods to load an external data file in Leaflet. We‚Äôll look at just one here, but there are ways to work with any of the common file types. Here, we‚Äôll use data in geoJSON format.</p>
-<div id="about-geojson" class="section level3" number="4.3.1">
-<h3><span class="header-section-number">4.3.1</span> About GeoJSON</h3>
-<p>GeoJSON is a spatial data format based on the JSON format. Because it is text-based, it is human-readable, however, depending on the complexity of the data, you may not want to try to read it in a text editor. Another advantage of using a text-based format is that it can easily be stored in online version control systems like GitHub, as long as a file size isn‚Äôt too big. This is a nice feature if you want to host your webmap on <a href="https://pages.github.com/">GitHub Pages</a>.</p>
-<p>Any of the major GIS tools or programming languages can convert vector data to GeoJSON format.</p>
-</div>
-<div id="formatting-the-data" class="section level3" number="4.3.2">
-<h3><span class="header-section-number">4.3.2</span> Formatting the Data</h3>
-<p>Leaflet can‚Äôt read GeoJSON directly, but to make it work, all we have to do is open the .geojson file in a text editor, add <code>var varable-name = {</code> at the beginning of the file, and <code>}</code> at the end of the file (we‚Äôre ‚Äúwrapping‚Äù the data in a variable declaration). Then we save the file with a .js extension (because what we‚Äôve actually done is written a small JavaScript file).</p>
-<p>We‚Äôve done this for you to create the <code>campus_cats.js</code> file, declaring our variable as <code>campus_cats</code>. You can see the GeoJSON structure and the variable declaration if you open the file in a text editor.</p>
-</div>
-<div id="read-the-data" class="section level3" number="4.3.3">
-<h3><span class="header-section-number">4.3.3</span> Read the Data</h3>
-<p>To read the data into our webpage, we need to add another short script section, just above the one we‚Äôve been working in that calls our <code>campus_cats.js</code> data file.</p>
-<pre><code>&lt;script src=&quot;campus_cats.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</code></pre>
-<p>Now the data in this file will be available to load into our map.</p>
-</div>
-<div id="add-data-to-the-map" class="section level3" number="4.3.4">
-<h3><span class="header-section-number">4.3.4</span> Add Data to the Map</h3>
-<p>This is the moment you‚Äôve been waiting for! We‚Äôll add data from our external data file to the map.</p>
-<p>Add this code to the bottom of your long script section (below where we made our marker for the Quad and above the closing <code>&lt;/script&gt;</code> tag):</p>
-<pre><code>    //add cat points from the GeoJSON (campus_cats.js) file
-
-    var catpoints = L.geoJSON(campus_cats, {  
-        pointToLayer: function(feature, latlng){  
-            return L.circleMarker(latlng, {color: &#39;orange&#39;, radius: 8});
-        }
-    }).addTo(catmap);</code></pre>
-<p>We now have many orange circles for our cats (and one for the quad that we added earlier)!</p>
-<p><img src="images/webpage_section_4-3-4.png" title="Web map with orange circles for cat locations and a blue marker for the quad" /></p>
-<p>What does this code do though?</p>
-<p>First, we create a variable called <em>catpoints</em> using the geojson data which we named <em>campus_cats</em> inside the .js file. Then we create a function called <code>pointToLayer</code> that uses the parameters <em>feature</em> (each row in the data) and <em>latlng</em> (the geometry) from the geojson data. We make a <em>circleMarker</em> using the <em>latlng</em> variable for the position, and use the style options between the {}s to style the marker the way we want it. In this case, it‚Äôs orange and has a radius of 8 (which is a little smaller than the default). Finally, we add the entire set of markers we built to the map (remember that we called our div that holds our map <em>catmap</em>).</p>
-</div>
-</div>
-<div id="add-a-popup" class="section level2" number="4.4">
-<h2><span class="header-section-number">4.4</span> Add a popup</h2>
-<p>It would be nice to have some information available for each marker. Let‚Äôs make a popup that tells us about each cat. We‚Äôll start with a text popup and gradually add more to it.</p>
-<p>We made our markers for our point locations by iterating over the list of features in our dataset and making a marker for each of them. We can add a function to the one we already have so that once the markers get made, each will get a popup.</p>
-<p>We‚Äôll modify our code that adds our points to look like this:</p>
-<pre><code>    //add cat points from the GeoJSON (campus_cats.js) file
-
-    var catpoints = L.geoJSON(campus_cats, {  
-        pointToLayer: function(feature, latlng){  
-            return L.circleMarker(latlng, {color: &#39;orange&#39;, radius: 8});
-        },
-        onEachFeature: function(feature, layer){
-            layer.bindPopup(&quot;This is a popup!&quot;);
-        }
-    }).addTo(catmap);</code></pre>
-<p><img src="images/webpage_section_4-4.png" title="The web map now has popups that contain place-holder text" /></p>
-<p>What did we do? After the <code>pointToLayer</code> function, we added a new created a new function called <code>OnEachFeature</code> that uses the feature (each row of the data) and the layer information. For each feature, we have it bind a popup to our layer (named <em>catpoints</em>) and put the text that is in the parentheses into the popup. For now, all of our popups will say ‚ÄúThis is a popup!‚Äù. We‚Äôll build on that next.</p>
-<div id="customize-popup-text-with-data" class="section level3" number="4.4.1">
-<h3><span class="header-section-number">4.4.1</span> Customize Popup Text with Data</h3>
-<p>This is progress! We have a map with points and popups that contain placeholder text. Let‚Äôs use the attribute data from our <em>catpoints</em> layer to add the name of each cat to the popup.</p>
-<p>Instead of the ‚ÄúThis is a popup!‚Äù text, we can use the attribute data from our catpoints data. Replace the current ‚ÄúThis is a popup!‚Äù text with: <code>feature.properties.Name</code> (with no quotes around it). As we loop through each row of our data, the code will add each cat‚Äôs name to the popup.</p>
-<p><img src="images/webpage_section_4-4-1.png" title="The popups now have the cats&#39; names." /></p>
-<p>What if we want to give the popup more context?</p>
-<p>The text for the popup can be plain text, but we can also use HTML to style the text like a very small webpage. (If your head is starting to spin from switching languages‚Ä¶ HTML page containing JavaScript containing HTML‚Ä¶ this is normal.) We‚Äôll start small and build up to something more complex.</p>
-<p>Maybe we want to indicate that the text in the popup is the name of the cat. We can concatenate (paste together) some text with HTML styling with our code to get the cat names: <code>"&lt;b&gt;Name: &lt;/b&gt;" + feature.properties.Name</code></p>
-<p>Our popups are starting to be much more useful!</p>
-<p><img src="images/webpage_section_4-4-1b.png" title="A popup indicating that the data presented is the name field" /></p>
-<p>Ready to get a little more complex? Let‚Äôs add a description of the cat. We can use <code>&lt;br&gt;</code> to create a line break and put text onto a new line: <code>"&lt;b&gt;Name: &lt;/b&gt;" + feature.properties.Name + "&lt;br&gt;&lt;b&gt;Description: &lt;/b&gt;"+ feature.properties.details</code> This gets harder to read the longer it gets, so sometimes it helps to write the HTML pieces on separate lines, and once you‚Äôre ready to run it, put all the text onto one line. The text portion of our popup text needs to be wrapped in quotation marks but the calls for the data should not be.</p>
-<p><img src="images/webpage_section_4-4-1c.png" title="A popup with the name and text description of a cat" /></p>
-<p>In our data, we have a column that has a link to a picture of each cat. Let‚Äôs put the cat‚Äôs picture at the top of the popup. The <code>&lt;img&gt;</code> tag will add an image to our popup. <code>"&lt;img src='"+feature.properties.gx_media_links+"' width='259'&gt;&lt;br&gt;&lt;b&gt;Name: &lt;/b&gt;" + feature.properties.Name + "&lt;br&gt;&lt;b&gt;Description: &lt;/b&gt;"+ feature.properties.details</code></p>
-<p>Here‚Äôs what the section of our code that adds the catpoints marker should now look like:</p>
-<pre><code>    //add cat points from the GeoJSON (campus_cats.js) file
-
-    var catpoints = L.geoJSON(campus_cats, {  
-        pointToLayer: function(feature, latlng){  
-            return L.circleMarker(latlng, {color: &#39;orange&#39;, radius: 8});
-        },
-        onEachFeature: function(feature, layer){
-            layer.bindPopup(
-                &quot;&lt;img src=&#39;&quot;+feature.properties.gx_media_links+&quot;&#39; width=&#39;259&#39;&gt;&lt;br&gt;&lt;b&gt;Name: &lt;/b&gt;&quot; + feature.properties.Name + &quot;&lt;br&gt;&lt;b&gt;Description: &lt;/b&gt;&quot;+ feature.properties.details);
-        }
-    }).addTo(catmap);</code></pre>
-<p>And here is our we bmap:</p>
-<p><img src="images/webpage_section_4-4-1d.png" title="A popup with a photo, name, and text description" /></p>
-</div>
-</div>
-<div id="put-your-web-page-online" class="section level2" number="4.5">
-<h2><span class="header-section-number">4.5</span> Put Your Web Page online</h2>
-<p>There are many options to put your web page online so others can see and interact with it. At the heart of the task is moving your <em>docs</em> folder to an online server and having some way to host the website. One option that is free of cost and well-documented is to use <a href="https://pages.github.com/">GitHub Pages</a> (see the instructions for a ‚Äúproject site‚Äù).</p>
-
-</div>
-</div>
-            </section>
-
-          </div>
-        </div>
-      </div>
-<a href="build-a-webpage.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="resources.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
-  </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": false,
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/ucdavisdatalab/workshop_web_maps/edit/master/04_Build_a_Webmap.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": "https://github.com/ucdavisdatalab/workshop_web_maps/blob/master/04_Build_a_Webmap.Rmd",
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "section"
-}
-});
-});
-</script>
-
-</body>
-
-</html>

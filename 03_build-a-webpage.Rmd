@@ -38,7 +38,7 @@ We've made a blank webpage! Now, let's add something more interesting to it.
 
 The beginning of the HTML document is where you normally place the parameters and settings that make the webpage work.  We'll add a section called **head** to our page to contain some of these parameters. Inside of the *head* section, we'll indicate the title of our webpage, wrapped in `<title>` tags. This puts the name of the webpage  in the tab at the top of the browser.
 
-Note: We'll highlight new text and code that we add to the code sections in yellow to draw attention to what's changed.
+**NOTE:** We'll highlight new text and code that we add to the code sections in yellow to draw attention to what's changed.
 
 ```
 <!DOCTYPE html>

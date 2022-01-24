@@ -221,7 +221,7 @@ To read the data into our webpage, we need to add another short script section, 
 
 <div id="mapid" style="width: 600px; height: 400px;"></div>
 
-<highlight><script src="campus_cats.js" type="text/javascript"></script><highlight>
+<highlight><script src="campus_cats.js" type="text/javascript"></script></highlight>
 
 <script>
 ```

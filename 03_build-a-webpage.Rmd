@@ -58,14 +58,13 @@ The **body** section of a web page contains the code that appears on the actual 
 ```
 <html>
 
-<highlight><head>
+<head>
 <title>UC Davis Campus Cats Map</title>
 </head>
 
-<body>
+<highlight><body>
 <h1>UC Davis Campus Cats Map</h1>
 <p>This webmap shows the locations of UC Davis campus community cats.</p>
-
 </body></highlight>
 
 </html>

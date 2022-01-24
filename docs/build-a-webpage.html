@@ -25,7 +25,7 @@
 <meta name="author" content="Arthur Koehl" />
 
 
-<meta name="date" content="2022-01-21" />
+<meta name="date" content="2022-01-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -156,7 +156,7 @@
 <div id="intro-to-html" class="section level2" number="3.1">
 <h2><span class="header-section-number">3.1</span> Intro to HTML</h2>
 <p>HTML stands for “hypertext markup language”. If you’ve ever used R Markdown or GitHub Markdown or worked in a Jupiter Notebook, you’ll notice some similarities, but probably more differences.</p>
-<p>The key thing to understand about HTML is that every element (text, code, images, etc.) you put into your code needs to be labeled to tell the web browser how to render that element. We label the elements with a <strong>tag</strong>. We label the start of an element with an opening tag, such as <code>&lt;p&gt;</code> to start a paragraph, and end it with a closing tag, such as <code>&lt;/p&gt;</code>. Some tags are special and don’t need to be closed, such as a line break <code>&lt;br&gt;</code>, but those are rare.</p>
+<p>The key thing to understand about HTML is that every element (text, code, images, etc.) you put into your code needs to be labeled to tell the web browser how to render that element. We label the elements with a <strong>tag</strong>. We label the start of an element with an <strong>opening tag</strong>, such as <code>&lt;p&gt;</code> to start a paragraph, and end it with a <strong>closing tag</strong>, such as <code>&lt;/p&gt;</code>. Some tags are special and don’t need to be closed, such as a line break <code>&lt;br&gt;</code>, but those are rare.</p>
 <p>For example:</p>
 <pre><code>&lt;h1&gt;This is a heading&lt;/h1&gt;
 &lt;p&gt;This is text in a paragraph.&lt;/p&gt;</code></pre>
@@ -164,14 +164,16 @@
 </div>
 <div id="start-building-your-webpage" class="section level2" number="3.2">
 <h2><span class="header-section-number">3.2</span> Start Building your Webpage</h2>
-<p>Open the <code>index.html</code> file (it’s in the ‘docs’ folder) in a text editor. Using a text editor with syntax highlighting can be helpful, but isn’t mandatory. Since we just created it, the file is blank. We’ll add some code to get started.</p>
-<p>The first, we need to indicate that our text file contains HTML, and then place opening and closing tags to indicate which part of the document contains HTML. We’ll write our webpage code between those HTML tags.</p>
+<p>Open the <code>index.html</code> file (it’s in the ‘docs’ folder) in a text editor either by starting your text editor program and loading the index.html file, or right clicking on the file in your file browser, choosing “open with” from the menu, and then choosing the editor program you want to use. Using a text editor with syntax highlighting can be helpful, but isn’t mandatory. Since we just created it, the file is blank. We’ll add some code to get started.</p>
+<p>The first, we need to indicate that our text file contains HTML, and then place opening and closing tags to indicate which part of the document contains HTML. We’ll eventually write our webpage code between those HTML tags.</p>
 <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 
 &lt;/html&gt;</code></pre>
+<p>Open your index.html file in a web browser such as Chrome or Firefox. Double clicking on the file in your file explorer will open it in your defaultbrowser. Yes, it’s ok that we have the same file open in two programs because the browser just renders the file and you can’t edit it from here.</p>
 <p>We’ve made a blank webpage! Now, let’s add something more interesting to it.</p>
 <p>The beginning of the HTML document is where you normally place the parameters and settings that make the webpage work. We’ll add a section called <strong>head</strong> to our page to contain some of these parameters. Inside of the <em>head</em> section, we’ll indicate the title of our webpage, wrapped in <code>&lt;title&gt;</code> tags. This puts the name of the webpage in the tab at the top of the browser.</p>
+<p>Note: We’ll highlight new text and code that we add to the code sections in yellow to draw attention to what’s changed.</p>
 <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 
@@ -180,7 +182,7 @@
 &lt;/head&gt;</span>
 
 &lt;/html&gt;</code></pre>
-<p>If you open your <code>index.html</code> file in your web browser, you’ll have a blank page with a tab called “UC Davis Campus Cats Map”.</p>
+<p>If you reload the <code>index.html</code> file in your web browser, you’ll have a blank page with a tab called “UC Davis Campus Cats Map”.</p>
 <p>The <strong>body</strong> section of a web page contains the code that appears on the actual web page. We’ll add a <em>body</em> section and some information. Note that <code>&lt;h1&gt;</code> makes a heading and <code>&lt;p&gt;</code> makes a paragraph.</p>
 <pre><code>&lt;html&gt;
 
@@ -188,11 +190,10 @@
 &lt;title&gt;UC Davis Campus Cats Map&lt;/title&gt;
 &lt;/head&gt;
 
-&lt;body&gt;
+<span style="background-color:#ffff7f">&lt;body&gt;
 &lt;h1&gt;UC Davis Campus Cats Map&lt;/h1&gt;
 &lt;p&gt;This webmap shows the locations of UC Davis campus community cats.&lt;/p&gt;
-
-&lt;/body&gt;
+&lt;/body&gt;</span>
 
 &lt;/html&gt;</code></pre>
 <p>Reload your <code>index.html</code> document in your browser to see your new text. You have now written a short but very legitimate HTML webpage! We could certainly write more text, but for the sake of demonstration, we’ll keep it short for now. In the next section, we’ll build the code that makes our web map.</p>

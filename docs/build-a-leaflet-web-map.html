@@ -359,6 +359,7 @@
 <p><img src="images/webpage_section_4-3-4.png" title="Web map with orange circles for cat locations and a blue marker for the quad" /></p>
 <p>What does this code do though?</p>
 <p>First, we create a variable called <em>catpoints</em> using the geojson data which we named <em>campus_cats</em> inside the .js file. Then we create a function called <code>pointToLayer</code> that uses the parameters <em>feature</em> (each row in the data) and <em>latlng</em> (the geometry) from the geojson data. We make a <em>circleMarker</em> using the <em>latlng</em> variable for the position, and use the style options between the {}s to style the marker the way we want it. In this case, it’s orange and has a radius of 8 (which is a little smaller than the default). Finally, we add the entire set of markers we built to the map (remember that we called our div that holds our map <em>catmap</em>).</p>
+<p><strong>CHECK YOUR WORK:</strong> Compare your code with <a href="https://github.com/ucdavisdatalab/workshop_web_maps/blob/main/example_code/end_of_section_4-3-4.html">example code up to this point in the workshop</a>.</p>
 </div>
 </div>
 <div id="add-a-popup" class="section level2" number="4.4">
@@ -435,6 +436,7 @@
     }).addTo(catmap);</code></pre>
 <p>And here is our web map:</p>
 <p><img src="images/webpage_section_4-4-1d.png" title="A popup with a photo, name, and text description" /></p>
+<p><strong>CHECK YOUR WORK:</strong> Compare your code with <a href="https://github.com/ucdavisdatalab/workshop_web_maps/blob/main/example_code/end_of_section_4-4-1.html">example code up to this point in the workshop</a>.</p>
 </div>
 </div>
 <div id="put-your-web-page-online" class="section level2" number="4.5">

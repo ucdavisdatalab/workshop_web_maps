@@ -1,5 +1,7 @@
 # Build a Leaflet Web Map
 
+**START FROM HERE:** You can keep working on your code from the previous section, or use the [example code up to this point in the workshop](example_code/end_of_section_3-2.html).
+
 Now that we've made a basic webpage, we can add our web map.
 
 ## Prepare Your Page

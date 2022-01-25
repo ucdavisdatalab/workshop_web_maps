@@ -79,4 +79,4 @@ Reload your `index.html` document in your browser to see your new text. You have
 
 ![](images/webpage_section_3-2.png "A simple web page with text about the project and a named tab")
 
-**CHECK YOUR WORK:** Compare your code with [example code up to this point in the workshop](example_code/end_of_section_3-2.html).
+**CHECK YOUR WORK:** Compare your code with [example code up to this point in the workshop](https://github.com/ucdavisdatalab/workshop_web_maps/blob/main/example_code/end_of_section_3-2.html).

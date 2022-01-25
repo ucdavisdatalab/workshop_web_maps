@@ -263,6 +263,8 @@ What does this code do though?
 
 First, we create a variable called *catpoints* using the geojson data which we named *campus_cats* inside the .js file. Then we create a function called `pointToLayer` that uses the parameters *feature* (each row in the data) and *latlng* (the geometry) from the geojson data. We make a *circleMarker* using the *latlng* variable for the position, and use the style options between the {}s to style the marker the way we want it. In this case, it's orange and has a radius of 8 (which is a little smaller than the default). Finally, we add the entire set of markers we built to the map (remember that we called our div that holds our map *catmap*).
 
+**CHECK YOUR WORK:** Compare your code with [example code up to this point in the workshop](https://github.com/ucdavisdatalab/workshop_web_maps/blob/main/example_code/end_of_section_4-3-4.html).
+
 ## Add a popup
 
 It would be nice to have some information available for each marker. Let's make a popup that tells us about each cat.  We'll start with a text popup and gradually add more to it.
@@ -370,6 +372,8 @@ Here's what the section of our code that adds the catpoints marker should now lo
 And here is our web map:
 
 ![](images/webpage_section_4-4-1d.png "A popup with a photo, name, and text description")
+
+**CHECK YOUR WORK:** Compare your code with [example code up to this point in the workshop](https://github.com/ucdavisdatalab/workshop_web_maps/blob/main/example_code/end_of_section_4-4-1.html).
 
 ## Put Your Web Page online
 There are many options to put your web page online so others can see and interact with it. At the heart of the task is moving your *docs* folder to an online server and having some way to host the website. One option that is free of cost and well-documented is to use [GitHub Pages](https://pages.github.com/) (see the instructions for a "project site").

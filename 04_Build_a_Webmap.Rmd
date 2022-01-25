@@ -159,7 +159,7 @@ Let's add a marker so we can find the Quad. The marker will be a blue inverted t
 	var marker = new L.marker([38.541112, -121.749350], {
 		opacity: 1.0   //teardrop marker opacity may be set to zero
 		}); 			
-		marker.bindTooltip("<b>Quad<b>", {	});
+		marker.bindTooltip("<b>Quad</b>", {	});
 		marker.addTo(catmap);</highlight>
 		
 </script>

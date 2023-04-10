@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4 Build a Leaflet Web Map | Building Web Maps with Leaflet</title>
-  <meta name="description" content="4 Build a Leaflet Web Map | Building Web Maps with Leaflet" />
+  <title>7 Use External Data | Building Web Maps with Leaflet</title>
+  <meta name="description" content="7 Use External Data | Building Web Maps with Leaflet" />
   <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4 Build a Leaflet Web Map | Building Web Maps with Leaflet" />
+  <meta property="og:title" content="7 Use External Data | Building Web Maps with Leaflet" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="ucdavisdatalab/workshop_web_maps" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4 Build a Leaflet Web Map | Building Web Maps with Leaflet" />
+  <meta name="twitter:title" content="7 Use External Data | Building Web Maps with Leaflet" />
   
   
   
@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="build-a-webpage.html"/>
-<link rel="next" href="add-a-map-1.html"/>
+<link rel="prev" href="resources.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -180,207 +180,60 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="build-a-leaflet-web-map" class="section level1 hasAnchor" number="4">
-<h1><span class="header-section-number">4</span> Build a Leaflet Web Map<a href="build-a-leaflet-web-map.html#build-a-leaflet-web-map" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p><strong>START FROM HERE:</strong> You can keep working on your code from the previous section, or use the <a href="https://github.com/ucdavisdatalab/workshop_web_maps/blob/main/example_code/end_of_section_3-2.html">example code up to this point in the workshop</a>.</p>
-<p>Now that we’ve made a basic webpage, we can add our web map.</p>
-<div id="prepare-your-page" class="section level2 hasAnchor" number="4.1">
-<h2><span class="header-section-number">4.1</span> Prepare Your Page<a href="build-a-leaflet-web-map.html#prepare-your-page" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="load-the-external-files" class="section level3 hasAnchor" number="4.1.1">
-<h3><span class="header-section-number">4.1.1</span> Load The External Files<a href="build-a-leaflet-web-map.html#load-the-external-files" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>In the <strong>head</strong> section of our webpage, we need to add some information that will tell our map how to appear (the CSS file) and where to find the Leaflet package (Leaflet JavaScript file).</p>
-<p>CSS stands for Cascading Style Sheet. You can think of this as the parameters that set the way certain objects are displayed in a website. The pre-made file we’ll load specifically styles the map elements made with Leaflet.</p>
-<p>Loading the Leaflet JavaScript file enables our webpage to have access to the functions and tools in the Leaflet Library. For R or Python users, this is similar to loading packages or libraries in your code. We could save a static version of this library in our website folders and point to that, or we can link to an online version of it, like we have done in the code below. For the most recent version of these links, check the <a href="https://leafletjs.com/download.html">Leaflet Download page</a> in the section called “Using a Hosted Version of Leaflet”.</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-
-&lt;head&gt;
-&lt;title&gt;UC Davis Campus Food Map&lt;/title&gt;
-
-&lt;highlight&gt;
-&lt;!--Load the Leaflet CSS file --&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/leaflet@1.9.3/dist/leaflet.css&quot; integrity=&quot;sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=&quot; crossorigin=&quot;&quot; /&gt;
-
-&lt;!--Load the Leaflet JavaScript file --&gt;
-&lt;script src=&quot;https://unpkg.com/leaflet@1.9.3/dist/leaflet.js&quot; integrity=&quot;sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=&quot; crossorigin=&quot;&quot;&gt;&lt;/script&gt;
-&lt;/highlight&gt;
-&lt;/head&gt;
-
-&lt;body&gt;
-&lt;h1&gt;UC Davis Campus Food Map&lt;/h1&gt;
-&lt;p&gt;This webmap shows the locations of UC Davis campus grab-and-go dining options.&lt;/p&gt;
-&lt;/body&gt;
-
-&lt;/html&gt;</code></pre>
-<p>Note that in HTML, comments are written like this: <code>&lt;!-- This is a comment --&gt;</code>. Comments are information for a person writing or reading the code and don’t render on the website.</p>
-<p>The code we just added doesn’t make any visible changes on our website so if you reload your web page, you won’t notice anything new, but it should load. If it has an error or the text doesn’t show up, you’ll need to debug your code.</p>
-</div>
-<div id="add-a-map-div" class="section level3 hasAnchor" number="4.1.2">
-<h3><span class="header-section-number">4.1.2</span> Add a Map Div<a href="build-a-leaflet-web-map.html#add-a-map-div" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>A <code>&lt;div&gt;</code> element defines a section in your HTML document. Our web map needs its own <code>&lt;div&gt;</code>. We’ll add one inside the <code>&lt;body&gt;</code> of the webpage. Note that the <code>&lt;div&gt;</code> has an ID named <em>“mapid”</em>. This will let us create settings and code that apply to this specific <code>&lt;div&gt;</code>. We can define the style of the <code>&lt;div&gt;</code> inside the tag (as we have done below) or we could do it in the <code>&lt;head&gt;</code> of the document in a <code>&lt;style&gt;</code> subsection, or in a separate CSS file. There are many good reasons to choose any of these places. We’re defining the style inside the <code>&lt;div&gt;</code> tag to make it easier to see how it applies to this specific <code>&lt;div&gt;</code> and to keep the code for the map all in one place.</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-
-&lt;head&gt;
-&lt;title&gt;UC Davis Campus Food Map&lt;/title&gt;
-
-&lt;!--Load the Leaflet CSS file --&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/leaflet@1.9.3/dist/leaflet.css&quot; integrity=&quot;sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=&quot; crossorigin=&quot;&quot; /&gt;
-
-&lt;!--Load the Leaflet JavaScript file --&gt;
-&lt;script src=&quot;https://unpkg.com/leaflet@1.9.3/dist/leaflet.js&quot; integrity=&quot;sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=&quot; crossorigin=&quot;&quot;&gt;&lt;/script&gt;
-
-&lt;/head&gt;
-
-&lt;body&gt;
-&lt;h1&gt;UC Davis Campus Food Map&lt;/h1&gt;
-&lt;p&gt;This webmap shows the locations of UC Davis campus grab-and-go dining options.&lt;/p&gt;
-
-&lt;highlight&gt;
-&lt;div id=&quot;mapid&quot; style=&quot;width: 600px; height: 400px;&quot;&gt;&lt;/div&gt;
-&lt;/highlight&gt;
-
-&lt;/body&gt;
-
-&lt;/html&gt;</code></pre>
-<p>If you reload your <code>index.html</code> file in your browser, you shouldn’t notice any difference. If the page doesn’t load, however, you’ll need to troubleshoot your code. Make sure your tags open and close in the right order.</p>
-</div>
-<div id="add-a-script-section" class="section level3 hasAnchor" number="4.1.3">
-<h3><span class="header-section-number">4.1.3</span> Add a Script Section<a href="build-a-leaflet-web-map.html#add-a-script-section" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Finally, we need to add a section to our code to hold the Leaflet JavaScript code we will write to make our map. Just below your map <code>&lt;div&gt;</code> (and inside the <strong>body</strong> section), add open and closed <code>&lt;script&gt;</code> tags.</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-
-&lt;head&gt;
-&lt;title&gt;UC Davis Campus Food Map&lt;/title&gt;
-
-&lt;!--Load the Leaflet CSS file --&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/leaflet@1.9.3/dist/leaflet.css&quot; integrity=&quot;sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=&quot; crossorigin=&quot;&quot; /&gt;
-
-&lt;!--Load the Leaflet JavaScript file --&gt;
-&lt;script src=&quot;https://unpkg.com/leaflet@1.9.3/dist/leaflet.js&quot; integrity=&quot;sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=&quot; crossorigin=&quot;&quot;&gt;&lt;/script&gt;
-
-&lt;/head&gt;
-
-&lt;body&gt;
-&lt;h1&gt;UC Davis Campus Food Map&lt;/h1&gt;
-&lt;p&gt;This webmap shows the locations of UC Davis campus grab-and-go dining options.&lt;/p&gt;
-
-&lt;div id=&quot;mapid&quot; style=&quot;width: 600px; height: 400px;&quot;&gt;&lt;/div&gt;
-
-&lt;highlight&gt;
-&lt;script&gt;
-
-&lt;/script&gt;
-&lt;/highlight&gt;
-
-&lt;/body&gt;
-
-&lt;/html&gt;</code></pre>
-<p><strong>CHECK YOUR WORK:</strong> Compare your code with <a href="https://github.com/ucdavisdatalab/workshop_web_maps/blob/main/example_code/end_of_section_4-1-3.html">example code up to this point in the workshop</a>.</p>
-</div>
-</div>
-<div id="add-a-map" class="section level2 hasAnchor" number="4.2">
-<h2><span class="header-section-number">4.2</span> Add A Map<a href="build-a-leaflet-web-map.html#add-a-map" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Now we’re ready to add a map. We’ll make a simple one to start and add more data later.</p>
-<p>Inside the <code>&lt;script&gt;</code> section, we’ll now be writing javascript. <code>//</code> is how you indicate a comment in JavaScript. Outside of this section, you’ll be writing HTML. It can get confusing sometimes, so have patience with yourself.</p>
-<p>First, we’ll create an empty map in our mapid <code>&lt;div&gt;</code>, then we’ll load Stamen’s Toner tile service to use as a background layer. The limited color palette of the Toner tile service will make it easier to see the data we’ll be loading later.</p>
-<p>A tile service is a pre-built background layer that is available at various geographic scales. The data is stored on a server and we can request the data show up in our map. Some of these are free and open. Other require registration or charge a fee. Stamen has several free (and beautiful) tile services that we can use.</p>
-<p><strong>Note:</strong> from now on, we’ll be working in the <code>&lt;script&gt;</code> section, so the code will just show this section to avoid clutter and focus on what’s changing in the code.</p>
-<pre><code>&lt;script&gt;
-
-    &lt;highlight&gt;//add an empty map called &quot;catmap&quot; to the page in the mapid div
-    var catmap = L.map(&#39;mapid&#39;, {
-        center: [38.538592, -121.75],
-        zoom: 15
-        });
-
-    //add the base map = Stamen Toner tile layer
-    var Stamen_Toner = L.tileLayer(&#39;https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.{ext}&#39;, {
-        attribution: &#39;Map tiles by &lt;a href=&quot;http://stamen.com&quot;&gt;Stamen Design&lt;/a&gt;, &lt;a href=&quot;http://creativecommons.org/licenses/by/3.0&quot;&gt;CC BY 3.0&lt;/a&gt; &amp;mdash; Map data &amp;copy; &lt;a href=&quot;http://www.openstreetmap.org/copyright&quot;&gt;OpenStreetMap&lt;/a&gt;&#39;,
-        subdomains: &#39;abcd&#39;,
-        minZoom: 0,
-        maxZoom: 20,
-        ext: &#39;png&#39;
-        });
-        catmap.addLayer(Stamen_Toner);&lt;/highlight&gt;
-
-&lt;/script&gt;</code></pre>
-<p>Your web page should now have a map with Stamen’s Toner tile layer. It should look something like this:</p>
-<p><img src="images/webpage_section_4-2.png" title="Our web page now contains a web map with Stamen&#39;s Tonor tile layer" /></p>
-<p>We’ll add some of our own data to the map next.</p>
-<div id="add-a-marker" class="section level3 hasAnchor" number="4.2.1">
-<h3><span class="header-section-number">4.2.1</span> Add a Marker<a href="build-a-leaflet-web-map.html#add-a-marker" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Let’s add a marker so we can find the Quad. The marker will be a blue inverted teardrop that will have a tooltip that says “Quad” when you hover over it. At the end of your script section, add:</p>
-<pre><code>    &lt;highlight&gt;//add a marker for the Quad with a tooltip
-            //Quad: 38.541162, -121.749371
-    var marker = new L.marker([38.541112, -121.749350], {
-        opacity: 1.0   //teardrop marker opacity may be set to zero
-        });             
-        marker.bindTooltip(&quot;&lt;b&gt;Quad&lt;/b&gt;&quot;, { });
-        marker.addTo(catmap);&lt;/highlight&gt;
-        
-&lt;/script&gt;</code></pre>
-<p>You now have an interactive map with one marker!</p>
-<p><img src="images/webpage_section_4-2-1.png" title="The web map now has a blue marker with a tooltip that says &#39;Quad&#39;" /></p>
-<p>Notice the order of the code: we first define the marker, then add the tooltip to the marker, and finally we have to add the marker to the map. Defining, adding specifications, then adding an item to the map is a pretty common workflow in Leaflet.</p>
-<p><strong>CHECK YOUR WORK:</strong> Compare your code with <a href="https://github.com/ucdavisdatalab/workshop_web_maps/blob/main/example_code/end_of_section_4-2-1.html">example code up to this point in the workshop</a>.</p>
-</div>
-</div>
-<div id="use-external-data" class="section level2 hasAnchor" number="4.3">
-<h2><span class="header-section-number">4.3</span> Use External Data<a href="build-a-leaflet-web-map.html#use-external-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="use-external-data-2" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">7</span> Use External Data<a href="use-external-data-2.html#use-external-data-2" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><strong>START FROM HERE:</strong> You can keep working on your code from the previous section, or use the <a href="https://github.com/ucdavisdatalab/workshop_web_maps/blob/main/example_code/end_of_sec_5.html">example code up to this point in the workshop</a>.</p>
+<p>Next we’ll add data to the map using a dataset.</p>
+<div id="use-external-data-3" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Use External Data<a href="use-external-data-2.html#use-external-data-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Adding markers by hand is great, but what if we have a lot of data? Or what if our data is more complex than a few points to add? What if we want to prepare our data in a GIS or with a script ahead of time? If any of these situations apply to the work we want to do, we probably want to load data from a data file, not writing it out in the code.</p>
 <p>There are many methods to load an external data file in Leaflet. We’ll look at just one here, but there are ways to work with any of the common file types. Here, we’ll use data in geoJSON format.</p>
-<div id="about-geojson" class="section level3 hasAnchor" number="4.3.1">
-<h3><span class="header-section-number">4.3.1</span> About GeoJSON<a href="build-a-leaflet-web-map.html#about-geojson" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="about-geojson-2" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> About GeoJSON<a href="use-external-data-2.html#about-geojson-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>GeoJSON is a spatial data format based on the JSON format. Both JSON and GeoJSON are open standard file formats that text-based (not binary). They store data as attribute-value pairs, such as <code>"Name": "Bob"</code> in our example below. You might think of this as the files storing the column name and the value for that column for a row in the table. Because they are text-based, they are human-readable (however, depending on the complexity of the data, you may not want to try to read it in a text editor). Another advantage of using a text-based format is that it can easily be stored in online version control systems like GitHub, as long as a file size isn’t too big. This is a nice feature if you want to host your webmap on <a href="https://pages.github.com/">GitHub Pages</a>.</p>
 <p>Any of the major GIS tools or programming languages can convert vector data to GeoJSON format.</p>
-<p>The header and first line of our Campus Cats data looks something like this in GeoJSON (we removed the link URLs and added white space and indents for readability):</p>
+<p>The header and first line of our Campus Food data looks something like this in GeoJSON (we removed the link URLs and added white space and indents for readability):</p>
 <pre><code>&quot;type&quot;: &quot;FeatureCollection&quot;,
-&quot;name&quot;: &quot;campus_cats&quot;,
+&quot;name&quot;: &quot;campus_food&quot;,
 &quot;crs&quot;: { &quot;type&quot;: &quot;name&quot;, &quot;properties&quot;: { &quot;name&quot;: &quot;urn:ogc:def:crs:OGC:1.3:CRS84&quot; } },
-&quot;bbox&quot;: [ -121.7734392, 38.5320672, 0, -121.746784, 38.5435618, 0 ],                                                               
+
 
 &quot;features&quot;: [
-    { 
-    &quot;type&quot;: &quot;Feature&quot;, 
-    &quot;properties&quot;: { 
-        &quot;Name&quot;: &quot;Bob&quot;, 
-        &quot;description&quot;: 
-            &quot;&lt;img src=\&quot;(URL goes here)&quot; height=\&quot;200\&quot; width=\&quot;auto\&quot; /&gt;
-            &lt;br&gt;
-            &lt;br&gt;
-            Bob is new to campus during the summer of 2020. The sex of Bob is unknown, named for their appearance - they look like a bobcat! Bob is cared for by two staff members in Voorhies. &quot;, 
-        &quot;gx_media_links&quot;: &quot;(URL goes here)&quot;, 
-        &quot;details&quot;: &quot;Bob is new to campus during the summer of 2020. The sex of Bob is unknown, named for their appearance - they look like a bobcat! Bob is cared for by two staff members in Voorhies.&quot; }, 
-    &quot;bbox&quot;: [ -121.7471273, 38.5412044, 0.0, -121.7471273, 38.5412044, 0.0 ], 
-    &quot;geometry&quot;: { &quot;type&quot;: &quot;Point&quot;, &quot;coordinates&quot;: [ -121.7471273, 38.5412044, 0.0 ] } 
-    }
+  { 
+  &quot;type&quot;: &quot;Feature&quot;, 
+  &quot;properties&quot;: { 
+    &quot;Name&quot;: &quot;CoHo Grab and Go&quot;, 
+    &quot;description&quot;: &quot;Grapes, cheese, yogurt, sandwiches, etc. in a refrigerated case by the drinks&quot;,
+    &quot;gx_media_links&quot;: &quot;(URL goes here)&quot;, 
+    &quot;img_name&quot;: &quot;coho.jpg&quot; }, 
+  &quot;geometry&quot;: { &quot;type&quot;: &quot;Point&quot;, &quot;coordinates&quot;: [ -121.7497985, 38.5421103, 0.0 ] } 
+  }
 </code></pre>
 </div>
-<div id="formatting-the-data" class="section level3 hasAnchor" number="4.3.2">
-<h3><span class="header-section-number">4.3.2</span> Formatting the Data<a href="build-a-leaflet-web-map.html#formatting-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="formatting-the-data-2" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> Formatting the Data<a href="use-external-data-2.html#formatting-the-data-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>For the sake of time in this workshop, we’ve already formatted the data for you, but let’s talk about what we did.</p>
 <p>Leaflet can’t read GeoJSON directly, but we can turn the data file into a javascript (.js) file that Leaflet can understand. All we have to do is open the .geojson file in a text editor, add <code>var varable-name = {</code> at the beginning of the file, and <code>}</code> at the end of the file (we’re “wrapping” the data in a variable declaration). Then we save the file with a .js extension (because what we’ve actually done is written a small JavaScript file). We now have a javascript file that reads data from the GeoJSON text and creates a new variable containing our data.</p>
-<p><strong>We’ve done this for you</strong> to create the <code>campus_cats.js</code> file, declaring our variable as <code>campus_cats</code>. You can see the GeoJSON structure and the variable declaration if you open the file in a text editor.</p>
+<p><strong>We’ve done this for you</strong> to create the <code>campus_food.js</code> file, declaring our variable as <code>campus_food</code>. You can see the GeoJSON structure and the variable declaration if you open the file in a text editor.</p>
 </div>
-<div id="read-the-data" class="section level3 hasAnchor" number="4.3.3">
-<h3><span class="header-section-number">4.3.3</span> Read the Data<a href="build-a-leaflet-web-map.html#read-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>To read the data into our webpage, we need to add another short script section, just above the one we’ve been working in that calls our <code>campus_cats.js</code> data file.</p>
+<div id="read-the-data-2" class="section level2 hasAnchor" number="7.4">
+<h2><span class="header-section-number">7.4</span> Read the Data<a href="use-external-data-2.html#read-the-data-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To read the data into our webpage, we need to add another short script section, just above the one we’ve been working in that calls our <code>campus_food.js</code> data file.</p>
 <pre><code>&lt;body&gt;
-&lt;h1&gt;UC Davis Campus Cats Map&lt;/h1&gt;
-&lt;p&gt;This webmap shows the locations of UC Davis campus community cats.&lt;/p&gt;
+&lt;h1&gt;UC Davis Campus Food Map&lt;/h1&gt;
+&lt;p&gt;This webmap shows the locations of UC Davis campus grab-and-go dining options.&lt;/p&gt;
 
 &lt;div id=&quot;mapid&quot; style=&quot;width: 600px; height: 400px;&quot;&gt;&lt;/div&gt;
 
-&lt;highlight&gt;&lt;script src=&quot;campus_cats.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;&lt;/highlight&gt;
+&lt;highlight&gt;&lt;script src=&quot;campus_food.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;&lt;/highlight&gt;
 
 &lt;script&gt;</code></pre>
 <p>Now the data in this file will be available to load into our map.</p>
-<p><strong>NOTE:</strong> You could put this script in the <code>&lt;head&gt;</code> of the document where we loaded the Leaflet and CSS scipts. I like to keep all the map code together for teaching purposes (less scrolling around). Both are valid and work the same.</p>
+<p><strong>NOTE:</strong> You could put this script in the <code>&lt;head&gt;</code> of the document where we loaded the Leaflet and CSS scripts. I like to keep all the map code together for teaching purposes (less scrolling around). Both are valid and work the same.</p>
 </div>
-<div id="add-data-to-the-map" class="section level3 hasAnchor" number="4.3.4">
-<h3><span class="header-section-number">4.3.4</span> Add Data to the Map<a href="build-a-leaflet-web-map.html#add-data-to-the-map" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="add-data-to-the-map-2" class="section level2 hasAnchor" number="7.5">
+<h2><span class="header-section-number">7.5</span> Add Data to the Map<a href="use-external-data-2.html#add-data-to-the-map-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This is the moment you’ve been waiting for! We’ll add data from our external data file to the map.</p>
 <p>Add this code to the bottom of your long script section (below where we made our marker for the Quad and above the closing <code>&lt;/script&gt;</code> tag):</p>
 <pre><code>    &lt;highlight&gt;//add cat points from the GeoJSON (campus_cats.js) file
@@ -398,9 +251,8 @@
 <p>First, we create a variable called <em>catpoints</em> using the geojson data which we named <em>campus_cats</em> inside the .js file. Then we create a function called <code>pointToLayer</code> that uses the parameters <em>feature</em> (each row in the data) and <em>latlng</em> (the geometry) from the geojson data. We make a <em>circleMarker</em> using the <em>latlng</em> variable for the position, and use the style options between the {}s to style the marker the way we want it. In this case, it’s orange and has a radius of 8 (which is a little smaller than the default). Finally, we add the entire set of markers we built to the map (remember that we called our div that holds our map <em>catmap</em>).</p>
 <p><strong>CHECK YOUR WORK:</strong> Compare your code with <a href="https://github.com/ucdavisdatalab/workshop_web_maps/blob/main/example_code/end_of_section_4-3-4.html">example code up to this point in the workshop</a>.</p>
 </div>
-</div>
-<div id="add-a-popup" class="section level2 hasAnchor" number="4.4">
-<h2><span class="header-section-number">4.4</span> Add a popup<a href="build-a-leaflet-web-map.html#add-a-popup" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="add-a-popup-2" class="section level2 hasAnchor" number="7.6">
+<h2><span class="header-section-number">7.6</span> Add a popup<a href="use-external-data-2.html#add-a-popup-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>It would be nice to have some information available for each marker. Let’s make a popup that tells us about each cat. We’ll start with a text popup and gradually add more to it.</p>
 <p>We made our markers for our point locations by iterating over the list of features in our dataset and making a marker for each of them. We can add a function to the one we already have so that once the markers get made, each will get a popup.</p>
 <p>We’ll modify our code that adds our points to look like this:</p>
@@ -416,8 +268,8 @@
     }).addTo(catmap);</code></pre>
 <p><img src="images/webpage_section_4-4.png" title="The web map now has popups that contain place-holder text" /></p>
 <p>What did we do? After the <code>pointToLayer</code> function, we added a new created a new function called <code>OnEachFeature</code> that uses the feature (each row of the data) and the layer information. For each feature, we have it bind a popup to our layer (named <em>catpoints</em>) and put the text that is in the parentheses into the popup. For now, all of our popups will say “This is a popup!”. We’ll build on that next.</p>
-<div id="customize-popup-text-with-data" class="section level3 hasAnchor" number="4.4.1">
-<h3><span class="header-section-number">4.4.1</span> Customize Popup Text with Data<a href="build-a-leaflet-web-map.html#customize-popup-text-with-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="customize-popup-text-with-data-2" class="section level3 hasAnchor" number="7.6.1">
+<h3><span class="header-section-number">7.6.1</span> Customize Popup Text with Data<a href="use-external-data-2.html#customize-popup-text-with-data-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>This is progress! We have a map with points and popups that contain placeholder text. Let’s use the attribute data from our <em>catpoints</em> layer to add the name of each cat to the popup.</p>
 <p>Instead of the “This is a popup!” text, we can use the attribute data from our catpoints data. Replace the current “This is a popup!” text with: <code>feature.properties.Name</code> (with no quotes around it). As we loop through each row of our data, the code will add each cat’s name to the popup.</p>
 <pre><code>    //add cat points from the GeoJSON (campus_cats.js) file
@@ -476,8 +328,8 @@
 <p><strong>CHECK YOUR WORK:</strong> Compare your code with <a href="https://github.com/ucdavisdatalab/workshop_web_maps/blob/main/example_code/end_of_section_4-4-1.html">example code up to this point in the workshop</a>.</p>
 </div>
 </div>
-<div id="put-your-web-page-online" class="section level2 hasAnchor" number="4.5">
-<h2><span class="header-section-number">4.5</span> Put Your Web Page online<a href="build-a-leaflet-web-map.html#put-your-web-page-online" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="put-your-web-page-online-2" class="section level2 hasAnchor" number="7.7">
+<h2><span class="header-section-number">7.7</span> Put Your Web Page online<a href="use-external-data-2.html#put-your-web-page-online-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>There are many options to put your web page online so others can see and interact with it. At the heart of the task is moving your <em>docs</em> folder to an online server and having some way to host the website. One option that is free of cost and well-documented is to use <a href="https://pages.github.com/">GitHub Pages</a> (see the instructions for a “project site”).</p>
 
 </div>
@@ -487,8 +339,8 @@
           </div>
         </div>
       </div>
-<a href="build-a-webpage.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="add-a-map-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="resources.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -509,7 +361,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/ucdavisdatalab/workshop_web_maps/edit/master/04_Build_a_Webmap.Rmd",
+"link": "https://github.com/ucdavisdatalab/workshop_web_maps/edit/master/06_use_external_data.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -517,7 +369,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/ucdavisdatalab/workshop_web_maps/blob/master/04_Build_a_Webmap.Rmd",
+"link": "https://github.com/ucdavisdatalab/workshop_web_maps/blob/master/06_use_external_data.Rmd",
 "text": null
 },
 "download": null,

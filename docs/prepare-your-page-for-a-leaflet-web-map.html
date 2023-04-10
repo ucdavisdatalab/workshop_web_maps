@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2 Set Up | Building Web Maps with Leaflet</title>
-  <meta name="description" content="2 Set Up | Building Web Maps with Leaflet" />
+  <title>4 Prepare Your Page for a Leaflet Web Map | Building Web Maps with Leaflet</title>
+  <meta name="description" content="4 Prepare Your Page for a Leaflet Web Map | Building Web Maps with Leaflet" />
   <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2 Set Up | Building Web Maps with Leaflet" />
+  <meta property="og:title" content="4 Prepare Your Page for a Leaflet Web Map | Building Web Maps with Leaflet" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="ucdavisdatalab/workshop_web_maps" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2 Set Up | Building Web Maps with Leaflet" />
+  <meta name="twitter:title" content="4 Prepare Your Page for a Leaflet Web Map | Building Web Maps with Leaflet" />
   
   
   
@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="introduction.html"/>
-<link rel="next" href="build-a-webpage.html"/>
+<link rel="prev" href="build-a-webpage.html"/>
+<link rel="next" href="add-a-map.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -152,33 +152,102 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="set-up" class="section level1 hasAnchor" number="2">
-<h1><span class="header-section-number">2</span> Set Up<a href="set-up.html#set-up" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Before we do any coding, let’s set up our file and folder structure.</p>
-<div id="download-the-data" class="section level2 hasAnchor" number="2.1">
-<h2><span class="header-section-number">2.1</span> Download the Data<a href="set-up.html#download-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The data for the workshop is available to download from this <a href="https://ucdavis.box.com/s/3v3k43vz3b6iss8i9kufetc4swi8utmj">box drive</a>. You can download the file itself or click the download button in the upper right corner of the screen. (You may need to dismiss a message about logging in to see the button, but you do not need to log in to download the data.) Save the file to a folder on your computer that you can find. If the file you downloaded is a .zip file, unzip the file.</p>
-<p>The data for this workshop is one javascript file called <code>campus_food.js</code> and a folder called ‘img’ with 9 images.</p>
+<div id="prepare-your-page-for-a-leaflet-web-map" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">4</span> Prepare Your Page for a Leaflet Web Map<a href="prepare-your-page-for-a-leaflet-web-map.html#prepare-your-page-for-a-leaflet-web-map" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><strong>START FROM HERE:</strong> You can keep working on your code from the previous section, or use the <a href="https://github.com/ucdavisdatalab/workshop_web_maps/blob/main/example_code/end_of_section_3.html">example code up to this point in the workshop</a>.</p>
+<p>Now that we’ve made a basic webpage, we can add our web map.</p>
+<div id="load-the-external-files" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Load The External Files<a href="prepare-your-page-for-a-leaflet-web-map.html#load-the-external-files" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In the <strong>head</strong> section of our webpage, we need to add some information that will tell our map how to appear (the CSS file) and where to find the Leaflet package (Leaflet JavaScript file).</p>
+<p>CSS stands for Cascading Style Sheet. You can think of this as the parameters that set the way certain objects are displayed in a website. The pre-made file we’ll load specifically styles the map elements made with Leaflet.</p>
+<p>Loading the Leaflet JavaScript file enables our webpage to have access to the functions and tools in the Leaflet Library. For R or Python users, this is similar to loading packages or libraries in your code. We could save a static version of this library in our website folders and point to that, or we can link to an online version of it, like we have done in the code below. For the most recent version of these links, check the <a href="https://leafletjs.com/download.html">Leaflet Download page</a> in the section called “Using a Hosted Version of Leaflet”.</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+&lt;title&gt;UC Davis Campus Food Map&lt;/title&gt;
+
+&lt;highlight&gt;
+&lt;!--Load the Leaflet CSS file --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/leaflet@1.9.3/dist/leaflet.css&quot; integrity=&quot;sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=&quot; crossorigin=&quot;&quot; /&gt;
+
+&lt;!--Load the Leaflet JavaScript file --&gt;
+&lt;script src=&quot;https://unpkg.com/leaflet@1.9.3/dist/leaflet.js&quot; integrity=&quot;sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=&quot; crossorigin=&quot;&quot;&gt;&lt;/script&gt;
+&lt;/highlight&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;h1&gt;UC Davis Campus Food Map&lt;/h1&gt;
+&lt;p&gt;This webmap shows the locations of UC Davis campus grab-and-go dining options.&lt;/p&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+<p>Note that in HTML, comments are written like this: <code>&lt;!-- This is a comment --&gt;</code>. Comments are information for a person writing or reading the code and don’t render on the website.</p>
+<p>The code we just added doesn’t make any visible changes on our website so if you reload your web page, you won’t notice anything new, but it should load. If it has an error or the text doesn’t show up, you’ll need to debug your code.</p>
 </div>
-<div id="folders" class="section level2 hasAnchor" number="2.2">
-<h2><span class="header-section-number">2.2</span> Folders<a href="set-up.html#folders" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Using your computer’s file browsing program, navigate to a folder you want to work in. In that folder, create a new folder to hold your files for this project, such as <em>my_web_map</em>. Inside that folder, create another folder called <em>docs</em>. The <em>docs</em> folder will hold the HTML and javascript files that will create our web map.</p>
-<p>Your folder structure should now look like this:</p>
-<pre><code>my_web_map
-|-- docs
-</code></pre>
+<div id="add-a-map-div" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Add a Map Div<a href="prepare-your-page-for-a-leaflet-web-map.html#add-a-map-div" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A <code>&lt;div&gt;</code> element defines a section in your HTML document. Our web map needs its own <code>&lt;div&gt;</code>. We’ll add one inside the <code>&lt;body&gt;</code> of the webpage. Note that the <code>&lt;div&gt;</code> has an ID named <em>mapid</em>. This will let us create settings and code that apply to this specific <code>&lt;div&gt;</code>. We can define the style of the <code>&lt;div&gt;</code> inside the tag (as we have done below) or we could do it in the <code>&lt;head&gt;</code> of the document in a <code>&lt;style&gt;</code> subsection, or in a separate CSS file. There are many good reasons to choose any of these places. We’re defining the style inside the <code>&lt;div&gt;</code> tag to make it easier to see how it applies to this specific <code>&lt;div&gt;</code> and to keep the code for the map all in one place.</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+&lt;title&gt;UC Davis Campus Food Map&lt;/title&gt;
+
+&lt;!--Load the Leaflet CSS file --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/leaflet@1.9.3/dist/leaflet.css&quot; integrity=&quot;sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=&quot; crossorigin=&quot;&quot; /&gt;
+
+&lt;!--Load the Leaflet JavaScript file --&gt;
+&lt;script src=&quot;https://unpkg.com/leaflet@1.9.3/dist/leaflet.js&quot; integrity=&quot;sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=&quot; crossorigin=&quot;&quot;&gt;&lt;/script&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;h1&gt;UC Davis Campus Food Map&lt;/h1&gt;
+&lt;p&gt;This webmap shows the locations of UC Davis campus grab-and-go dining options.&lt;/p&gt;
+
+&lt;highlight&gt;
+&lt;div id=&quot;mapid&quot; style=&quot;width: 600px; height: 400px;&quot;&gt;&lt;/div&gt;
+&lt;/highlight&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+<p>If you reload your <code>index.html</code> file in your browser, you shouldn’t notice any difference. If the page doesn’t load, however, you’ll need to troubleshoot your code. Make sure your tags open and close in the right order.</p>
 </div>
-<div id="files" class="section level2 hasAnchor" number="2.3">
-<h2><span class="header-section-number">2.3</span> Files<a href="set-up.html#files" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Move the file you downloaded for this workshop called <code>campus_food.js</code> and the folder called ‘img’ into the <em>docs</em> folder.</p>
-<p>Open your preferred text editor application. Create a new, blank file. Save it inside your <em>docs</em> folder and call it <code>index.html</code>. This will be the homepage for our web site that will hold our web map.</p>
-<p>Your folder and file structure should now look like this:</p>
-<pre><code>my_web_map
-|-- docs
-|   |-- img
-|   |-- campus_cats.js
-|   |-- index.html
-</code></pre>
+<div id="add-a-script-section" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Add a Script Section<a href="prepare-your-page-for-a-leaflet-web-map.html#add-a-script-section" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Finally, we need to add a section to our code to hold the Leaflet JavaScript code we will write to make our map. Just below your map <code>&lt;div&gt;</code> (and inside the <strong>body</strong> section), add open and closed <code>&lt;script&gt;</code> tags.</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+&lt;title&gt;UC Davis Campus Food Map&lt;/title&gt;
+
+&lt;!--Load the Leaflet CSS file --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/leaflet@1.9.3/dist/leaflet.css&quot; integrity=&quot;sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=&quot; crossorigin=&quot;&quot; /&gt;
+
+&lt;!--Load the Leaflet JavaScript file --&gt;
+&lt;script src=&quot;https://unpkg.com/leaflet@1.9.3/dist/leaflet.js&quot; integrity=&quot;sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=&quot; crossorigin=&quot;&quot;&gt;&lt;/script&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;h1&gt;UC Davis Campus Food Map&lt;/h1&gt;
+&lt;p&gt;This webmap shows the locations of UC Davis campus grab-and-go dining options.&lt;/p&gt;
+
+&lt;div id=&quot;mapid&quot; style=&quot;width: 600px; height: 400px;&quot;&gt;&lt;/div&gt;
+
+&lt;highlight&gt;
+&lt;script&gt;
+
+&lt;/script&gt;
+&lt;/highlight&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+<p><strong>CHECK YOUR WORK:</strong> Compare your code with <a href="https://github.com/ucdavisdatalab/workshop_web_maps/blob/main/example_code/end_of_section_4.html">example code up to this point in the workshop</a>.</p>
 
 </div>
 </div>
@@ -187,8 +256,8 @@
           </div>
         </div>
       </div>
-<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="build-a-webpage.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="build-a-webpage.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="add-a-map.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -209,7 +278,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/ucdavisdatalab/workshop_web_maps/edit/master/02_file-structure.Rmd",
+"link": "https://github.com/ucdavisdatalab/workshop_web_maps/edit/master/04_Build_a_Webmap.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -217,7 +286,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/ucdavisdatalab/workshop_web_maps/blob/master/02_file-structure.Rmd",
+"link": "https://github.com/ucdavisdatalab/workshop_web_maps/blob/master/04_Build_a_Webmap.Rmd",
 "text": null
 },
 "download": null,

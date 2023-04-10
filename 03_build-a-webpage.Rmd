@@ -32,7 +32,7 @@ The first, we need to indicate that our text file contains HTML, and then place 
 </html>
 ```
 
-Open your index.html file in a web browser such as Chrome or Firefox. Double clicking on the file in your file explorer will open it in your defaultbrowser. Yes, it's ok that we have the same file open in two programs because the browser just renders the file and you can't edit it from here.
+Open your index.html file in a web browser such as Chrome or Firefox. Double clicking on the file in your file explorer will open it in your default browser. Yes, it's ok that we have the same file open in two programs because the browser just renders the file and you can't edit it from here.
 
 ![](images/webpage_section_3-2_a.png "Chrome web browser showing a blank web page with one tab called index.html")
 
@@ -48,15 +48,15 @@ The beginning of the HTML document is where you normally place the parameters an
 <html>
 
 <highlight><head>
-<title>UC Davis Campus Cats Map</title>
+<title>UC Davis Campus Food Map</title>
 </head></highlight>
 
 </html>
 ```
 
-If you reload the `index.html` file in your web browser, you'll have a blank page with a tab called "UC Davis Campus Cats Map".
+If you reload the `index.html` file in your web browser, you'll have a blank page with a tab called "UC Davis Campus Food Map".
 
-![](images/webpage_section_3-2_b.png "Chrome web browser showing a blank web page with one tab called 'UC Davis Campus Cats Map'")
+![](images/webpage_section_3-2_b.png "Chrome web browser showing a blank web page with one tab called 'UC Davis Campus Food Map'")
 
 The **body** section of a web page contains the code that appears on the actual web page. We'll add a *body* section and some information. Note that `<h1>` makes a heading and `<p>` makes a paragraph.
 
@@ -64,12 +64,12 @@ The **body** section of a web page contains the code that appears on the actual 
 <html>
 
 <head>
-<title>UC Davis Campus Cats Map</title>
+<title>UC Davis Campus Food Map</title>
 </head>
 
 <highlight><body>
-<h1>UC Davis Campus Cats Map</h1>
-<p>This webmap shows the locations of UC Davis campus community cats.</p>
+<h1>UC Davis Campus Food Map</h1>
+<p>This webmap shows the locations of UC Davis campus grab-and-go dining options.</p>
 </body></highlight>
 
 </html>
@@ -77,6 +77,6 @@ The **body** section of a web page contains the code that appears on the actual 
 
 Reload your `index.html` document in your browser to see your new text. You have now written a short but very legitimate HTML webpage! We could certainly write more text, but for the sake of demonstration, we'll keep it short for now. In the next section, we'll build the code that makes our web map.
 
-![](images/webpage_section_3-2.png "A simple web page with text about the project and a named tab")
+![](images/webpage_section_3-2_c.png "A simple web page with text about the project and a named tab")
 
-**CHECK YOUR WORK:** Compare your code with [example code up to this point in the workshop](https://github.com/ucdavisdatalab/workshop_web_maps/blob/main/example_code/end_of_section_3-2.html).
+**CHECK YOUR WORK:** Compare your code with [example code up to this point in the workshop](https://github.com/ucdavisdatalab/workshop_web_maps/blob/main/example_code/end_of_sec_3.html).

@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2 Set Up | Building Web Maps with Leaflet</title>
-  <meta name="description" content="2 Set Up | Building Web Maps with Leaflet" />
+  <title>6 Use External Data | Building Web Maps with Leaflet</title>
+  <meta name="description" content="6 Use External Data | Building Web Maps with Leaflet" />
   <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2 Set Up | Building Web Maps with Leaflet" />
+  <meta property="og:title" content="6 Use External Data | Building Web Maps with Leaflet" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="ucdavisdatalab/workshop_web_maps" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2 Set Up | Building Web Maps with Leaflet" />
+  <meta name="twitter:title" content="6 Use External Data | Building Web Maps with Leaflet" />
   
   
   
@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="introduction.html"/>
-<link rel="next" href="build-a-webpage.html"/>
+<link rel="prev" href="add-a-map.html"/>
+<link rel="next" href="add-a-popup.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -152,33 +152,74 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="set-up" class="section level1 hasAnchor" number="2">
-<h1><span class="header-section-number">2</span> Set Up<a href="set-up.html#set-up" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Before we do any coding, let’s set up our file and folder structure.</p>
-<div id="download-the-data" class="section level2 hasAnchor" number="2.1">
-<h2><span class="header-section-number">2.1</span> Download the Data<a href="set-up.html#download-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The data for the workshop is available to download from this <a href="https://ucdavis.box.com/s/3v3k43vz3b6iss8i9kufetc4swi8utmj">box drive</a>. You can download the file itself or click the download button in the upper right corner of the screen. (You may need to dismiss a message about logging in to see the button, but you do not need to log in to download the data.) Save the file to a folder on your computer that you can find. If the file you downloaded is a .zip file, unzip the file.</p>
-<p>The data for this workshop is one javascript file called <code>campus_food.js</code> and a folder called ‘img’ with 9 images.</p>
-</div>
-<div id="folders" class="section level2 hasAnchor" number="2.2">
-<h2><span class="header-section-number">2.2</span> Folders<a href="set-up.html#folders" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Using your computer’s file browsing program, navigate to a folder you want to work in. In that folder, create a new folder to hold your files for this project, such as <em>my_web_map</em>. Inside that folder, create another folder called <em>docs</em>. The <em>docs</em> folder will hold the HTML and javascript files that will create our web map.</p>
-<p>Your folder structure should now look like this:</p>
-<pre><code>my_web_map
-|-- docs
+<div id="use-external-data" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">6</span> Use External Data<a href="use-external-data.html#use-external-data" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><strong>START FROM HERE:</strong> You can keep working on your code from the previous section, or use the <a href="https://github.com/ucdavisdatalab/workshop_web_maps/blob/main/example_code/end_of_sec_5.html">example code up to this point in the workshop</a>.</p>
+<p>Adding markers by hand is great, but what if we have a lot of data? Or what if our data is more complex than a few points to add? What if we want to prepare our data in a GIS or with a script ahead of time? If any of these situations apply to the work we want to do, we probably want to load data from a data file, not writing it out in the code.</p>
+<p>There are many methods to load an external data file in Leaflet. We’ll look at just one here, but there are ways to work with any of the common file types. Here, we’ll use data in geoJSON format.</p>
+<div id="about-geojson" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> About GeoJSON<a href="use-external-data.html#about-geojson" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>GeoJSON is a spatial data format based on the JSON format. Both JSON and GeoJSON are open standard file formats that text-based (not binary). They store data as attribute-value pairs, such as <code>"Name": "Bob"</code> in our example below. You might think of this as the files storing the column name and the value for that column for a row in the table. Because they are text-based, they are human-readable (however, depending on the complexity of the data, you may not want to try to read it in a text editor). Another advantage of using a text-based format is that it can easily be stored in online version control systems like GitHub, as long as a file size isn’t too big. This is a nice feature if you want to host your webmap on <a href="https://pages.github.com/">GitHub Pages</a>.</p>
+<p>Any of the major GIS tools or programming languages can convert vector data to GeoJSON format.</p>
+<p>The header and first line of our Campus Food data looks something like this in GeoJSON (we removed the link URLs and added white space and indents for readability):</p>
+<pre><code>&quot;type&quot;: &quot;FeatureCollection&quot;,
+&quot;name&quot;: &quot;campus_food&quot;,
+&quot;crs&quot;: { &quot;type&quot;: &quot;name&quot;, &quot;properties&quot;: { &quot;name&quot;: &quot;urn:ogc:def:crs:OGC:1.3:CRS84&quot; } },
+
+
+&quot;features&quot;: [
+  { 
+  &quot;type&quot;: &quot;Feature&quot;, 
+  &quot;properties&quot;: { 
+    &quot;Name&quot;: &quot;CoHo Grab and Go&quot;, 
+    &quot;description&quot;: &quot;Grapes, cheese, yogurt, sandwiches, etc. in a refrigerated case by the drinks&quot;,
+    &quot;gx_media_links&quot;: &quot;(URL goes here)&quot;, 
+    &quot;img_name&quot;: &quot;coho.jpg&quot; }, 
+  &quot;geometry&quot;: { &quot;type&quot;: &quot;Point&quot;, &quot;coordinates&quot;: [ -121.7497985, 38.5421103, 0.0 ] } 
+  }
 </code></pre>
 </div>
-<div id="files" class="section level2 hasAnchor" number="2.3">
-<h2><span class="header-section-number">2.3</span> Files<a href="set-up.html#files" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Move the file you downloaded for this workshop called <code>campus_food.js</code> and the folder called ‘img’ into the <em>docs</em> folder.</p>
-<p>Open your preferred text editor application. Create a new, blank file. Save it inside your <em>docs</em> folder and call it <code>index.html</code>. This will be the homepage for our web site that will hold our web map.</p>
-<p>Your folder and file structure should now look like this:</p>
-<pre><code>my_web_map
-|-- docs
-|   |-- img
-|   |-- campus_cats.js
-|   |-- index.html
-</code></pre>
+<div id="formatting-the-data" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Formatting the Data<a href="use-external-data.html#formatting-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>For the sake of time in this workshop, we’ve already formatted the data for you, but let’s talk about what we did.</p>
+<p>Leaflet can’t read GeoJSON directly, but we can turn the data file into a javascript (.js) file that Leaflet can understand. All we have to do is open the .geojson file in a text editor, add <code>var varable-name = {</code> at the beginning of the file, and <code>}</code> at the end of the file (we’re “wrapping” the data in a variable declaration). Then we save the file with a .js extension (because what we’ve actually done is written a small JavaScript file). We now have a javascript file that reads data from the GeoJSON text and creates a new variable containing our data.</p>
+<p><strong>We’ve done this for you</strong> to create the <code>campus_food.js</code> file, declaring our variable as <code>campus_food</code>. You can see the GeoJSON structure and the variable declaration if you open the file in a text editor.</p>
+</div>
+<div id="read-the-data" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Read the Data<a href="use-external-data.html#read-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To read the data into our webpage, we need to add another short script section, just above the one we’ve been working in that calls our <code>campus_food.js</code> data file.</p>
+<pre><code>&lt;body&gt;
+&lt;h1&gt;UC Davis Campus Food Map&lt;/h1&gt;
+&lt;p&gt;This webmap shows the locations of UC Davis campus grab-and-go dining options.&lt;/p&gt;
+
+&lt;div id=&quot;mapid&quot; style=&quot;width: 600px; height: 400px;&quot;&gt;&lt;/div&gt;
+
+&lt;highlight&gt;&lt;script src=&quot;campus_food.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;&lt;/highlight&gt;
+
+&lt;script&gt;</code></pre>
+<p>Now the data in this file will be available to load into our map.</p>
+<p><strong>NOTE:</strong> You could put this script in the <code>&lt;head&gt;</code> of the document where we loaded the Leaflet and CSS scripts. I like to keep all the map code together for teaching purposes (less scrolling around). Both are valid and work the same.</p>
+</div>
+<div id="add-data-to-the-map" class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> Add Data to the Map<a href="use-external-data.html#add-data-to-the-map" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This is the moment you’ve been waiting for! We’ll add data from our external data file to the map.</p>
+<p>Add this code to the bottom of your long script section (below where we made our marker for the Quad and above the closing <code>&lt;/script&gt;</code> tag):</p>
+<pre><code>    &lt;highlight&gt;
+    //add food points from the GeoJSON (campus_food.js) file
+
+    var foodpoints = L.geoJSON(campus_food, {  
+        pointToLayer: function(feature, latlng){  
+            return L.circleMarker(latlng, {color: &#39;orange&#39;, radius: 8});
+        }
+    }).addTo(foodmap);
+    &lt;/highlight&gt;
+    
+&lt;/script&gt;</code></pre>
+<p>We now have many orange circles for our dining spots (and one for the quad that we added earlier)!</p>
+<p><img src="images/webpage_section_6-4.png" title="Web map with orange circles for grab-and-go locations and a blue marker for the quad" /></p>
+<p>What does this code do though?</p>
+<p>First, we create a variable called <em>foodpoints</em> using the geojson data which we named <em>campus_food</em> inside the .js file. Then we create a function called <code>pointToLayer</code> that uses the parameters <em>feature</em> (each row in the data) and <em>latlng</em> (the geometry) from the geojson data. We make a <em>circleMarker</em> using the <em>latlng</em> variable for the position, and use the style options between the {}s to style the marker the way we want it. In this case, it’s orange and has a radius of 8 (which is a little smaller than the default). Finally, we add the entire set of markers we built to the map (remember that we called our div that holds our map <em>foodmap</em>).</p>
+<p><strong>CHECK YOUR WORK:</strong> Compare your code with <a href="https://github.com/ucdavisdatalab/workshop_web_maps/blob/main/example_code/end_of_sec_6.html">example code up to this point in the workshop</a>.</p>
 
 </div>
 </div>
@@ -187,8 +228,8 @@
           </div>
         </div>
       </div>
-<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="build-a-webpage.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="add-a-map.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="add-a-popup.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -209,7 +250,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/ucdavisdatalab/workshop_web_maps/edit/master/02_file-structure.Rmd",
+"link": "https://github.com/ucdavisdatalab/workshop_web_maps/edit/master/06_use_external_data.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -217,7 +258,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/ucdavisdatalab/workshop_web_maps/blob/master/02_file-structure.Rmd",
+"link": "https://github.com/ucdavisdatalab/workshop_web_maps/blob/master/06_use_external_data.Rmd",
 "text": null
 },
 "download": null,

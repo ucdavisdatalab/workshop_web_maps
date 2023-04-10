@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2 Set Up | Building Web Maps with Leaflet</title>
-  <meta name="description" content="2 Set Up | Building Web Maps with Leaflet" />
+  <title>5 Add a Map | Building Web Maps with Leaflet</title>
+  <meta name="description" content="5 Add a Map | Building Web Maps with Leaflet" />
   <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2 Set Up | Building Web Maps with Leaflet" />
+  <meta property="og:title" content="5 Add a Map | Building Web Maps with Leaflet" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="ucdavisdatalab/workshop_web_maps" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2 Set Up | Building Web Maps with Leaflet" />
+  <meta name="twitter:title" content="5 Add a Map | Building Web Maps with Leaflet" />
   
   
   
@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="introduction.html"/>
-<link rel="next" href="build-a-webpage.html"/>
+<link rel="prev" href="prepare-your-page-for-a-leaflet-web-map.html"/>
+<link rel="next" href="use-external-data.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -152,33 +152,60 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="set-up" class="section level1 hasAnchor" number="2">
-<h1><span class="header-section-number">2</span> Set Up<a href="set-up.html#set-up" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Before we do any coding, let’s set up our file and folder structure.</p>
-<div id="download-the-data" class="section level2 hasAnchor" number="2.1">
-<h2><span class="header-section-number">2.1</span> Download the Data<a href="set-up.html#download-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The data for the workshop is available to download from this <a href="https://ucdavis.box.com/s/3v3k43vz3b6iss8i9kufetc4swi8utmj">box drive</a>. You can download the file itself or click the download button in the upper right corner of the screen. (You may need to dismiss a message about logging in to see the button, but you do not need to log in to download the data.) Save the file to a folder on your computer that you can find. If the file you downloaded is a .zip file, unzip the file.</p>
-<p>The data for this workshop is one javascript file called <code>campus_food.js</code> and a folder called ‘img’ with 9 images.</p>
+<div id="add-a-map" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">5</span> Add a Map<a href="add-a-map.html#add-a-map" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><strong>START FROM HERE:</strong> You can keep working on your code from the previous section, or use the <a href="https://github.com/ucdavisdatalab/workshop_web_maps/blob/main/example_code/end_of_sec_4.html">example code up to this point in the workshop</a>.</p>
+<p>Now that we’ve prepared our webpage we can add our web map.</p>
+<div id="add-a-map-1" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Add A Map<a href="add-a-map.html#add-a-map-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Now we’re ready to add a map. We’ll make a simple one to start and add more data later.</p>
+<p>Inside the <code>&lt;script&gt;</code> section, we’ll now be writing javascript. <code>//</code> is how you indicate a comment in JavaScript. Outside of this section, you’ll be writing HTML. It can get confusing sometimes, so have patience with yourself.</p>
+<p>First, we’ll create an empty map in our mapid <code>&lt;div&gt;</code>, then we’ll load Stamen’s Toner tile service to use as a background layer. The limited color palette of the Toner tile service will make it easier to see the data we’ll be loading later.</p>
+<p>A tile service is a pre-built background layer that is available at various geographic scales. The data is stored on a server and we can request the data show up in our map. Some of these are free and open. Other require registration or charge a fee. Stamen has several free (and beautiful) tile services that we can use.</p>
+<p><strong>Note:</strong> from now on, we’ll be working in the <code>&lt;script&gt;</code> section, so the code will just show this section to avoid clutter and focus on what’s changing in the code.</p>
+<pre><code>&lt;script&gt;
+
+    &lt;highlight&gt;
+    //add an empty map called &quot;foodmap&quot; to the page in the mapid div
+    var foodmap = L.map(&#39;mapid&#39;, {
+        center: [38.538592, -121.75],
+        zoom: 15
+        });
+
+    //add the base map = Stamen Toner tile layer
+    var Stamen_Toner = L.tileLayer(&#39;https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.{ext}&#39;, {
+        attribution: &#39;Map tiles by &lt;a href=&quot;http://stamen.com&quot;&gt;Stamen Design&lt;/a&gt;, &lt;a href=&quot;http://creativecommons.org/licenses/by/3.0&quot;&gt;CC BY 3.0&lt;/a&gt; &amp;mdash; Map data &amp;copy; &lt;a href=&quot;http://www.openstreetmap.org/copyright&quot;&gt;OpenStreetMap&lt;/a&gt;&#39;,
+        subdomains: &#39;abcd&#39;,
+        minZoom: 0,
+        maxZoom: 20,
+        ext: &#39;png&#39;
+        });
+        foodmap.addLayer(Stamen_Toner);
+    &lt;/highlight&gt;
+
+&lt;/script&gt;</code></pre>
+<p>Your web page should now have a map with Stamen’s Toner tile layer. It should look something like this:</p>
+<p><img src="images/webpage_section_5-1.png" title="Our web page now contains a web map with Stamen&#39;s Tonor tile layer" /></p>
+<p>We’ll add some of our own data to the map next.</p>
 </div>
-<div id="folders" class="section level2 hasAnchor" number="2.2">
-<h2><span class="header-section-number">2.2</span> Folders<a href="set-up.html#folders" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Using your computer’s file browsing program, navigate to a folder you want to work in. In that folder, create a new folder to hold your files for this project, such as <em>my_web_map</em>. Inside that folder, create another folder called <em>docs</em>. The <em>docs</em> folder will hold the HTML and javascript files that will create our web map.</p>
-<p>Your folder structure should now look like this:</p>
-<pre><code>my_web_map
-|-- docs
-</code></pre>
-</div>
-<div id="files" class="section level2 hasAnchor" number="2.3">
-<h2><span class="header-section-number">2.3</span> Files<a href="set-up.html#files" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Move the file you downloaded for this workshop called <code>campus_food.js</code> and the folder called ‘img’ into the <em>docs</em> folder.</p>
-<p>Open your preferred text editor application. Create a new, blank file. Save it inside your <em>docs</em> folder and call it <code>index.html</code>. This will be the homepage for our web site that will hold our web map.</p>
-<p>Your folder and file structure should now look like this:</p>
-<pre><code>my_web_map
-|-- docs
-|   |-- img
-|   |-- campus_cats.js
-|   |-- index.html
-</code></pre>
+<div id="add-a-marker" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Add a Marker<a href="add-a-map.html#add-a-marker" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Let’s add a marker so we can find the Quad. The marker will be a blue inverted teardrop that will have a tooltip that says “Quad” when you hover over it. At the end of your script section, add:</p>
+<pre><code>    &lt;highlight&gt;
+    //add a marker for the Quad with a tooltip
+            //Quad coordinates: 38.541162, -121.749371
+    var marker = new L.marker([38.541112, -121.749350], {
+        opacity: 1.0   //teardrop marker opacity may be set to zero
+        });             
+        marker.bindTooltip(&quot;&lt;b&gt;Quad&lt;/b&gt;&quot;, { });
+        marker.addTo(foodmap);
+    &lt;/highlight&gt;
+        
+&lt;/script&gt;</code></pre>
+<p>You now have an interactive map with one marker!</p>
+<p><img src="images/webpage_section_5-2.png" title="The web map now has a blue marker with a tooltip that says &#39;Quad&#39;" /></p>
+<p>Notice the order of the code: we first define the marker, then add the tooltip to the marker, and finally we have to add the marker to the map. Defining, adding specifications, then adding an item to the map is a pretty common workflow in Leaflet.</p>
+<p><strong>CHECK YOUR WORK:</strong> Compare your code with <a href="https://github.com/ucdavisdatalab/workshop_web_maps/blob/main/example_code/end_of_sec_5.html">example code up to this point in the workshop</a>.</p>
 
 </div>
 </div>
@@ -187,8 +214,8 @@
           </div>
         </div>
       </div>
-<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="build-a-webpage.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="prepare-your-page-for-a-leaflet-web-map.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="use-external-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -209,7 +236,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/ucdavisdatalab/workshop_web_maps/edit/master/02_file-structure.Rmd",
+"link": "https://github.com/ucdavisdatalab/workshop_web_maps/edit/master/05_add_a_map.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -217,7 +244,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/ucdavisdatalab/workshop_web_maps/blob/master/02_file-structure.Rmd",
+"link": "https://github.com/ucdavisdatalab/workshop_web_maps/blob/master/05_add_a_map.Rmd",
 "text": null
 },
 "download": null,

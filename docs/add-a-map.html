@@ -165,7 +165,7 @@
 <p><strong>Note:</strong> from now on, we’ll be working in the <code>&lt;script&gt;</code> section, so the code will just show this section to avoid clutter and focus on what’s changing in the code.</p>
 <pre><code>&lt;script&gt;
 
-    &lt;highlight&gt;
+    <span style="background-color:#ffff7f">
     //add an empty map called &quot;foodmap&quot; to the page in the mapid div
     var foodmap = L.map(&#39;mapid&#39;, {
         center: [38.538592, -121.75],
@@ -181,7 +181,7 @@
         ext: &#39;png&#39;
         });
         foodmap.addLayer(Stamen_Toner);
-    &lt;/highlight&gt;
+    </span>
 
 &lt;/script&gt;</code></pre>
 <p>Your web page should now have a map with Stamen’s Toner tile layer. It should look something like this:</p>
@@ -191,7 +191,7 @@
 <div id="add-a-marker" class="section level2 hasAnchor" number="5.2">
 <h2><span class="header-section-number">5.2</span> Add a Marker<a href="add-a-map.html#add-a-marker" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Let’s add a marker so we can find the Quad. The marker will be a blue inverted teardrop that will have a tooltip that says “Quad” when you hover over it. At the end of your script section, add:</p>
-<pre><code>    &lt;highlight&gt;
+<pre><code>    <span style="background-color:#ffff7f">
     //add a marker for the Quad with a tooltip
             //Quad coordinates: 38.541162, -121.749371
     var marker = new L.marker([38.541112, -121.749350], {
@@ -199,7 +199,7 @@
         });             
         marker.bindTooltip(&quot;&lt;b&gt;Quad&lt;/b&gt;&quot;, { });
         marker.addTo(foodmap);
-    &lt;/highlight&gt;
+    </span>
         
 &lt;/script&gt;</code></pre>
 <p>You now have an interactive map with one marker!</p>

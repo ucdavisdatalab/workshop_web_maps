@@ -226,7 +226,7 @@
 
 &lt;div id=&quot;mapid&quot; style=&quot;width: 600px; height: 400px;&quot;&gt;&lt;/div&gt;
 
-&lt;highlight&gt;&lt;script src=&quot;campus_food.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;&lt;/highlight&gt;
+<span style="background-color:#ffff7f">&lt;script src=&quot;campus_food.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</span>
 
 &lt;script&gt;</code></pre>
 <p>Now the data in this file will be available to load into our map.</p>
@@ -236,13 +236,13 @@
 <h2><span class="header-section-number">7.5</span> Add Data to the Map<a href="use-external-data-2.html#add-data-to-the-map-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This is the moment you’ve been waiting for! We’ll add data from our external data file to the map.</p>
 <p>Add this code to the bottom of your long script section (below where we made our marker for the Quad and above the closing <code>&lt;/script&gt;</code> tag):</p>
-<pre><code>    &lt;highlight&gt;//add cat points from the GeoJSON (campus_cats.js) file
+<pre><code>    <span style="background-color:#ffff7f">//add cat points from the GeoJSON (campus_cats.js) file
 
     var catpoints = L.geoJSON(campus_cats, {  
         pointToLayer: function(feature, latlng){  
             return L.circleMarker(latlng, {color: &#39;orange&#39;, radius: 8});
         }
-    }).addTo(catmap);&lt;/highlight&gt;
+    }).addTo(catmap);</span>
     
 &lt;/script&gt;</code></pre>
 <p>We now have many orange circles for our cats (and one for the quad that we added earlier)!</p>
@@ -261,10 +261,10 @@
     var catpoints = L.geoJSON(campus_cats, {  
         pointToLayer: function(feature, latlng){  
             return L.circleMarker(latlng, {color: &#39;orange&#39;, radius: 8});
-        }&lt;highlight&gt;,
+        }<span style="background-color:#ffff7f">,
         onEachFeature: function(feature, layer){
             layer.bindPopup(&quot;This is a popup!&quot;);
-        }&lt;/highlight&gt;
+        }</span>
     }).addTo(catmap);</code></pre>
 <p><img src="images/webpage_section_4-4.png" title="The web map now has popups that contain place-holder text" /></p>
 <p>What did we do? After the <code>pointToLayer</code> function, we added a new created a new function called <code>OnEachFeature</code> that uses the feature (each row of the data) and the layer information. For each feature, we have it bind a popup to our layer (named <em>catpoints</em>) and put the text that is in the parentheses into the popup. For now, all of our popups will say “This is a popup!”. We’ll build on that next.</p>
@@ -279,7 +279,7 @@
             return L.circleMarker(latlng, {color: &#39;orange&#39;, radius: 8});
         },
         onEachFeature: function(feature, layer){
-            layer.bindPopup(&lt;highlight&gt;feature.properties.Name&lt;/highlight&gt;);
+            layer.bindPopup(<span style="background-color:#ffff7f">feature.properties.Name</span>);
         }
     }).addTo(catmap);</code></pre>
 <p><img src="images/webpage_section_4-4-1.png" title="The popups now have the cats&#39; names." /></p>
@@ -293,7 +293,7 @@
             return L.circleMarker(latlng, {color: &#39;orange&#39;, radius: 8});
         },
         onEachFeature: function(feature, layer){
-            layer.bindPopup(&lt;highlight&gt;&quot;&lt;b&gt;Name: &lt;/b&gt;&quot; + feature.properties.Name&lt;/highlight&gt;);
+            layer.bindPopup(<span style="background-color:#ffff7f">&quot;&lt;b&gt;Name: &lt;/b&gt;&quot; + feature.properties.Name</span>);
         }
     }).addTo(catmap);</code></pre>
 <p>Our popups are starting to be much more useful!</p>
@@ -306,7 +306,7 @@
             return L.circleMarker(latlng, {color: &#39;orange&#39;, radius: 8});
         },
         onEachFeature: function(feature, layer){
-            layer.bindPopup(&quot;&lt;b&gt;Name: &lt;/b&gt;&quot; + feature.properties.Name &lt;highlight&gt;+ &quot;&lt;br&gt;&lt;b&gt;Description: &lt;/b&gt;&quot;+ feature.properties.details&lt;/highlight&gt;);
+            layer.bindPopup(&quot;&lt;b&gt;Name: &lt;/b&gt;&quot; + feature.properties.Name <span style="background-color:#ffff7f">+ &quot;&lt;br&gt;&lt;b&gt;Description: &lt;/b&gt;&quot;+ feature.properties.details</span>);
         }
     }).addTo(catmap);</code></pre>
 <p><img src="images/webpage_section_4-4-1c.png" title="A popup with the name and text description of a cat" /></p>
@@ -320,7 +320,7 @@
         },
         onEachFeature: function(feature, layer){
             layer.bindPopup(
-                &quot;&lt;highlight&gt;&lt;img src=&#39;&quot;+feature.properties.gx_media_links+&quot;&#39; width=&#39;259&#39;&gt;&lt;br&gt;&lt;/highlight&gt;&lt;b&gt;Name: &lt;/b&gt;&quot; + feature.properties.Name + &quot;&lt;br&gt;&lt;b&gt;Description: &lt;/b&gt;&quot;+ feature.properties.details);
+                &quot;<span style="background-color:#ffff7f">&lt;img src=&#39;&quot;+feature.properties.gx_media_links+&quot;&#39; width=&#39;259&#39;&gt;&lt;br&gt;</span>&lt;b&gt;Name: &lt;/b&gt;&quot; + feature.properties.Name + &quot;&lt;br&gt;&lt;b&gt;Description: &lt;/b&gt;&quot;+ feature.properties.details);
         }
     }).addTo(catmap);</code></pre>
 <p>And here is our web map:</p>

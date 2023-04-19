@@ -10,7 +10,7 @@ examples
 workflow
 leaflet
 other-web-map-tools
-workshop-data-uc-davis-campus-cats
+workshop-data-uc-davis-campus-food
 set-up
 download-the-data
 folders
@@ -18,12 +18,12 @@ files
 build-a-webpage
 intro-to-html
 start-building-your-webpage
-build-a-leaflet-web-map
-prepare-your-page
+prepare-your-page-for-a-leaflet-web-map
 load-the-external-files
 add-a-map-div
 add-a-script-section
 add-a-map
+add-a-map-1
 add-a-marker
 use-external-data
 about-geojson
@@ -31,6 +31,10 @@ formatting-the-data
 read-the-data
 add-data-to-the-map
 add-a-popup
+add-a-popup-1
 customize-popup-text-with-data
+add-details-to-the-popup-text
+add-a-description-to-the-popup
+add-an-image-to-the-popup
 put-your-web-page-online
 resources

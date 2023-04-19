@@ -1,0 +1,3 @@
+# Put Your Web Page online
+
+There are many options to put your web page online so others can see and interact with it. At the heart of the task is moving your *docs* folder to an online server and having some way to host the website. One option that is free of cost and well-documented is to use [GitHub Pages](https://pages.github.com/) (see the instructions for a "project site").

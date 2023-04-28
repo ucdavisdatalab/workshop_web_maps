@@ -111,4 +111,4 @@ Finally, we need to add a section to our code to hold the Leaflet JavaScript cod
 </html>
 ```
 
-**CHECK YOUR WORK:** Compare your code with [example code up to this point in the workshop](https://github.com/ucdavisdatalab/workshop_web_maps/blob/main/example_code/end_of_section_4.html).
+**CHECK YOUR WORK:** Compare your code with [example code up to this point in the workshop](https://github.com/ucdavisdatalab/workshop_web_maps/blob/main/example_code/end_of_sec_4.html).

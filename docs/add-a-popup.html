@@ -166,10 +166,10 @@
     var foodpoints = L.geoJSON(campus_food, {  
         pointToLayer: function(feature, latlng){  
             return L.circleMarker(latlng, {color: &#39;orange&#39;, radius: 8});
-        }&lt;highlight&gt;,
+        }<span style="background-color:#ffff7f">,
         onEachFeature: function(feature, layer){
             layer.bindPopup(&quot;This is a popup!&quot;);
-        }&lt;/highlight&gt;
+        }</span>
     }).addTo(foodmap);</code></pre>
 <p><img src="images/webpage_section_7-1.png" title="The web map now has popups that contain place-holder text" /></p>
 <p>What did we do? After the <code>pointToLayer</code> function, we added a new created a new function called <code>OnEachFeature</code> that uses the feature (each row of the data) and the layer information. For each feature, we have it bind a popup to our layer (named <em>foodpoints</em>) and put the text that is in the parentheses into the popup. For now, all of our popups will say “This is a popup!”. We’ll build on that next.</p>
@@ -185,7 +185,7 @@
             return L.circleMarker(latlng, {color: &#39;orange&#39;, radius: 8});
         },
         onEachFeature: function(feature, layer){
-            layer.bindPopup(&lt;highlight&gt;feature.properties.Name&lt;/highlight&gt;);
+            layer.bindPopup(<span style="background-color:#ffff7f">feature.properties.Name</span>);
         }
     }).addTo(foodmap);</code></pre>
 <p><img src="images/webpage_section_7-2.png" title="The popups now have the locations&#39; names." /></p>
@@ -202,7 +202,7 @@
             return L.circleMarker(latlng, {color: &#39;orange&#39;, radius: 8});
         },
         onEachFeature: function(feature, layer){
-            layer.bindPopup(&lt;highlight&gt;&quot;&lt;b&gt;Name: &lt;/b&gt;&quot; + &lt;/highlight&gt;feature.properties.Name);
+            layer.bindPopup(<span style="background-color:#ffff7f">&quot;&lt;b&gt;Name: &lt;/b&gt;&quot; + </span>feature.properties.Name);
         }
     }).addTo(foodmap);</code></pre>
 <p>Our popups are starting to be much more useful!</p>
@@ -218,7 +218,7 @@
             return L.circleMarker(latlng, {color: &#39;orange&#39;, radius: 8});
         },
         onEachFeature: function(feature, layer){
-            layer.bindPopup(&quot;&lt;b&gt;Name: &lt;/b&gt;&quot; + feature.properties.Name &lt;highlight&gt;+ &quot;&lt;br&gt;&lt;b&gt;Description: &lt;/b&gt;&quot;+ feature.properties.description&lt;/highlight&gt;);
+            layer.bindPopup(&quot;&lt;b&gt;Name: &lt;/b&gt;&quot; + feature.properties.Name <span style="background-color:#ffff7f">+ &quot;&lt;br&gt;&lt;b&gt;Description: &lt;/b&gt;&quot;+ feature.properties.description</span>);
         }
     }).addTo(foodmap);</code></pre>
 <p><img src="images/webpage_section_7-4.png" title="A popup with the name and text description of a location" /></p>
@@ -236,7 +236,7 @@
         },
         onEachFeature: function(feature, layer){
             layer.bindPopup(
-                &quot;&lt;highlight&gt;&lt;img src=&#39;img/&quot; + feature.properties.img_name + &quot;&#39; width=&#39;259&#39;/&gt;&lt;br&gt;&lt;/highlight&gt;&lt;b&gt;Name: &lt;/b&gt;&quot; + feature.properties.Name + &quot;&lt;br&gt;&lt;b&gt;Description: &lt;/b&gt;&quot;+ feature.properties.description);
+                &quot;<span style="background-color:#ffff7f">&lt;img src=&#39;img/&quot; + feature.properties.img_name + &quot;&#39; width=&#39;259&#39;/&gt;&lt;br&gt;</span>&lt;b&gt;Name: &lt;/b&gt;&quot; + feature.properties.Name + &quot;&lt;br&gt;&lt;b&gt;Description: &lt;/b&gt;&quot;+ feature.properties.description);
         }
     }).addTo(foodmap);</code></pre>
 <p>And here is our web map:</p>

@@ -5,7 +5,7 @@ Before we do any coding, let's set up our file and folder structure.
 ## Download the Data
 The data for the workshop is available to download from this [box drive](https://ucdavis.box.com/s/3v3k43vz3b6iss8i9kufetc4swi8utmj). You can download the file itself or click the download button in the upper right corner of the screen. (You may need to dismiss a message about logging in to see the button, but you do not need to log in to download the data.)  Save the file to a folder on your computer that you can find. If the file you downloaded is a .zip file, unzip the file.
 
-The data for this workshop is one javascript file called `campus_food.js` and a folder called 'img' with 9 images.
+The data for this workshop is one javascript file called `campus_food.js` and a folder called `img` with 9 images.
 
 ## Folders
 
@@ -31,7 +31,7 @@ Your folder and file structure should now look like this:
 my_web_map
 |-- docs
 |   |-- img
-|   |-- campus_cats.js
+|   |-- campus_food.js
 |   |-- index.html
 
 ```

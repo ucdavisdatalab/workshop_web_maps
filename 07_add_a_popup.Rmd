@@ -121,4 +121,4 @@ And here is our web map:
 
 ![](images/webpage_section_7-5.png "A popup with a photo, name, and text description")
 
-**CHECK YOUR WORK:** Compare your code with [example code up to this point in the workshop](https://github.com/ucdavisdatalab/workshop_web_maps/blob/main/example_code/end_of_section_7.html).
+**CHECK YOUR WORK:** Compare your code with [example code up to this point in the workshop](https://github.com/ucdavisdatalab/workshop_web_maps/blob/main/example_code/end_of_sec_7.html).

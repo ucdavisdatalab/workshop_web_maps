@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>6 Use External Data | Building Web Maps with Leaflet</title>
   <meta name="description" content="6 Use External Data | Building Web Maps with Leaflet" />
-  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="6 Use External Data | Building Web Maps with Leaflet" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Naomi Kalman" />
 
 
-<meta name="date" content="2023-04-10" />
+<meta name="date" content="2023-04-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -194,7 +194,7 @@
 
 &lt;div id=&quot;mapid&quot; style=&quot;width: 600px; height: 400px;&quot;&gt;&lt;/div&gt;
 
-<span style="background-color:#ffff7f">&lt;script src=&quot;campus_food.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</span>
+&lt;highlight&gt;&lt;script src=&quot;campus_food.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;&lt;/highlight&gt;
 
 &lt;script&gt;</code></pre>
 <p>Now the data in this file will be available to load into our map.</p>
@@ -204,7 +204,7 @@
 <h2><span class="header-section-number">6.4</span> Add Data to the Map<a href="use-external-data.html#add-data-to-the-map" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This is the moment you’ve been waiting for! We’ll add data from our external data file to the map.</p>
 <p>Add this code to the bottom of your long script section (below where we made our marker for the Quad and above the closing <code>&lt;/script&gt;</code> tag):</p>
-<pre><code>    <span style="background-color:#ffff7f">
+<pre><code>    &lt;highlight&gt;
     //add food points from the GeoJSON (campus_food.js) file
 
     var foodpoints = L.geoJSON(campus_food, {  
@@ -212,7 +212,7 @@
             return L.circleMarker(latlng, {color: &#39;orange&#39;, radius: 8});
         }
     }).addTo(foodmap);
-    </span>
+    &lt;/highlight&gt;
     
 &lt;/script&gt;</code></pre>
 <p>We now have many orange circles for our dining spots (and one for the quad that we added earlier)!</p>
